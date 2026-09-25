@@ -1,0 +1,1621 @@
+[
+  {
+    "bag": "30618_01f73500",
+    "source": "master",
+    "map_start_error_m": 1.0179614234371177e-05,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11554,
+    "map_rmse_2d_m": 3.7879151792568577,
+    "baseline_rmse_2d_m": 5923.590873359301,
+    "map_rmse_3d_m": 4.014079874431283,
+    "baseline_rmse_3d_m": 5923.599179342529,
+    "final_errors_m": [
+      2.7947352947668302,
+      10062.451008927694
+    ]
+  },
+  {
+    "bag": "30618_0259fe53",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_0652866c",
+    "source": "master",
+    "map_start_error_m": 0.028399310160109176,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 14049,
+    "map_rmse_2d_m": 11.465811602997897,
+    "baseline_rmse_2d_m": 6202.4694021139485,
+    "map_rmse_3d_m": 11.510629651445756,
+    "baseline_rmse_3d_m": 6202.477050724521,
+    "final_errors_m": [
+      130.8320330795048,
+      10285.584563805593
+    ]
+  },
+  {
+    "bag": "30618_0686195f",
+    "source": "master",
+    "map_start_error_m": 6.869621778147914,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10669,
+    "map_rmse_2d_m": 37.27234979573289,
+    "baseline_rmse_2d_m": 5389.681743599328,
+    "map_rmse_3d_m": 37.344592553816,
+    "baseline_rmse_3d_m": 5389.691798819264,
+    "final_errors_m": [
+      66.74152061535545,
+      9540.21167826795
+    ]
+  },
+  {
+    "bag": "30618_073f08d1",
+    "source": "master",
+    "map_start_error_m": 18.620806013951242,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11814,
+    "map_rmse_2d_m": 16.64255488667393,
+    "baseline_rmse_2d_m": 748.0510414406504,
+    "map_rmse_3d_m": 16.711752385994256,
+    "baseline_rmse_3d_m": 748.1662423886977,
+    "final_errors_m": [
+      23.564289887319614,
+      1476.8711212156024
+    ]
+  },
+  {
+    "bag": "30618_082f1d65",
+    "source": "master",
+    "map_start_error_m": 2.970787489804743,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 228,
+    "map_rmse_2d_m": 0.011356140910575643,
+    "baseline_rmse_2d_m": 0.022453319881432694,
+    "map_rmse_3d_m": 0.012371087080003403,
+    "baseline_rmse_3d_m": 0.02298379089431077,
+    "final_errors_m": [
+      0.08603912901077652,
+      0.24936913192460544
+    ]
+  },
+  {
+    "bag": "30618_095a115b",
+    "source": "master",
+    "map_start_error_m": 0.010859847720652805,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12741,
+    "map_rmse_2d_m": 7.730855817887107,
+    "baseline_rmse_2d_m": 5852.444012870034,
+    "map_rmse_3d_m": 7.802485691296301,
+    "baseline_rmse_3d_m": 5852.451339007879,
+    "final_errors_m": [
+      11.001570569121663,
+      10036.571692468804
+    ]
+  },
+  {
+    "bag": "30618_0a83c933",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_0d865417",
+    "source": "master",
+    "map_start_error_m": 523.7089809313594,
+    "map_source": "30639_d601d28f",
+    "map_used": false,
+    "direction": 1,
+    "pairs": 121,
+    "map_rmse_2d_m": 0.19620422749161057,
+    "baseline_rmse_2d_m": 0.5449926151168191,
+    "map_rmse_3d_m": 0.1977662462145096,
+    "baseline_rmse_3d_m": 0.5455569079280983,
+    "final_errors_m": [
+      0.40929871303007614,
+      1.196687384907331
+    ]
+  },
+  {
+    "bag": "30618_0e41eac3",
+    "source": "master",
+    "map_start_error_m": 0.026005536177314013,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12356,
+    "map_rmse_2d_m": 4.954066697300916,
+    "baseline_rmse_2d_m": 5675.269808008173,
+    "map_rmse_3d_m": 5.076421559977311,
+    "baseline_rmse_3d_m": 5675.278192718324,
+    "final_errors_m": [
+      5.741175563041347,
+      9849.218613998864
+    ]
+  },
+  {
+    "bag": "30618_0f120b35",
+    "source": "master",
+    "map_start_error_m": 25.02833606292692,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12100,
+    "map_rmse_2d_m": 24.13596403933118,
+    "baseline_rmse_2d_m": 725.3856753956981,
+    "map_rmse_3d_m": 24.173047274255616,
+    "baseline_rmse_3d_m": 725.4816471639159,
+    "final_errors_m": [
+      27.409086048807172,
+      1462.72098036729
+    ]
+  },
+  {
+    "bag": "30618_117c2d02",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_1551d0a9",
+    "source": "master",
+    "map_start_error_m": 23.598283419024035,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 38,
+    "map_rmse_2d_m": 0.0036563170056219826,
+    "baseline_rmse_2d_m": 0.0036563170056219826,
+    "map_rmse_3d_m": 0.005237312623783246,
+    "baseline_rmse_3d_m": 0.005237312623783246,
+    "final_errors_m": [
+      0.0019250494985696455,
+      0.0019250494985696455
+    ]
+  },
+  {
+    "bag": "30618_1cc230fa",
+    "source": "master",
+    "map_start_error_m": 0.030398474915689352,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11890,
+    "map_rmse_2d_m": 3.3557085644996874,
+    "baseline_rmse_2d_m": 5970.064015451911,
+    "map_rmse_3d_m": 3.6103168547640445,
+    "baseline_rmse_3d_m": 5970.07168053489,
+    "final_errors_m": [
+      2.5490798237429693,
+      10093.773422980748
+    ]
+  },
+  {
+    "bag": "30618_20096314",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_2050d396",
+    "source": "master",
+    "map_start_error_m": 21.52902529448774,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12533,
+    "map_rmse_2d_m": 21.108556150052234,
+    "baseline_rmse_2d_m": 734.989356728446,
+    "map_rmse_3d_m": 21.147392790072118,
+    "baseline_rmse_3d_m": 735.0969435642206,
+    "final_errors_m": [
+      21.112078424941224,
+      1433.455962475218
+    ]
+  },
+  {
+    "bag": "30618_2161b58b",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_21dd3af3",
+    "source": "master",
+    "map_start_error_m": 20.622523614226488,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9785,
+    "map_rmse_2d_m": 12.809283580666756,
+    "baseline_rmse_2d_m": 838.5628262242462,
+    "map_rmse_3d_m": 12.981989495043182,
+    "baseline_rmse_3d_m": 838.670695269541,
+    "final_errors_m": [
+      16.87996585278549,
+      1495.2022026697955
+    ]
+  },
+  {
+    "bag": "30618_2255aade",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_22c1c589",
+    "source": "master",
+    "map_start_error_m": 23.59747351942977,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10933,
+    "map_rmse_2d_m": 22.89200882569425,
+    "baseline_rmse_2d_m": 723.4851608662456,
+    "map_rmse_3d_m": 22.940310779181715,
+    "baseline_rmse_3d_m": 723.5973543684038,
+    "final_errors_m": [
+      24.851833596726706,
+      1468.4731383169672
+    ]
+  },
+  {
+    "bag": "30618_2366c74a",
+    "source": "master",
+    "map_start_error_m": 0.6251505053261285,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10414,
+    "map_rmse_2d_m": 2.8448509215521804,
+    "baseline_rmse_2d_m": 827.2588589317268,
+    "map_rmse_3d_m": 4.5075298803166755,
+    "baseline_rmse_3d_m": 827.3494061169325,
+    "final_errors_m": [
+      4.311829230961482,
+      1457.5946655675773
+    ]
+  },
+  {
+    "bag": "30618_27e994fc",
+    "source": "master",
+    "map_start_error_m": 0.02820097697248373,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 17781,
+    "map_rmse_2d_m": 35.733617021744024,
+    "baseline_rmse_2d_m": 7625.257195104292,
+    "map_rmse_3d_m": 35.78574969119053,
+    "baseline_rmse_3d_m": 7625.2618719552775,
+    "final_errors_m": [
+      155.8111409045976,
+      10258.933518671058
+    ]
+  },
+  {
+    "bag": "30618_28538acf",
+    "source": "master",
+    "map_start_error_m": 0.06423254128750631,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11957,
+    "map_rmse_2d_m": 8.655881898426896,
+    "baseline_rmse_2d_m": 6157.722959554843,
+    "map_rmse_3d_m": 8.969138702195066,
+    "baseline_rmse_3d_m": 6157.729831102237,
+    "final_errors_m": [
+      7.712763301237962,
+      10085.282966411447
+    ]
+  },
+  {
+    "bag": "30618_2cb9ce37",
+    "source": "master",
+    "map_start_error_m": 0.4885875661580485,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 7383,
+    "map_rmse_2d_m": 4.751548239019142,
+    "baseline_rmse_2d_m": 556.6880083429894,
+    "map_rmse_3d_m": 5.128034746323088,
+    "baseline_rmse_3d_m": 556.8407438840393,
+    "final_errors_m": [
+      11.406522317349358,
+      1096.14636163832
+    ]
+  },
+  {
+    "bag": "30618_2d2fa7be",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_2dbce472",
+    "source": "master",
+    "map_start_error_m": 0.01597961896761885,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12522,
+    "map_rmse_2d_m": 5.055860316186352,
+    "baseline_rmse_2d_m": 5657.584792049892,
+    "map_rmse_3d_m": 5.206679432519958,
+    "baseline_rmse_3d_m": 5657.592414654574,
+    "final_errors_m": [
+      5.281218378349474,
+      10027.830262511292
+    ]
+  },
+  {
+    "bag": "30618_2f104a1d",
+    "source": "master",
+    "map_start_error_m": 24.92734613545729,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11424,
+    "map_rmse_2d_m": 25.95139859079738,
+    "baseline_rmse_2d_m": 765.0070815227305,
+    "map_rmse_3d_m": 25.98797789692091,
+    "baseline_rmse_3d_m": 765.1174027517319,
+    "final_errors_m": [
+      25.65988385596178,
+      1461.6471934870012
+    ]
+  },
+  {
+    "bag": "30618_2f2f1175",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_33bec73f",
+    "source": "master",
+    "map_start_error_m": 19.338663182915557,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11588,
+    "map_rmse_2d_m": 16.91485816869817,
+    "baseline_rmse_2d_m": 762.0645904946247,
+    "map_rmse_3d_m": 16.991532578455807,
+    "baseline_rmse_3d_m": 762.1535440012522,
+    "final_errors_m": [
+      20.094956762012096,
+      1434.089975951985
+    ]
+  },
+  {
+    "bag": "30618_3b36e5cd",
+    "source": "master",
+    "map_start_error_m": 0.5842187235891096,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11618,
+    "map_rmse_2d_m": 2.792230652167607,
+    "baseline_rmse_2d_m": 5982.382988625527,
+    "map_rmse_3d_m": 3.94052957550231,
+    "baseline_rmse_3d_m": 5982.394365368288,
+    "final_errors_m": [
+      4.8181063255891265,
+      10036.24608836403
+    ]
+  },
+  {
+    "bag": "30618_3ba2326f",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_3e012faf",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_3e9f4952",
+    "source": "master",
+    "map_start_error_m": 0.009825871942409366,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12410,
+    "map_rmse_2d_m": 3.455631818389227,
+    "baseline_rmse_2d_m": 6176.5256112197985,
+    "map_rmse_3d_m": 3.659061534733383,
+    "baseline_rmse_3d_m": 6176.531387743411,
+    "final_errors_m": [
+      1.5096688392233422,
+      10081.816796531866
+    ]
+  },
+  {
+    "bag": "30618_40ffd323",
+    "source": "master",
+    "map_start_error_m": 0.03769175140641574,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11988,
+    "map_rmse_2d_m": 7.7885679284729585,
+    "baseline_rmse_2d_m": 6220.969179804103,
+    "map_rmse_3d_m": 7.866857531005992,
+    "baseline_rmse_3d_m": 6220.977118213193,
+    "final_errors_m": [
+      6.9137739593319925,
+      10113.10518343294
+    ]
+  },
+  {
+    "bag": "30618_437e855c",
+    "source": "master",
+    "map_start_error_m": 0.026286792588338954,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10418,
+    "map_rmse_2d_m": 3.1698568334337387,
+    "baseline_rmse_2d_m": 6031.289025883142,
+    "map_rmse_3d_m": 3.3834565794727305,
+    "baseline_rmse_3d_m": 6031.296436056784,
+    "final_errors_m": [
+      1.6198197927727402,
+      10026.156623685896
+    ]
+  },
+  {
+    "bag": "30618_45ff6f99",
+    "source": "master",
+    "map_start_error_m": 6.01087585859933,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": -1,
+    "pairs": 159,
+    "map_rmse_2d_m": 0.004769804530653462,
+    "baseline_rmse_2d_m": 0.004769804530653462,
+    "map_rmse_3d_m": 0.006149758192540343,
+    "baseline_rmse_3d_m": 0.006149758192540343,
+    "final_errors_m": [
+      0.0063558845446329134,
+      0.0063558845446329134
+    ]
+  },
+  {
+    "bag": "30618_46e21b9b",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_49fe4c54",
+    "source": "master",
+    "map_start_error_m": 0.03966044228635418,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 13129,
+    "map_rmse_2d_m": 8.600365289385262,
+    "baseline_rmse_2d_m": 5645.830452297951,
+    "map_rmse_3d_m": 8.66041026203647,
+    "baseline_rmse_3d_m": 5645.840668898316,
+    "final_errors_m": [
+      51.58547829428649,
+      10174.253790515082
+    ]
+  },
+  {
+    "bag": "30618_4d487b0d",
+    "source": "master",
+    "map_start_error_m": 5.028244755931745,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9243,
+    "map_rmse_2d_m": 17.051877075550145,
+    "baseline_rmse_2d_m": 5659.038179794098,
+    "map_rmse_3d_m": 17.091268202365534,
+    "baseline_rmse_3d_m": 5659.046577119525,
+    "final_errors_m": [
+      17.794407050983516,
+      10117.564029327768
+    ]
+  },
+  {
+    "bag": "30618_4e1e3181",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_5036aa78",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_5eb8d2c9",
+    "source": "master",
+    "map_start_error_m": 0.4885875661580485,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 7383,
+    "map_rmse_2d_m": 4.751548239019142,
+    "baseline_rmse_2d_m": 556.6880083429894,
+    "map_rmse_3d_m": 5.128034746323088,
+    "baseline_rmse_3d_m": 556.8407438840393,
+    "final_errors_m": [
+      11.406522317349358,
+      1096.14636163832
+    ]
+  },
+  {
+    "bag": "30618_616ec56b",
+    "source": "master",
+    "map_start_error_m": 26.21154516407116,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11251,
+    "map_rmse_2d_m": 25.99717974193851,
+    "baseline_rmse_2d_m": 757.968517416129,
+    "map_rmse_3d_m": 26.059319656789764,
+    "baseline_rmse_3d_m": 758.0733477373756,
+    "final_errors_m": [
+      25.533361093251425,
+      1450.2107951528312
+    ]
+  },
+  {
+    "bag": "30618_6236f680",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_67b89902",
+    "source": "master",
+    "map_start_error_m": 25.21640775863448,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9546,
+    "map_rmse_2d_m": 26.084259161214604,
+    "baseline_rmse_2d_m": 737.6969913998182,
+    "map_rmse_3d_m": 26.118879657865307,
+    "baseline_rmse_3d_m": 737.8010333800646,
+    "final_errors_m": [
+      23.9977083151126,
+      1442.163242614267
+    ]
+  },
+  {
+    "bag": "30618_68847170",
+    "source": "master",
+    "map_start_error_m": 25.085292777366757,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11463,
+    "map_rmse_2d_m": 25.181195545289444,
+    "baseline_rmse_2d_m": 765.7530093924133,
+    "map_rmse_3d_m": 25.23505329472089,
+    "baseline_rmse_3d_m": 765.8427130597601,
+    "final_errors_m": [
+      25.155567296179356,
+      1458.8128502181762
+    ]
+  },
+  {
+    "bag": "30618_68d1748a",
+    "source": "master",
+    "map_start_error_m": 0.029109209048159647,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11262,
+    "map_rmse_2d_m": 8.452211395160074,
+    "baseline_rmse_2d_m": 6257.355002278412,
+    "map_rmse_3d_m": 8.549703551779555,
+    "baseline_rmse_3d_m": 6257.361052957417,
+    "final_errors_m": [
+      8.392496889329788,
+      10035.001152924824
+    ]
+  },
+  {
+    "bag": "30618_6cb3280a",
+    "source": "master",
+    "map_start_error_m": 18.545173324665953,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12013,
+    "map_rmse_2d_m": 18.46033648903112,
+    "baseline_rmse_2d_m": 774.7335116897776,
+    "map_rmse_3d_m": 18.5216677294806,
+    "baseline_rmse_3d_m": 774.8494055020213,
+    "final_errors_m": [
+      20.127060162019397,
+      1472.1123334044723
+    ]
+  },
+  {
+    "bag": "30618_74559c73",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_748832b9",
+    "source": "master",
+    "map_start_error_m": 23.57661351861162,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10816,
+    "map_rmse_2d_m": 23.811599948948956,
+    "baseline_rmse_2d_m": 781.1279123690432,
+    "map_rmse_3d_m": 23.871619099884693,
+    "baseline_rmse_3d_m": 781.2230367338474,
+    "final_errors_m": [
+      22.766963997474964,
+      1465.667762460498
+    ]
+  },
+  {
+    "bag": "30618_76e1f9c7",
+    "source": "master",
+    "map_start_error_m": 0.03244255991997333,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11916,
+    "map_rmse_2d_m": 5.035357194907031,
+    "baseline_rmse_2d_m": 5803.937551579597,
+    "map_rmse_3d_m": 5.138815250669027,
+    "baseline_rmse_3d_m": 5803.94492205998,
+    "final_errors_m": [
+      5.630994078308945,
+      10087.59636652461
+    ]
+  },
+  {
+    "bag": "30618_7849303f",
+    "source": "master",
+    "map_start_error_m": 23.57661351861162,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10816,
+    "map_rmse_2d_m": 23.811599948948956,
+    "baseline_rmse_2d_m": 781.1279123690432,
+    "map_rmse_3d_m": 23.871619099884693,
+    "baseline_rmse_3d_m": 781.2230367338474,
+    "final_errors_m": [
+      22.766963997474964,
+      1465.667762460498
+    ]
+  },
+  {
+    "bag": "30618_79b204dc",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_7a152380",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_7b4d83f4",
+    "source": "master",
+    "map_start_error_m": 18.688773021683545,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11256,
+    "map_rmse_2d_m": 18.782328136694183,
+    "baseline_rmse_2d_m": 770.5833289863002,
+    "map_rmse_3d_m": 18.84529151242229,
+    "baseline_rmse_3d_m": 770.6967376727373,
+    "final_errors_m": [
+      22.055600300695243,
+      1473.503395065154
+    ]
+  },
+  {
+    "bag": "30618_7bfbb5ed",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_7d88fa79",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_8158f0b0",
+    "source": "master",
+    "map_start_error_m": 0.011791348459229075,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10945,
+    "map_rmse_2d_m": 6.479142900708448,
+    "baseline_rmse_2d_m": 5770.835451890735,
+    "map_rmse_3d_m": 6.578136663876139,
+    "baseline_rmse_3d_m": 5770.84356067487,
+    "final_errors_m": [
+      47.95597550833463,
+      10161.989096726105
+    ]
+  },
+  {
+    "bag": "30618_81c22fee",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_87afe526",
+    "source": "master",
+    "map_start_error_m": 0.048769277951002867,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11364,
+    "map_rmse_2d_m": 8.600000676381141,
+    "baseline_rmse_2d_m": 6168.167767190422,
+    "map_rmse_3d_m": 8.788803424010627,
+    "baseline_rmse_3d_m": 6168.1749991633205,
+    "final_errors_m": [
+      15.110103379356204,
+      10053.028646515908
+    ]
+  },
+  {
+    "bag": "30618_88548b02",
+    "source": "master",
+    "map_start_error_m": 19.17034692819633,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": -1,
+    "pairs": 11600,
+    "map_rmse_2d_m": 19.54308818022574,
+    "baseline_rmse_2d_m": 710.2720176902826,
+    "map_rmse_3d_m": 19.60318470216102,
+    "baseline_rmse_3d_m": 710.3859110819554,
+    "final_errors_m": [
+      70.27345079536205,
+      1415.6453288108794
+    ]
+  },
+  {
+    "bag": "30618_887a2b9a",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_8eb8615c",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_8f08df08",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_92b1b453",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_93dc866e",
+    "source": "master",
+    "map_start_error_m": 0.6251505053261285,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10414,
+    "map_rmse_2d_m": 2.8448509215521804,
+    "baseline_rmse_2d_m": 827.2588589317268,
+    "map_rmse_3d_m": 4.5075298803166755,
+    "baseline_rmse_3d_m": 827.3494061169325,
+    "final_errors_m": [
+      4.311829230961482,
+      1457.5946655675773
+    ]
+  },
+  {
+    "bag": "30618_95c49c30",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_98161270",
+    "source": "master",
+    "map_start_error_m": 6.007046481377721,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": -1,
+    "pairs": 409,
+    "map_rmse_2d_m": 0.007466070894513006,
+    "baseline_rmse_2d_m": 0.007466070894513006,
+    "map_rmse_3d_m": 0.010757797623672145,
+    "baseline_rmse_3d_m": 0.010757797623672145,
+    "final_errors_m": [
+      0.005768619764043754,
+      0.005768619764043754
+    ]
+  },
+  {
+    "bag": "30618_9bbe6faa",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_9c09b081",
+    "source": "master",
+    "map_start_error_m": 0.034702591489604404,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12659,
+    "map_rmse_2d_m": 5.331524034911534,
+    "baseline_rmse_2d_m": 5956.235508049802,
+    "map_rmse_3d_m": 5.458556665692183,
+    "baseline_rmse_3d_m": 5956.244838090918,
+    "final_errors_m": [
+      7.2513705767096255,
+      10113.652389085208
+    ]
+  },
+  {
+    "bag": "30618_9c10cd0d",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_a395846d",
+    "source": "master",
+    "map_start_error_m": 0.030398474915689352,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11890,
+    "map_rmse_2d_m": 3.3557085644996874,
+    "baseline_rmse_2d_m": 5970.064015451911,
+    "map_rmse_3d_m": 3.6103168547640445,
+    "baseline_rmse_3d_m": 5970.07168053489,
+    "final_errors_m": [
+      2.5490798237429693,
+      10093.773422980748
+    ]
+  },
+  {
+    "bag": "30618_a53d5f6f",
+    "source": "master",
+    "map_start_error_m": 0.9275424093797721,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10927,
+    "map_rmse_2d_m": 5.256824120977875,
+    "baseline_rmse_2d_m": 5924.816272388173,
+    "map_rmse_3d_m": 5.3769145388777275,
+    "baseline_rmse_3d_m": 5924.823445694775,
+    "final_errors_m": [
+      2.0461500809217292,
+      10025.49498247541
+    ]
+  },
+  {
+    "bag": "30618_a869780d",
+    "source": "master",
+    "map_start_error_m": 0.18712544700272318,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9899,
+    "map_rmse_2d_m": 4.488577842172947,
+    "baseline_rmse_2d_m": 6123.122189825841,
+    "map_rmse_3d_m": 4.669049817698615,
+    "baseline_rmse_3d_m": 6123.130577625906,
+    "final_errors_m": [
+      25.37183204446145,
+      9838.831847116475
+    ]
+  },
+  {
+    "bag": "30618_ab5921a4",
+    "source": "master",
+    "map_start_error_m": 0.02659643174290392,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10631,
+    "map_rmse_2d_m": 4.973986064825925,
+    "baseline_rmse_2d_m": 6482.707721908652,
+    "map_rmse_3d_m": 5.288863388692217,
+    "baseline_rmse_3d_m": 6482.714429478258,
+    "final_errors_m": [
+      6.415242169390025,
+      10080.568801382897
+    ]
+  },
+  {
+    "bag": "30618_ae4eb346",
+    "source": "master",
+    "map_start_error_m": 0.5842187235891096,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11618,
+    "map_rmse_2d_m": 2.792230652167607,
+    "baseline_rmse_2d_m": 5982.382988625527,
+    "map_rmse_3d_m": 3.94052957550231,
+    "baseline_rmse_3d_m": 5982.394365368288,
+    "final_errors_m": [
+      4.8181063255891265,
+      10036.24608836403
+    ]
+  },
+  {
+    "bag": "30618_af7496f0",
+    "source": "master",
+    "map_start_error_m": 0.9967266833933474,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 2561,
+    "map_rmse_2d_m": 6.0373475396379455,
+    "baseline_rmse_2d_m": 402.8081645787146,
+    "map_rmse_3d_m": 6.129213382727686,
+    "baseline_rmse_3d_m": 402.8132407633077,
+    "final_errors_m": [
+      6.502024941811951,
+      699.8521886354545
+    ]
+  },
+  {
+    "bag": "30618_b1098bdb",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_b15eafc3",
+    "source": "master",
+    "map_start_error_m": 25.000665144094498,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11688,
+    "map_rmse_2d_m": 25.655479934198496,
+    "baseline_rmse_2d_m": 801.473753615048,
+    "map_rmse_3d_m": 25.723107641084805,
+    "baseline_rmse_3d_m": 801.5649463463241,
+    "final_errors_m": [
+      23.81001406073654,
+      1459.1328105180912
+    ]
+  },
+  {
+    "bag": "30618_b3042f78",
+    "source": "master",
+    "map_start_error_m": 5.028244755931745,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9243,
+    "map_rmse_2d_m": 17.051877075550145,
+    "baseline_rmse_2d_m": 5659.038179794098,
+    "map_rmse_3d_m": 17.091268202365534,
+    "baseline_rmse_3d_m": 5659.046577119525,
+    "final_errors_m": [
+      17.794407050983516,
+      10117.564029327768
+    ]
+  },
+  {
+    "bag": "30618_b8044aa0",
+    "source": "master",
+    "map_start_error_m": 24.94392041261347,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11661,
+    "map_rmse_2d_m": 25.22579119944709,
+    "baseline_rmse_2d_m": 792.5013209090913,
+    "map_rmse_3d_m": 25.274256567212447,
+    "baseline_rmse_3d_m": 792.5934787350777,
+    "final_errors_m": [
+      24.559907494425403,
+      1460.007714930341
+    ]
+  },
+  {
+    "bag": "30618_b83d854d",
+    "source": "master",
+    "map_start_error_m": 0.021026334864341426,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11412,
+    "map_rmse_2d_m": 4.403685103642772,
+    "baseline_rmse_2d_m": 5798.852333921927,
+    "map_rmse_3d_m": 4.561866271164503,
+    "baseline_rmse_3d_m": 5798.860782359943,
+    "final_errors_m": [
+      4.878587381740042,
+      10013.368091279457
+    ]
+  },
+  {
+    "bag": "30618_b95ca60a",
+    "source": "master",
+    "map_start_error_m": 24.9979918081052,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9768,
+    "map_rmse_2d_m": 25.46979956246796,
+    "baseline_rmse_2d_m": 773.9027237720679,
+    "map_rmse_3d_m": 25.56676222958277,
+    "baseline_rmse_3d_m": 774.0033688963435,
+    "final_errors_m": [
+      25.70750400242238,
+      1461.9537629446863
+    ]
+  },
+  {
+    "bag": "30618_bab2fe58",
+    "source": "master",
+    "map_start_error_m": 6.0144566027520305,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": -1,
+    "pairs": 546,
+    "map_rmse_2d_m": 2.3356808282241266,
+    "baseline_rmse_2d_m": 35.01779555815571,
+    "map_rmse_3d_m": 2.336029902382467,
+    "baseline_rmse_3d_m": 35.01914197304268,
+    "final_errors_m": [
+      1.3649421450954702,
+      43.07514981939995
+    ]
+  },
+  {
+    "bag": "30618_bc5e53c2",
+    "source": "master",
+    "map_start_error_m": 499.39171508851507,
+    "map_source": "30639_d601d28f",
+    "map_used": false,
+    "direction": -1,
+    "pairs": 258,
+    "map_rmse_2d_m": 0.0050916809105913015,
+    "baseline_rmse_2d_m": 0.0050916809105913015,
+    "map_rmse_3d_m": 0.009452997830511706,
+    "baseline_rmse_3d_m": 0.009452997830511706,
+    "final_errors_m": [
+      0.003516626715064269,
+      0.003516626715064269
+    ]
+  },
+  {
+    "bag": "30618_bcc9e7a2",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_cfd9fd5a",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_d4ba7005",
+    "source": "master",
+    "map_start_error_m": 6.54111795915182,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": -1,
+    "pairs": 10957,
+    "map_rmse_2d_m": 7.292282458409806,
+    "baseline_rmse_2d_m": 762.750671388208,
+    "map_rmse_3d_m": 7.361395859297239,
+    "baseline_rmse_3d_m": 762.8528721207531,
+    "final_errors_m": [
+      57.71615804355094,
+      1410.0424857237674
+    ]
+  },
+  {
+    "bag": "30618_dd8d0741",
+    "source": "master",
+    "map_start_error_m": 0.019596050870221038,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11648,
+    "map_rmse_2d_m": 5.2496496538332815,
+    "baseline_rmse_2d_m": 6145.683705282623,
+    "map_rmse_3d_m": 5.3926835026935445,
+    "baseline_rmse_3d_m": 6145.6910348758565,
+    "final_errors_m": [
+      3.5625848687935,
+      10078.73884915039
+    ]
+  },
+  {
+    "bag": "30618_dd8e6395",
+    "source": "master",
+    "map_start_error_m": 3.881348245378752,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11261,
+    "map_rmse_2d_m": 8.21122101798307,
+    "baseline_rmse_2d_m": 6062.750752062372,
+    "map_rmse_3d_m": 8.282156230890756,
+    "baseline_rmse_3d_m": 6062.758971252739,
+    "final_errors_m": [
+      5.660217644009546,
+      9907.347102621472
+    ]
+  },
+  {
+    "bag": "30618_ddad08d6",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_defd0170",
+    "source": "master",
+    "map_start_error_m": 25.14924355981533,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9574,
+    "map_rmse_2d_m": 53.440756677869054,
+    "baseline_rmse_2d_m": 633.9777410055725,
+    "map_rmse_3d_m": 53.526255001035686,
+    "baseline_rmse_3d_m": 634.094556290093,
+    "final_errors_m": [
+      70.897041322095,
+      1228.6844793967584
+    ]
+  },
+  {
+    "bag": "30618_e151d6e4",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_e2dcf65f",
+    "source": "master",
+    "map_start_error_m": 23.606564229052477,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10229,
+    "map_rmse_2d_m": 22.887201771256255,
+    "baseline_rmse_2d_m": 777.121964049112,
+    "map_rmse_3d_m": 22.947339578689125,
+    "baseline_rmse_3d_m": 777.2452405056304,
+    "final_errors_m": [
+      26.755162812881974,
+      1388.2361928080388
+    ]
+  },
+  {
+    "bag": "30618_e392e5bd",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_e3d94878",
+    "source": "master",
+    "map_start_error_m": 0.528216895386253,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11037,
+    "map_rmse_2d_m": 6.368448318780341,
+    "baseline_rmse_2d_m": 738.1457963287272,
+    "map_rmse_3d_m": 6.5328640865578285,
+    "baseline_rmse_3d_m": 738.2350571180766,
+    "final_errors_m": [
+      13.623628761769785,
+      1488.8359056869926
+    ]
+  },
+  {
+    "bag": "30618_e7dcdab1",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_e9a34502",
+    "source": "master",
+    "map_start_error_m": 25.447772958321902,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11065,
+    "map_rmse_2d_m": 26.159925146929275,
+    "baseline_rmse_2d_m": 759.1258664443505,
+    "map_rmse_3d_m": 26.19450639466942,
+    "baseline_rmse_3d_m": 759.221083342125,
+    "final_errors_m": [
+      24.32331724976587,
+      1441.2131902472688
+    ]
+  },
+  {
+    "bag": "30618_efb92709",
+    "source": "master",
+    "map_start_error_m": 0.03769175140641574,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11988,
+    "map_rmse_2d_m": 7.7885679284729585,
+    "baseline_rmse_2d_m": 6220.969179804103,
+    "map_rmse_3d_m": 7.866857531005992,
+    "baseline_rmse_3d_m": 6220.977118213193,
+    "final_errors_m": [
+      6.9137739593319925,
+      10113.10518343294
+    ]
+  },
+  {
+    "bag": "30618_f19a4ac3",
+    "source": "master",
+    "map_start_error_m": 0.48817297077441474,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11528,
+    "map_rmse_2d_m": 5.040450408645364,
+    "baseline_rmse_2d_m": 741.6088194880894,
+    "map_rmse_3d_m": 6.072215202352279,
+    "baseline_rmse_3d_m": 741.6778499821077,
+    "final_errors_m": [
+      8.884117072812842,
+      1489.5687332839586
+    ]
+  },
+  {
+    "bag": "30618_f28179bb",
+    "error": "no GNSS fix"
+  },
+  {
+    "bag": "30618_f3a0694d",
+    "source": "master",
+    "map_start_error_m": 18.545173324665953,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12013,
+    "map_rmse_2d_m": 18.46033648903112,
+    "baseline_rmse_2d_m": 774.7335116897776,
+    "map_rmse_3d_m": 18.5216677294806,
+    "baseline_rmse_3d_m": 774.8494055020213,
+    "final_errors_m": [
+      20.127060162019397,
+      1472.1123334044723
+    ]
+  },
+  {
+    "bag": "30618_f3b8c99b",
+    "source": "master",
+    "map_start_error_m": 20.622523614226488,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9785,
+    "map_rmse_2d_m": 12.809283580666756,
+    "baseline_rmse_2d_m": 838.5628262242462,
+    "map_rmse_3d_m": 12.981989495043182,
+    "baseline_rmse_3d_m": 838.670695269541,
+    "final_errors_m": [
+      16.87996585278549,
+      1495.2022026697955
+    ]
+  },
+  {
+    "bag": "30639_0ab96c59",
+    "source": "master",
+    "map_start_error_m": 21.541227262071686,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 805,
+    "map_rmse_2d_m": 0.041856269186251856,
+    "baseline_rmse_2d_m": 0.7831965574653588,
+    "map_rmse_3d_m": 0.04210834525671925,
+    "baseline_rmse_3d_m": 0.783231396298264,
+    "final_errors_m": [
+      0.0754302088790037,
+      1.3179039723606594
+    ]
+  },
+  {
+    "bag": "30639_0be558e2",
+    "source": "master",
+    "map_start_error_m": 0.04745145950200123,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12406,
+    "map_rmse_2d_m": 6.6345755763763306,
+    "baseline_rmse_2d_m": 5723.180376250318,
+    "map_rmse_3d_m": 6.746510458867242,
+    "baseline_rmse_3d_m": 5723.188274414822,
+    "final_errors_m": [
+      46.7037089178595,
+      10188.619340340967
+    ]
+  },
+  {
+    "bag": "30639_253671cc",
+    "source": "master",
+    "map_start_error_m": 7.362629092633292,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9710,
+    "map_rmse_2d_m": 22.612518627141593,
+    "baseline_rmse_2d_m": 5355.868076962783,
+    "map_rmse_3d_m": 25.85854636940927,
+    "baseline_rmse_3d_m": 5355.896975120093,
+    "final_errors_m": [
+      32.77883459081879,
+      9698.74915615069
+    ]
+  },
+  {
+    "bag": "30639_2b4a6347",
+    "source": "master",
+    "map_start_error_m": 25.45647941736464,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10896,
+    "map_rmse_2d_m": 29.27402458868448,
+    "baseline_rmse_2d_m": 712.5258794498228,
+    "map_rmse_3d_m": 29.365343807207918,
+    "baseline_rmse_3d_m": 712.6408349441438,
+    "final_errors_m": [
+      22.75074117297038,
+      1454.0119162915207
+    ]
+  },
+  {
+    "bag": "30639_3b3d9eb8",
+    "source": "master",
+    "map_start_error_m": 0.750875298000432,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11556,
+    "map_rmse_2d_m": 33.89116757769003,
+    "baseline_rmse_2d_m": 5854.712927598881,
+    "map_rmse_3d_m": 33.94779788995507,
+    "baseline_rmse_3d_m": 5854.720480476123,
+    "final_errors_m": [
+      57.383879213256094,
+      10089.96754628575
+    ]
+  },
+  {
+    "bag": "30639_4285f2bc",
+    "source": "master",
+    "map_start_error_m": 0.34265592705118925,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12269,
+    "map_rmse_2d_m": 14.221343933116309,
+    "baseline_rmse_2d_m": 6182.987702084841,
+    "map_rmse_3d_m": 17.56508259403056,
+    "baseline_rmse_3d_m": 6182.99878795427,
+    "final_errors_m": [
+      4.3004962353680956,
+      10109.959549997711
+    ]
+  },
+  {
+    "bag": "30639_44226bde",
+    "source": "master",
+    "map_start_error_m": 19.465545135878262,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10009,
+    "map_rmse_2d_m": 36.66410788257852,
+    "baseline_rmse_2d_m": 800.8992307502391,
+    "map_rmse_3d_m": 38.69979672097547,
+    "baseline_rmse_3d_m": 800.9409620992271,
+    "final_errors_m": [
+      56.700166392923975,
+      1477.5768474968831
+    ]
+  },
+  {
+    "bag": "30639_50956d6e",
+    "source": "master",
+    "map_start_error_m": 0.0304980252349495,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10813,
+    "map_rmse_2d_m": 7.403788518189767,
+    "baseline_rmse_2d_m": 6265.233769194091,
+    "map_rmse_3d_m": 7.540429151403658,
+    "baseline_rmse_3d_m": 6265.241389776664,
+    "final_errors_m": [
+      16.367377703045896,
+      10090.56552480038
+    ]
+  },
+  {
+    "bag": "30639_584b6e32",
+    "source": "master",
+    "map_start_error_m": 0.02145603421745231,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11135,
+    "map_rmse_2d_m": 3.539886885246496,
+    "baseline_rmse_2d_m": 6266.837884599207,
+    "map_rmse_3d_m": 3.841248803437015,
+    "baseline_rmse_3d_m": 6266.8455320795165,
+    "final_errors_m": [
+      7.82146269192607,
+      10102.069837323634
+    ]
+  },
+  {
+    "bag": "30639_92226df0",
+    "source": "master",
+    "map_start_error_m": 42.82049737378554,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 11408,
+    "map_rmse_2d_m": 42.052981174567655,
+    "baseline_rmse_2d_m": 763.4669575695087,
+    "map_rmse_3d_m": 78.17805804563878,
+    "baseline_rmse_3d_m": 765.5591438937985,
+    "final_errors_m": [
+      82.67032120848839,
+      1477.6257162334298
+    ]
+  },
+  {
+    "bag": "30639_927002c2",
+    "source": "master",
+    "map_start_error_m": 26.416286142914938,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10502,
+    "map_rmse_2d_m": 30.786097723954438,
+    "baseline_rmse_2d_m": 785.5711104717302,
+    "map_rmse_3d_m": 30.820462910636863,
+    "baseline_rmse_3d_m": 785.6719517596023,
+    "final_errors_m": [
+      27.689169590035238,
+      1433.7862470435916
+    ]
+  },
+  {
+    "bag": "30639_9c362687",
+    "source": "master",
+    "map_start_error_m": 39.51289608918318,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12272,
+    "map_rmse_2d_m": 33.3231974876978,
+    "baseline_rmse_2d_m": 816.0169048093743,
+    "map_rmse_3d_m": 39.45980429710262,
+    "baseline_rmse_3d_m": 816.1351681764046,
+    "final_errors_m": [
+      70.92517056020091,
+      1456.4080514974098
+    ]
+  },
+  {
+    "bag": "30639_9f0b519f",
+    "source": "master",
+    "map_start_error_m": 21.489313857169385,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9830,
+    "map_rmse_2d_m": 23.914492630200925,
+    "baseline_rmse_2d_m": 712.6185988408179,
+    "map_rmse_3d_m": 23.945213668062152,
+    "baseline_rmse_3d_m": 712.7363387619611,
+    "final_errors_m": [
+      20.72972246942825,
+      1441.5675076290092
+    ]
+  },
+  {
+    "bag": "30639_c31df386",
+    "source": "master",
+    "map_start_error_m": 14.951232059443004,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 12539,
+    "map_rmse_2d_m": 34.60536421843754,
+    "baseline_rmse_2d_m": 795.3037430586495,
+    "map_rmse_3d_m": 34.64207073263544,
+    "baseline_rmse_3d_m": 795.3827696400679,
+    "final_errors_m": [
+      58.893734544397596,
+      1520.2467801398072
+    ]
+  },
+  {
+    "bag": "30639_d3c43d69",
+    "source": "master",
+    "map_start_error_m": 2.8968531600630523,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 9713,
+    "map_rmse_2d_m": 33.73691122699139,
+    "baseline_rmse_2d_m": 5252.077423021841,
+    "map_rmse_3d_m": 34.58140832385497,
+    "baseline_rmse_3d_m": 5252.09870136704,
+    "final_errors_m": [
+      26.170740407774534,
+      9650.057191827496
+    ]
+  },
+  {
+    "bag": "30639_d601d28f",
+    "source": "master",
+    "map_start_error_m": 0.006356364598894421,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 8988,
+    "map_rmse_2d_m": 55.9195846778385,
+    "baseline_rmse_2d_m": 819.568706547556,
+    "map_rmse_3d_m": 55.95181124765187,
+    "baseline_rmse_3d_m": 819.6853763560653,
+    "final_errors_m": [
+      91.4937742245052,
+      1540.5285264461122
+    ]
+  },
+  {
+    "bag": "30639_d927f360",
+    "source": "master",
+    "map_start_error_m": 25.43963768328611,
+    "map_source": "30639_d601d28f",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10172,
+    "map_rmse_2d_m": 28.50741440255701,
+    "baseline_rmse_2d_m": 783.2677816848864,
+    "map_rmse_3d_m": 28.539527672597345,
+    "baseline_rmse_3d_m": 783.3505672626604,
+    "final_errors_m": [
+      25.636212708837412,
+      1446.7121665422442
+    ]
+  },
+  {
+    "bag": "30639_dce52be4",
+    "source": "master",
+    "map_start_error_m": 6.321601028601578,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 10540,
+    "map_rmse_2d_m": 33.924920381529695,
+    "baseline_rmse_2d_m": 5261.143049994557,
+    "map_rmse_3d_m": 33.9515891256595,
+    "baseline_rmse_3d_m": 5261.152102267719,
+    "final_errors_m": [
+      50.71692993569296,
+      9646.50689337946
+    ]
+  },
+  {
+    "bag": "30639_e4379d7f",
+    "source": "rover",
+    "map_start_error_m": 0.27219212443921653,
+    "map_source": "30618_01f73500",
+    "map_used": true,
+    "direction": 1,
+    "pairs": 5354,
+    "map_rmse_2d_m": 24.605108519637817,
+    "baseline_rmse_2d_m": 5561.985690375001,
+    "map_rmse_3d_m": 27.70419214041323,
+    "baseline_rmse_3d_m": 5562.011899042305,
+    "final_errors_m": [
+      47.61862242008568,
+      9926.329755471224
+    ]
+  }
+]

@@ -76,11 +76,18 @@ class Observer:
             raise ValueError('input ages must be finite and nonnegative')
         first = self.time is None
         dt = 0.0 if first else t - self.time
-        if dt > c.max_gap:
-            # A new bag or clock discontinuity is a new relative trajectory.
-            self.__init__(c)
+        gap = dt > c.max_gap
+        if gap:
+            # The travelled path during a blind interval is not observable.
+            # Preserve continuity with a constant-speed extrapolation and
+            # advertise large uncertainty; do not jump back to the origin.
+            self.distance += self.velocity * dt
+            self.sigma_s += c.max_speed * dt
+            self.sigma_v = c.max_speed
+            self.actuator = 0.0
+            self.bias = 0.0
+            self.last_good = None
             dt = 0.0
-            first = True
         self.time = t
         valid_command = command is not None and command_age <= c.command_timeout
         target = command / 15.0 if valid_command else 0.0
@@ -97,15 +104,18 @@ class Observer:
                 speed = value * c.wheel_speed_scale
                 if 0 <= speed <= c.max_speed * 1.5 and age <= c.velocity_timeout:
                     candidates.append(speed)
-        if len(candidates) == 2 and abs(candidates[0] - candidates[1]) > c.bogie_agreement:
+        disagreement = (len(candidates) == 2 and
+                        abs(candidates[0] - candidates[1]) > c.bogie_agreement)
+        if disagreement:
             # A single unmatched bogie has no independent witness. Trust the model.
             candidates = []
         measured = sum(candidates) / len(candidates) if candidates else None
         gate = max(c.innovation_floor, 3.0 * self.sigma_v + 0.2)
-        trusted = measured is not None and (first or abs(measured - predicted_v) <= gate)
+        trusted = measured is not None and (
+            first or (gap and len(candidates) == 2) or abs(measured - predicted_v) <= gate)
         if trusted:
             # Shared wheel slip can fool both channels, so do not collapse uncertainty.
-            gain = (1.0 if first else min(0.65, max(0.12,
+            gain = (1.0 if first or gap else min(0.65, max(0.12,
                     self.sigma_v**2 / (self.sigma_v**2 + 0.12**2))))
             self.velocity = predicted_v + gain * (measured - predicted_v)
             self.sigma_v = max(0.10, self.sigma_v * math.sqrt(1.0 - gain))
@@ -127,10 +137,11 @@ class Observer:
             self.last_good = None
         self.distance += 0.5 * (previous_v + self.velocity) * dt
         self.sigma_s += self.sigma_v * dt
-        status = ('ok' if trusted and valid_command else
+        status = ('time_gap' if gap else
+                  'stale_command' if not valid_command else
+                  'bogie_disagreement' if disagreement else
+                  'ok' if trusted else
                   'suspect_wheels' if measured is not None else
-                  'missing_wheels' if not candidates else 'stale_command')
-        if not valid_command:
-            status = 'stale_command'
+                  'missing_wheels')
         return Estimate(t, self.distance, self.velocity, acceleration,
                         self.sigma_v, self.sigma_s, status, len(candidates) if trusted else 0)

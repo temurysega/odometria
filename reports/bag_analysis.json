@@ -569,7 +569,7 @@
     "statuses": {
       "stale_command": 1,
       "ok": 12213,
-      "missing_wheels": 36,
+      "bogie_disagreement": 36,
       "suspect_wheels": 9888
     },
     "out_of_order_stamps": 0,
@@ -766,7 +766,7 @@
     "estimates": 25040,
     "statuses": {
       "ok": 24964,
-      "missing_wheels": 73,
+      "bogie_disagreement": 73,
       "suspect_wheels": 3
     },
     "out_of_order_stamps": 0,
@@ -910,7 +910,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 23232,
-      "missing_wheels": 11,
+      "bogie_disagreement": 11,
       "suspect_wheels": 3
     },
     "out_of_order_stamps": 0,
@@ -1061,7 +1061,7 @@
     "estimates": 35862,
     "statuses": {
       "ok": 35819,
-      "missing_wheels": 1,
+      "bogie_disagreement": 1,
       "suspect_wheels": 42
     },
     "out_of_order_stamps": 0,
@@ -1405,7 +1405,7 @@
     "estimates": 23141,
     "statuses": {
       "ok": 23058,
-      "missing_wheels": 83
+      "bogie_disagreement": 83
     },
     "out_of_order_stamps": 0,
     "gnss_speed_pairs": 22905,
@@ -1648,7 +1648,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 23990,
-      "missing_wheels": 13,
+      "bogie_disagreement": 13,
       "suspect_wheels": 23
     },
     "out_of_order_stamps": 0,
@@ -1795,7 +1795,7 @@
     "statuses": {
       "stale_command": 1,
       "ok": 12213,
-      "missing_wheels": 36,
+      "bogie_disagreement": 36,
       "suspect_wheels": 9888
     },
     "out_of_order_stamps": 0,
@@ -2284,7 +2284,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 22723,
-      "missing_wheels": 22,
+      "bogie_disagreement": 22,
       "suspect_wheels": 6
     },
     "out_of_order_stamps": 0,
@@ -2720,7 +2720,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 23232,
-      "missing_wheels": 11,
+      "bogie_disagreement": 11,
       "suspect_wheels": 3
     },
     "out_of_order_stamps": 0,
@@ -4801,7 +4801,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 23990,
-      "missing_wheels": 13,
+      "bogie_disagreement": 13,
       "suspect_wheels": 23
     },
     "out_of_order_stamps": 0,
@@ -5246,7 +5246,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 22087,
-      "missing_wheels": 12
+      "bogie_disagreement": 12
     },
     "out_of_order_stamps": 0,
     "gnss_speed_pairs": 22019,
@@ -5395,7 +5395,7 @@
     "estimates": 21796,
     "statuses": {
       "ok": 21722,
-      "missing_wheels": 74
+      "bogie_disagreement": 74
     },
     "out_of_order_stamps": 0,
     "gnss_speed_pairs": 18026,
@@ -5941,7 +5941,7 @@
     "statuses": {
       "stale_command": 2,
       "ok": 26840,
-      "missing_wheels": 8
+      "bogie_disagreement": 8
     },
     "out_of_order_stamps": 0,
     "gnss_speed_pairs": 10737,

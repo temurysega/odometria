@@ -44,6 +44,7 @@ def main():
     matches = {'front': [0, 0], 'rear': [0, 0]}
     backwards = 0
     last_output = None
+    outputs = []
     for received, stamp, side in wheels:
         if side == 'front':
             anchor = (received, stamp)
@@ -54,11 +55,15 @@ def main():
             output = stamp
         matches[side][1] += 1
         matches[side][0] += nearest_error(reference, output) <= 0.05
+        outputs.append(output)
         if last_output is not None and output < last_output:
             backwards += 1
         last_output = output
+    outputs.sort()
+    reference_matched = sum(nearest_error(outputs, value) <= 0.05 for value in reference)
     print(args.bag.name, 'reference', 'master' if master else 'rover',
-          'matched', matches, 'backwards', backwards)
+          'matched_outputs', matches, 'matched_reference',
+          (reference_matched, len(reference)), 'backwards', backwards)
 
 
 if __name__ == '__main__':

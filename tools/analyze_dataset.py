@@ -41,6 +41,8 @@ def decode(blob, kind):
         value = struct.unpack_from('<b', blob, offset)[0]
     elif kind == 'geometry_msgs/msg/TwistStamped':
         value = struct.unpack_from('<ddd', blob, aligned(offset, 8))
+    elif kind == 'sensor_msgs/msg/NavSatFix':
+        value = struct.unpack_from('<ddd', blob, aligned(offset + 4, 8))
     else:
         raise ValueError(kind)
     return stamp, value

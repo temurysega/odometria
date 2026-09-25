@@ -25,6 +25,7 @@ class ObserverTests(unittest.TestCase):
         observer = Observer()
         observer.step(0.0, 0, 18.0, 18.0)
         estimate = observer.step(0.1, 0, 18.0, 27.0)
+        self.assertEqual(estimate.status, 'bogie_disagreement')
         self.assertEqual(estimate.trusted_bogies, 0)
         self.assertLess(estimate.velocity, 6.0)
 
@@ -44,12 +45,14 @@ class ObserverTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             observer.step(0.1, 16, 0.0, 0.0)
 
-    def test_long_gap_restarts_relative_trajectory(self):
+    def test_long_gap_preserves_position_and_flags_uncertainty(self):
         observer = Observer(Config(max_gap=1.0))
         observer.step(0.0, 0, 18.0, 18.0)
-        observer.step(0.2, 0, 18.0, 18.0)
+        previous = observer.step(0.2, 0, 18.0, 18.0)
         estimate = observer.step(3.0, 0, 0.0, 0.0)
-        self.assertAlmostEqual(estimate.distance, 0.0)
+        self.assertGreater(estimate.distance, previous.distance)
+        self.assertGreater(estimate.sigma_distance, previous.sigma_distance)
+        self.assertEqual(estimate.status, 'time_gap')
 
 
 if __name__ == '__main__':
