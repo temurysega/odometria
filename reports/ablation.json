@@ -1,66 +1,66 @@
 {
  "итог": {
-  "v_rmse_pooled": 0.1131,
-  "v_mae_pooled": 0.0279,
-  "v_rmse_median_bag": 0.0336,
-  "v_rmse_worst_bag": 0.7171,
-  "v_bias_mean": -0.0,
-  "v_rmse_pooled_clean": 0.0393,
-  "v_rmse_worst_bag_clean": 0.1365,
-  "p_rmse3d_pooled": 6.9659,
-  "p_rmse3d_clean_median": 1.6038,
-  "p_rmse3d_median_bag": 2.0935,
-  "p_rmse3d_worst_bag": 27.4784,
-  "along_rmse_median": 1.5485,
-  "cross_rmse_median": 1.2051,
-  "drift_pct_median": 0.0197,
-  "final_err_median": 0.988
+  "v_rmse_pooled": 0.113,
+  "v_mae_pooled": 0.0277,
+  "v_rmse_median_bag": 0.0332,
+  "v_rmse_worst_bag": 0.7169,
+  "v_bias_mean": -0.0024,
+  "v_rmse_pooled_clean": 0.039,
+  "v_rmse_worst_bag_clean": 0.1366,
+  "p_rmse3d_pooled": 6.7774,
+  "p_rmse3d_clean_median": 0.9637,
+  "p_rmse3d_median_bag": 1.6916,
+  "p_rmse3d_worst_bag": 26.9155,
+  "along_rmse_median": 1.0409,
+  "cross_rmse_median": 0.6976,
+  "drift_pct_median": 0.0346,
+  "final_err_median": 1.8004
  },
  "итог ref2out": {
-  "v_rmse_pooled": 0.113,
-  "p_rmse3d_pooled": 7.0178
+  "v_rmse_pooled": 0.1129,
+  "p_rmse3d_pooled": 6.8284
  },
  "калман": {
-  "v_rmse_pooled": 0.1137,
-  "v_mae_pooled": 0.0288,
-  "v_rmse_median_bag": 0.0336,
-  "v_rmse_worst_bag": 0.7172,
-  "v_bias_mean": -0.0001,
-  "v_rmse_pooled_clean": 0.0408,
+  "v_rmse_pooled": 0.1138,
+  "v_mae_pooled": 0.029,
+  "v_rmse_median_bag": 0.0332,
+  "v_rmse_worst_bag": 0.7169,
+  "v_bias_mean": -0.0021,
+  "v_rmse_pooled_clean": 0.0413,
   "v_rmse_worst_bag_clean": 0.1367,
-  "p_rmse3d_pooled": 8.1279,
-  "p_rmse3d_clean_median": 1.5927,
-  "p_rmse3d_median_bag": 2.1606,
-  "p_rmse3d_worst_bag": 27.3989,
-  "along_rmse_median": 1.4802,
-  "cross_rmse_median": 1.2144,
-  "drift_pct_median": 0.0194,
-  "final_err_median": 1.0475
+  "p_rmse3d_pooled": 9.5073,
+  "p_rmse3d_clean_median": 0.9946,
+  "p_rmse3d_median_bag": 1.6763,
+  "p_rmse3d_worst_bag": 47.9067,
+  "along_rmse_median": 1.0379,
+  "cross_rmse_median": 0.7004,
+  "drift_pct_median": 0.0351,
+  "final_err_median": 1.8525
  },
  "калман ref2out": {
-  "v_rmse_pooled": 0.1136,
-  "p_rmse3d_pooled": 8.1576
+  "v_rmse_pooled": 0.1137,
+  "p_rmse3d_pooled": 9.655
  },
  "без ориентиров": {
   "v_rmse_pooled": 0.1155,
   "v_mae_pooled": 0.0322,
-  "v_rmse_median_bag": 0.0348,
+  "v_rmse_median_bag": 0.0349,
   "v_rmse_worst_bag": 0.7131,
   "v_bias_mean": -0.0029,
   "v_rmse_pooled_clean": 0.0462,
   "v_rmse_worst_bag_clean": 0.1419,
-  "p_rmse3d_pooled": 16.4014,
-  "p_rmse3d_clean_median": 4.1437,
-  "p_rmse3d_median_bag": 4.8607,
-  "p_rmse3d_worst_bag": 53.8129,
-  "along_rmse_median": 4.249,
-  "cross_rmse_median": 1.4111,
-  "drift_pct_median": 0.1371,
-  "final_err_median": 6.7941
+  "p_rmse3d_pooled": 16.0207,
+  "p_rmse3d_clean_median": 2.6559,
+  "p_rmse3d_median_bag": 3.1804,
+  "p_rmse3d_worst_bag": 54.988,
+  "along_rmse_median": 2.7242,
+  "cross_rmse_median": 1.3153,
+  "drift_pct_median": 0.1059,
+  "final_err_median": 5.4213
  },
  "без ориентиров ref2out": {
-  "v_rmse_pooled": 0.1154,
-  "p_rmse3d_pooled": 16.5777
+  "v_rmse_pooled": 0.1155,
+  "p_rmse3d_pooled": 16.22
  },
  "без карты": {
   "v_rmse_pooled": 0.1156,
@@ -70,38 +70,39 @@
   "v_bias_mean": -0.003,
   "v_rmse_pooled_clean": 0.0464,
   "v_rmse_worst_bag_clean": 0.1419,
-  "p_rmse3d_pooled": 3884.1197,
-  "p_rmse3d_clean_median": 1897.4568,
-  "p_rmse3d_median_bag": 1873.3273,
-  "p_rmse3d_worst_bag": 6457.3184,
-  "along_rmse_median": 899.1942,
-  "cross_rmse_median": 1673.1356,
-  "drift_pct_median": 152.9048,
-  "final_err_median": 2888.9698
+  "p_rmse3d_pooled": 3805.2913,
+  "p_rmse3d_clean_median": 1848.0589,
+  "p_rmse3d_median_bag": 1862.488,
+  "p_rmse3d_worst_bag": 6564.0351,
+  "along_rmse_median": 929.8718,
+  "cross_rmse_median": 1642.9355,
+  "drift_pct_median": 153.704,
+  "final_err_median": 2885.8227
  },
  "без карты ref2out": {
   "v_rmse_pooled": 0.1155,
-  "p_rmse3d_pooled": 3882.5902
+  "p_rmse3d_pooled": 3805.714
  },
  "полная карта (in-sample)": {
-  "v_rmse_pooled": 0.1131,
-  "v_mae_pooled": 0.0279,
-  "v_rmse_median_bag": 0.0335,
-  "v_rmse_worst_bag": 0.7171,
-  "v_bias_mean": 0.0001,
-  "v_rmse_pooled_clean": 0.0392,
-  "v_rmse_worst_bag_clean": 0.1367,
-  "p_rmse3d_pooled": 6.8006,
-  "p_rmse3d_clean_median": 1.4707,
-  "p_rmse3d_median_bag": 1.9045,
-  "p_rmse3d_worst_bag": 27.4755,
-  "along_rmse_median": 1.4023,
-  "cross_rmse_median": 0.7247,
-  "drift_pct_median": 0.0185,
-  "final_err_median": 0.9467
+  "v_rmse_pooled": 0.113,
+  "v_mae_pooled": 0.0277,
+  "v_rmse_median_bag": 0.0334,
+  "v_rmse_worst_bag": 0.7169,
+  "v_bias_mean": -0.0023,
+  "v_rmse_pooled_clean": 0.039,
+  "v_rmse_worst_bag_clean": 0.1366,
+  "p_rmse3d_pooled": 6.541,
+  "p_rmse3d_clean_median": 1.0092,
+  "p_rmse3d_median_bag": 1.673,
+  "p_rmse3d_worst_bag": 26.9122,
+  "along_rmse_median": 1.0644,
+  "cross_rmse_median": 0.6913,
+  "drift_pct_median": 0.0475,
+  "final_err_median": 2.3585
  },
  "полная карта (in-sample) ref2out": {
-  "v_rmse_pooled": 0.113,
-  "p_rmse3d_pooled": 6.8563
- }
+  "v_rmse_pooled": 0.1129,
+  "p_rmse3d_pooled": 6.5967
+ },
+ "_note": "эталон: base_link в плоских MGRS (зона 37, угол 300000/6100000) и высота, по обеим антеннам и tf; карты без дня проверяемой записи"
 }

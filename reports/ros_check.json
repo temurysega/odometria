@@ -1,46 +1,49 @@
 {
- "environment": "docker ros:humble (Ubuntu 22.04, ROS 2 Humble), сборка colcon из чистого клона, tools/ros_check.sh",
+ "environment": "docker ros:humble (Ubuntu 22.04, ROS 2 Humble), colcon build, tools/ros_check.sh",
+ "reference": "base_link в плоских MGRS и высота по обеим антеннам и tf",
  "realtime_5min": {
   "bag": "30618_01f73500",
   "rate": 1,
   "duration_s": 300,
   "latency": {
    "velocity": {
-    "rate_hz": 48.11,
+    "rate_hz": 48.13,
     "latency": {
-     "n": 14504,
-     "p50_ms": 3.196,
-     "p95_ms": 6.905,
-     "p99_ms": 8.177,
-     "max_ms": 34.558
+     "n": 14525,
+     "p50_ms": 3.486,
+     "p95_ms": 7.397,
+     "p99_ms": 8.702,
+     "max_ms": 34.264
     }
    },
    "position": {
-    "rate_hz": 48.11,
+    "rate_hz": 48.09,
     "latency": {
-     "n": 14504,
-     "p50_ms": 3.891,
-     "p95_ms": 7.645,
-     "p99_ms": 8.903,
-     "max_ms": 35.007
+     "n": 14513,
+     "p50_ms": 4.262,
+     "p95_ms": 8.149,
+     "p99_ms": 9.442,
+     "max_ms": 34.755
     }
    }
   },
   "process": {
-   "VmHWM_kb": 65444,
-   "VmRSS_kb": 65444,
-   "cpu_share_of_one_core": 0.131
+   "VmHWM_kb": 64868,
+   "VmRSS_kb": 64868,
+   "cpu_share_of_one_core": 0.138
   },
   "accuracy_out2ref": {
-   "v_rmse": 0.0403,
-   "v_bias": 0.0005,
-   "v_rmse_clean": 0.0403,
-   "p_rmse_3d": 1.1984,
-   "along_rmse": 1.481,
-   "cross_rmse": 0.1146,
-   "drift_pct": 0.0188,
-   "final_err_3d": 0.1677
-  }
+   "v_rmse": 0.0396,
+   "v_bias": -0.0003,
+   "v_rmse_clean": 0.0396,
+   "p_rmse_3d": 0.9682,
+   "along_rmse": 0.9965,
+   "cross_rmse": 0.4042,
+   "z_rmse": 0.4116,
+   "drift_pct": 0.0084,
+   "final_err_3d": 0.0749
+  },
+  "ros_vs_offline_position_rmse_m": 0.0057
  },
  "stress_x4_full_bag": {
   "bag": "30618_27e994fc",
@@ -50,48 +53,50 @@
    "velocity": {
     "rate_hz": 189.68,
     "latency": {
-     "n": 90412,
-     "p50_ms": 3.441,
-     "p95_ms": 6.883,
-     "p99_ms": 7.784,
-     "max_ms": 11.891
+     "n": 90410,
+     "p50_ms": 3.513,
+     "p95_ms": 6.942,
+     "p99_ms": 7.826,
+     "max_ms": 63.483
     }
    },
    "position": {
     "rate_hz": 189.68,
     "latency": {
-     "n": 90412,
-     "p50_ms": 4.073,
-     "p95_ms": 7.627,
-     "p99_ms": 8.304,
-     "max_ms": 52.51
+     "n": 90410,
+     "p50_ms": 4.132,
+     "p95_ms": 7.669,
+     "p99_ms": 8.332,
+     "max_ms": 50.308
     }
    }
   },
   "process": {
-   "VmHWM_kb": 66708,
-   "VmRSS_kb": 66708,
-   "cpu_share_of_one_core": 0.436
+   "VmHWM_kb": 65372,
+   "VmRSS_kb": 65372,
+   "cpu_share_of_one_core": 0.45
   },
   "accuracy_out2ref": {
-   "v_rmse": 0.1632,
-   "v_bias": 0.0001,
-   "v_rmse_clean": 0.0393,
-   "p_rmse_3d": 3.4323,
-   "along_rmse": 2.8121,
-   "cross_rmse": 1.4403,
+   "v_rmse": 0.163,
+   "v_bias": -0.0018,
+   "v_rmse_clean": 0.0395,
+   "p_rmse_3d": 4.15,
+   "along_rmse": 3.0375,
+   "cross_rmse": 1.6011,
+   "z_rmse": 1.5732,
    "drift_pct": null,
-   "final_err_3d": 6.1527
+   "final_err_3d": 7.743
   },
   "offline_core_same_bag": {
-   "v_rmse": 0.1632,
-   "v_bias": 0.0001,
-   "v_rmse_clean": 0.0374,
-   "p_rmse_3d": 3.4366,
-   "along_rmse": 2.8102,
-   "cross_rmse": 1.4415,
-   "drift_pct": 0.1084,
-   "final_err_3d": 6.1681
+   "v_rmse": 0.163,
+   "v_bias": -0.0015,
+   "v_rmse_clean": 0.0373,
+   "p_rmse_3d": 4.1504,
+   "along_rmse": 3.0554,
+   "cross_rmse": 1.5992,
+   "z_rmse": 1.5738,
+   "drift_pct": 0.1365,
+   "final_err_3d": 7.7272
   }
  }
 }
