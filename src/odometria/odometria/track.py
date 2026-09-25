@@ -1,7 +1,9 @@
 """Карта пути, начальная привязка и вдольпутевой фильтр.
 
-Карта: осевая master антенны (контур из двух направлений, шаг 1 м) и
-ориентиры остановок, построенные офлайн (tools/build_map.py).
+Карта: траектория master антенны в плоских координатах MGRS (контур из двух
+направлений, шаг 1 м, высота антенны) и ориентиры остановок, построенные
+офлайн (tools/build_map.py). Выход считается для base_link по tf антенн:
+точка на хорде master и rover, высота на antenna_z ниже антенн.
 
 Вдольпутевой фильтр Калмана, состояние [s, k]:
     s' = s + k * ds_колёс        k' = k + w
@@ -16,16 +18,17 @@ import math
 import random
 from pathlib import Path
 
-from .geodesy import LocalFrame
+from .geodesy import MgrsFrame
 
 DATA = Path(__file__).with_name('data')
 
 
 class TrackMap:
-    def __init__(self, origin, points, stops=(), east_junction=None, closed=False):
+    def __init__(self, frame, points, stops=(), east_junction=None, closed=False):
         if len(points) < 2:
             raise ValueError('в карте меньше двух точек')
-        self.frame = LocalFrame(*origin)
+        self.frame = frame if isinstance(frame, MgrsFrame) else MgrsFrame(
+            frame.get('utm_zone', 37), *frame.get('grid_origin', (300000.0, 6100000.0)))
         self.points = [tuple(float(c) for c in p) for p in points]
         self.closed = bool(closed)
         if self.closed:
@@ -48,7 +51,7 @@ class TrackMap:
     @classmethod
     def load(cls, path=None):
         doc = json.loads(Path(path or DATA / 'track_map.json').read_text(encoding='utf-8'))
-        return cls(doc['origin_wgs84'], doc['points_enu'], doc.get('stops', ()),
+        return cls(doc['frame'], doc['points'], doc.get('stops', ()),
                    doc.get('east_junction_s'), doc.get('closed', False))
 
     def wrap(self, s):
@@ -303,18 +306,26 @@ class Localizer:
     """Начальная привязка по первым секундам GNSS и выдача положения.
 
     GNSS принимается только в окне init_window после первого валидного фикса.
-    Начало локальной ENU системы: первый валидный фикс master (при его
-    отсутствии rover), что совпадает с началом эталонной траектории.
+    Выход в плоских координатах MGRS (x восток, y север, z высота по REP 103),
+    точка задаётся output_point: base_link, master или rover.
     """
 
     def __init__(self, track_map=None, init_window=1.0, max_map_offset=15.0,
-                 antenna_baseline=12.4, blend_length=80.0, scale_prior=1.0, scale_sigma=0.008,
+                 master_x=-9.873, rover_x=2.563, antenna_z=3.0, output_point='base_link',
+                 frame=None, blend_length=80.0, scale_prior=1.0, scale_sigma=0.008,
                  use_landmarks=True, landmark_gate=3.0, landmark_max_jump=12.0,
                  landmark_confidence=0.9, landmark_random_stop=0.15, particles=1500):
         self.map = track_map
+        self.frame = track_map.frame if track_map is not None else (frame or MgrsFrame())
         self.init_window = init_window
         self.max_map_offset = max_map_offset
-        self.antenna_baseline = antenna_baseline
+        self.antenna_baseline = rover_x - master_x
+        if self.antenna_baseline <= 0:
+            raise ValueError('rover должен стоять впереди master')
+        # доля хорды master и rover, на которой лежит выходная точка
+        self.output_point = output_point
+        self.output_fraction = {'master': 0.0, 'rover': 1.0}.get(output_point, -master_x / self.antenna_baseline)
+        self.antenna_z = antenna_z
         self.blend_length = blend_length
         self.scale_prior = scale_prior
         self.scale_sigma = scale_sigma
@@ -332,14 +343,13 @@ class Localizer:
         self.fixes = {'master': [], 'rover': []}
         self.first_fix_time = None
         self.ready = False
-        self.frame = None
-        self.target = 'master'
+        self.source = None
+        self.start_point = None
         self.filter = None
         self.origin_offset = (0.0, 0.0, 0.0)
         self.start_s = None
         self.heading = (1.0, 0.0)
         self.map_error = None
-        self.local_points = None
         self.dead_reckoning = 0.0
         self.last_landmark_distance = None
         self.last_landmark = None
@@ -370,14 +380,16 @@ class Localizer:
         source = 'master' if self.fixes['master'] else 'rover'
         fixes = self.fixes[source]
         if not fixes:
-            self.frame = None
             return False
-        self.target = source
-        lat0, lon0, alt0 = fixes[0][1:4]
-        self.frame = LocalFrame(lat0, lon0, alt0)
+        self.source = source
         heading = self._heading()
         if heading is not None:
             self.heading = heading
+        first = self.frame.forward(*fixes[0][1:4])
+        # положение master в момент первого фикса, для счисления без карты
+        back = self.antenna_baseline if source == 'rover' else 0.0
+        self.start_point = (first[0] - back * self.heading[0], first[1] - back * self.heading[1],
+                            first[2], fixes[0][4])
         if self.map is None:
             self.filter = AlongTrackFilter(distance, k=self.scale_prior, sigma_k=self.scale_sigma)
             self.start_s = None
@@ -386,7 +398,7 @@ class Localizer:
         estimates = []
         best = None
         for t, lat, lon, alt, d, _ in fixes:
-            x, y, z = self.map.frame.from_geodetic(lat, lon, alt)
+            x, y, z = self.frame.forward(lat, lon, alt)
             choice = self._match(x, y, heading)
             if choice is None:
                 continue
@@ -416,26 +428,25 @@ class Localizer:
             self.filter = AlongTrackFilter(self.start_s, sigma_s=sigma_start,
                                            k=self.scale_prior, sigma_k=self.scale_sigma)
         self.last_landmark_distance = distance
-        # точки карты переводятся в локальную систему эталона по мере надобности
-        self.local_points = {}
-        first = fixes[0]
-        start_local = self.frame.from_geodetic(first[1], first[2], first[3])
-        on_map = self._local_point(base + first[4] + offset)
-        self.origin_offset = tuple(a - b for a, b in zip(start_local, on_map))
+        # смещение первого фикса от карты плавно убирается на первых метрах
+        on_map = self.map.point(base + fixes[0][4] + offset)
+        self.origin_offset = tuple(a - b for a, b in zip(first, on_map))
         return True
 
     def _heading(self):
         m, r = self.fixes['master'], self.fixes['rover']
         if m and r:
-            frame = LocalFrame(*m[0][1:4])
-            e, n, _ = frame.from_geodetic(*r[0][1:4])
+            a = self.frame.forward(*m[0][1:4])
+            b = self.frame.forward(*r[0][1:4])
+            e, n = b[0] - a[0], b[1] - a[1]
             norm = math.hypot(e, n)
             if 5.0 < norm < 30.0:
                 return e / norm, n / norm
         pts = m or r
         if len(pts) >= 2:
-            frame = LocalFrame(*pts[0][1:4])
-            e, n, _ = frame.from_geodetic(*pts[-1][1:4])
+            a = self.frame.forward(*pts[0][1:4])
+            b = self.frame.forward(*pts[-1][1:4])
+            e, n = b[0] - a[0], b[1] - a[1]
             norm = math.hypot(e, n)
             if norm > 3.0:
                 return e / norm, n / norm
@@ -460,20 +471,16 @@ class Localizer:
         dist, s, _, _ = min(options, key=lambda o: o[0])
         return dist, s
 
-    def _local_vertex(self, i):
-        cached = self.local_points.get(i)
-        if cached is None:
-            cached = self.map.frame.transfer(self.frame, *self.map.points[i])
-            self.local_points[i] = cached
-        return cached
-
-    def _local_point(self, s):
-        s = self.map.wrap(s)
-        i = self.map._index(s)
-        a, b = self._local_vertex(i), self._local_vertex(i + 1)
-        span = self.map.s[i + 1] - self.map.s[i]
-        w = (s - self.map.s[i]) / span if span > 0 else 0.0
-        return tuple(pa + w * (pb - pa) for pa, pb in zip(a, b))
+    def _rover_arc(self, s, master):
+        """Дуговая координата rover: хорда до master равна базе антенн."""
+        ahead = s + self.antenna_baseline
+        for _ in range(2):
+            rover = self.map.point(ahead)
+            chord = math.hypot(rover[0] - master[0], rover[1] - master[1])
+            if chord < 1.0:
+                break
+            ahead += self.antenna_baseline - chord
+        return ahead
 
     def advance(self, ds, extra_variance=0.0):
         if self.filter is not None:
@@ -573,24 +580,61 @@ class Localizer:
     def scale(self):
         return self.filter.k if self.filter is not None else self.scale_prior
 
+    def provisional(self, travelled_since):
+        """Положение в окне начальной выставки прямо по свежим фиксам.
+
+        travelled_since(d) возвращает путь колёс после отметки d, чтобы
+        сдвинуть последний фикс на пройденное с его прихода расстояние.
+        Возвращает None, пока фиксов нет.
+        """
+        m, r = self.fixes['master'], self.fixes['rover']
+        if not m and not r:
+            return None
+        f = self.output_fraction
+        heading = self._heading() or self.heading
+        yaw = math.atan2(heading[1], heading[0])
+        if m and r and abs(m[-1][0] - r[-1][0]) < 0.05:
+            a = self.frame.forward(*m[-1][1:4])
+            b = self.frame.forward(*r[-1][1:4])
+            p = [pa + f * (pb - pa) for pa, pb in zip(a, b)]
+            moved = travelled_since(m[-1][4])
+        else:
+            last = (m or r)[-1]
+            p = list(self.frame.forward(*last[1:4]))
+            lever = f * self.antenna_baseline if m else (f - 1.0) * self.antenna_baseline
+            p[0] += lever * heading[0]
+            p[1] += lever * heading[1]
+            moved = travelled_since(last[4])
+        p = (p[0] + moved * heading[0], p[1] + moved * heading[1], p[2] - self.antenna_z)
+        return p, yaw, 1.0, 1.0
+
     def position(self, ds_ahead=0.0):
-        """Положение цели в локальной ENU, курс, дисперсии вдоль и поперёк."""
-        if self.filter is None:
-            d = self.dead_reckoning + ds_ahead
-            return (d * self.heading[0], d * self.heading[1], 0.0), math.atan2(self.heading[1], self.heading[0]), 1e4, 1e4
+        """Выходная точка в MGRS, курс, дисперсии вдоль и поперёк пути."""
+        yaw = math.atan2(self.heading[1], self.heading[0])
+        lever = self.output_fraction * self.antenna_baseline
+        if self.filter is None or self.start_s is None:
+            # без карты: счисление вдоль начального курса от первого фикса
+            travelled = (self.dead_reckoning if self.filter is None else self.filter.s) + ds_ahead
+            if self.start_point is None:
+                x0, y0, z0, d0 = 0.0, 0.0, self.antenna_z, 0.0
+            else:
+                x0, y0, z0, d0 = self.start_point
+                if self.filter is not None:
+                    d0 = self.start_point[3] * self.filter.k
+            d = travelled - d0 + lever
+            p = (x0 + d * self.heading[0], y0 + d * self.heading[1], z0 - self.antenna_z)
+            var = self.filter.p[0][0] if self.filter is not None else 1e4
+            return p, yaw, var, (0.05 * abs(d)) ** 2 + 25.0
         s = self.filter.s + ds_ahead
-        if self.start_s is None:
-            d = s
-            yaw = math.atan2(self.heading[1], self.heading[0])
-            return (d * self.heading[0], d * self.heading[1], 0.0), yaw, self.filter.p[0][0], (0.05 * abs(d)) ** 2 + 25.0
-        offset = self.antenna_baseline if self.target == 'rover' else 0.0
-        p = self._local_point(s + offset)
+        master = self.map.point(s)
+        rover = self.map.point(self._rover_arc(s, master))
+        f = self.output_fraction
+        p = tuple(m + f * (r - m) for m, r in zip(master, rover))
+        p = (p[0], p[1], p[2] - self.antenna_z)
         w = max(0.0, 1.0 - abs(s - self.start_s) / self.blend_length) if self.blend_length > 0 else 0.0
         if w > 0.0:
             p = tuple(a + w * o for a, o in zip(p, self.origin_offset))
-        a = self._local_point(s + offset - 1.0)
-        b = self._local_point(s + offset + 1.0)
-        yaw = math.atan2(b[1] - a[1], b[0] - a[0])
+        yaw = math.atan2(rover[1] - master[1], rover[0] - master[0])
         return p, yaw, self.filter.p[0][0], 0.05 ** 2 + (w * 2.0) ** 2
 
     def grade(self):

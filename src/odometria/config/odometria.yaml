@@ -4,7 +4,7 @@ odometria:
   ros__parameters:
     # выход
     output_rate: 50.0          # Гц, метки на сетке 1/output_rate в шкале входных header.stamp
-    frame_id: map              # локальная ENU от первого фикса GNSS
+    frame_id: map              # плоские координаты MGRS, z высота (REP 103)
     child_frame_id: base_link
     diagnostics_rate: 5.0
     # карта и привязка
@@ -13,7 +13,14 @@ odometria:
     use_landmarks: true        # коррекция по местам остановок
     particles: 1500            # 0: фильтр Калмана вместо облака частиц
     init_window: 1.0           # с, окно начальной выставки GNSS
-    antenna_baseline: 12.4     # м, rover впереди master
+    output_point: base_link    # base_link, master или rover
+    master_x: -9.873           # м, tf master антенны в base_link
+    rover_x: 2.563             # м, tf rover антенны в base_link
+    antenna_z: 3.0             # м, высота антенн над base_link
+    mgrs_zone: 37              # зона UTM
+    mgrs_origin_east: 300000.0     # угол квадрата сетки MGRS, как в картах организаторов
+    mgrs_origin_north: 6100000.0
+    gnss_wait: 5.0             # с без GNSS, после которых включается относительная одометрия
     max_map_offset: 15.0       # м, допуск привязки стартовой точки
     scale_prior: 1.0           # априорный масштаб колёс
     scale_sigma: 0.008         # его СКО (износ бандажей до 1,5 %)

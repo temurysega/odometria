@@ -3,6 +3,8 @@
 Вход:  /vehicle/front_bogie_velocity, /vehicle/rear_bogie_velocity,
        /vehicle/driver_position_cmd; GNSS fix только в окне начальной
        выставки, после неё подписки на GNSS уничтожаются.
+Положение: плоские координаты MGRS и высота для base_link (tf антенн в
+параметрах master_x, rover_x, antenna_z).
 Выход: /result/velocity (tram_vehicle_msgs/VelocitySensor),
        /result/position (nav_msgs/Odometry),
        /result/acceleration (geometry_msgs/AccelStamped),
@@ -33,7 +35,9 @@ from .traction import TractionModel
 CORE_PARAMS = {
     'output_rate': 50.0, 'use_map': True, 'use_landmarks': True, 'particles': 1500,
     'init_window': 1.0, 'scale_prior': 1.0, 'scale_sigma': 0.008,
-    'antenna_baseline': 12.4, 'max_map_offset': 15.0, 'stop_speed': 0.03,
+    'master_x': -9.873, 'rover_x': 2.563, 'antenna_z': 3.0, 'output_point': 'base_link',
+    'mgrs_zone': 37, 'mgrs_origin_east': 300000.0, 'mgrs_origin_north': 6100000.0,
+    'gnss_wait': 5.0, 'max_map_offset': 15.0, 'stop_speed': 0.03,
     'stop_confirm': 1.0, 'command_timeout': 0.5,
 }
 OBSERVER_PARAMS = {
@@ -113,7 +117,7 @@ class OdometryNode(Node):
             self.gnss_subs = []
             loc = self.core.localizer
             self.get_logger().info(
-                f'начальная выставка завершена: антенна {loc.target}, '
+                f'начальная выставка завершена: антенна {loc.source}, '
                 f'привязка к карте {"есть" if loc.start_s is not None else "нет"}; GNSS отключён')
 
     def on_fix(self, source, msg):
@@ -139,7 +143,8 @@ class OdometryNode(Node):
             speed.header.frame_id = self.child_frame_id
             speed.velocity = float(out.velocity)
             self.velocity_pub.publish(speed)
-            self.position_pub.publish(self._odometry(out, stamp))
+            if out.position_valid:
+                self.position_pub.publish(self._odometry(out, stamp))
             accel = AccelStamped()
             accel.header.stamp = stamp
             accel.header.frame_id = self.child_frame_id

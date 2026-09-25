@@ -3,6 +3,8 @@
 Узел ROS и офлайн проигрыватель вызывают одни и те же методы, поэтому
 оценка точности на bag файлах проверяет ровно тот код, что работает в узле.
 
+Координаты выхода: плоские MGRS (x восток, y север) и высота z по REP 103
+для точки base_link, как ответили эксперты кейса.
 Шкала времени: header.stamp сообщений тележек. На данных он совпадает со
 шкалой GNSS (задержка колёс относительно эталона 0 с), тогда как время
 записи и заголовок контроллера сдвинуты примерно на 50 мс.
@@ -14,6 +16,7 @@
 from dataclasses import dataclass, field
 import math
 
+from .geodesy import MgrsFrame
 from .observer import ObserverConfig, VelocityObserver
 from .track import Localizer
 from .traction import TractionModel
@@ -37,12 +40,19 @@ class CoreConfig:
     wheel_stale: float = 0.15
     reset_backward: float = 5.0
     reset_forward: float = 30.0
+    gnss_wait: float = 5.0
     init_window: float = 1.0
     use_map: bool = True
     use_landmarks: bool = True
     scale_prior: float = 1.0
     scale_sigma: float = 0.008
-    antenna_baseline: float = 12.4
+    master_x: float = -9.873
+    rover_x: float = 2.563
+    antenna_z: float = 3.0
+    output_point: str = 'base_link'
+    mgrs_zone: int = 37
+    mgrs_origin_east: float = 300000.0
+    mgrs_origin_north: float = 6100000.0
     max_map_offset: float = 15.0
     landmark_gate: float = 3.0
     particles: int = 1500
@@ -61,6 +71,7 @@ class Output:
     var_velocity: float
     status: str
     slip: bool
+    position_valid: bool = True
 
 
 @dataclass
@@ -91,13 +102,17 @@ class OdometryCore:
         self.observer = VelocityObserver(self.model, self.observer_cfg)
         self.localizer = Localizer(
             self.map, init_window=cfg.init_window, max_map_offset=cfg.max_map_offset,
-            antenna_baseline=cfg.antenna_baseline, scale_prior=cfg.scale_prior,
+            master_x=cfg.master_x, rover_x=cfg.rover_x, antenna_z=cfg.antenna_z,
+            output_point=cfg.output_point,
+            frame=MgrsFrame(cfg.mgrs_zone, cfg.mgrs_origin_east, cfg.mgrs_origin_north),
+            scale_prior=cfg.scale_prior,
             scale_sigma=cfg.scale_sigma, use_landmarks=cfg.use_landmarks,
             landmark_gate=cfg.landmark_gate, particles=cfg.particles)
         self.last_grid = None
         self.command_stamp = None
         self.command_offset = None
         self.last_wheel = None
+        self.first_wheel = None
         self.stop_since = None
         self.stop_handled = False
         self.last_status = 'ожидание данных'
@@ -165,6 +180,8 @@ class OdometryCore:
                                        else 0.95 * self.command_offset + 0.05 * offset)
         t = stamp
         self.last_wheel = stamp if self.last_wheel is None else max(self.last_wheel, stamp)
+        if self.first_wheel is None:
+            self.first_wheel = stamp
         if obs.t is not None and stamp < obs.t:
             # опоздавшее сообщение: приводим измерение к текущему моменту
             self.counters.late += 1
@@ -234,13 +251,24 @@ class OdometryCore:
             if obs.v >= 0.0 > v:
                 v = 0.0
             ds = k * 0.5 * (obs.v + v) * dt
-            position, yaw, var_along, var_cross = loc.position(ds)
+            valid = True
+            if loc.ready:
+                position, yaw, var_along, var_cross = loc.position(ds)
+            else:
+                # окно начальной выставки: положение по свежим фиксам GNSS;
+                # без фиксов положение не публикуется, пока не истечёт gnss_wait
+                early = loc.provisional(lambda d: k * (obs.distance - d) + ds)
+                if early is not None:
+                    position, yaw, var_along, var_cross = early
+                else:
+                    position, yaw, var_along, var_cross = loc.position(ds)
+                    valid = g - (self.first_wheel if self.first_wheel is not None else g) > cfg.gnss_wait
             velocity = k * v
             out.append(Output(
                 stamp=g, velocity=velocity, acceleration=k * obs.accel, position=position,
                 yaw=yaw, yaw_rate=velocity * curvature, var_along=var_along, var_cross=var_cross,
                 var_velocity=(k * obs.sigma_v) ** 2 + (v * (loc.filter.sigma_k if loc.filter else 0.01)) ** 2,
-                status=health, slip=slip))
+                status=health, slip=slip, position_valid=valid))
         self.last_grid = last
         self.counters.outputs += len(out)
         return out
@@ -262,6 +290,8 @@ class OdometryCore:
             'sigma_along_m': round(f.sigma_s, 3) if f else None,
             'model_only_s': round(obs.model_only_time, 2),
             'map_matched': loc.start_s is not None,
+            'output_point': loc.output_point,
+            'gnss_antenna_used': loc.source,
             'map_offset_m': round(loc.map_error, 2) if loc.map_error is not None else None,
             'gnss_init_done': loc.ready,
             'landmarks_used': self.counters.landmarks,

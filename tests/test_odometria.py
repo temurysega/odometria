@@ -7,20 +7,27 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src' / 'odometria'))
 
 from odometria.core import CoreConfig, OdometryCore  # noqa: E402
-from odometria.geodesy import LocalFrame, to_ecef  # noqa: E402
+from odometria.geodesy import LocalFrame, MgrsFrame, to_ecef, utm_forward  # noqa: E402
 from odometria.observer import VelocityObserver  # noqa: E402
 from odometria.track import Localizer, ParticleTrack, TrackMap  # noqa: E402
 from odometria.traction import TractionModel  # noqa: E402
 
 MODEL = TractionModel.load()
 ORIGIN = (55.81, 37.46, 150.0)
+FRAME = MgrsFrame()
+DLON = 1.0 / (111320.0 * math.cos(math.radians(ORIGIN[0])))
+
+
+def east_of_origin(metres):
+    """Точка на параллели ORIGIN в metres к востоку."""
+    return ORIGIN[0], ORIGIN[1] + metres * DLON, ORIGIN[2]
 
 
 def straight_map(length=3000, stops=()):
-    """Прямой путь на восток от ORIGIN с ориентирами в точках stops."""
-    points = [(float(x), 0.0, 0.0) for x in range(0, length + 1)]
+    """Путь вдоль параллели от ORIGIN на восток в координатах MGRS."""
+    points = [FRAME.forward(*east_of_origin(x)) for x in range(0, length + 1)]
     marks = [{'s': s, 'sigma': 0.35, 'count': 20, 'share': 0.8} for s in stops]
-    return TrackMap(ORIGIN, points, marks)
+    return TrackMap(FRAME, points, marks)
 
 
 def drive(observer, speeds, dt=0.1, command=0, start=100.0, rear=None):
@@ -41,6 +48,13 @@ class GeodesyTests(unittest.TestCase):
         e, n, u = frame.from_geodetic(55.80, 37.40, 160.0)
         back = frame.from_ecef(*frame.to_ecef(e, n, u))
         self.assertTrue(all(abs(a - b) < 1e-6 for a, b in zip((e, n, u), back)))
+
+    def test_utm_reference_point(self):
+        # значение совпадает с картами организаторов: x больше 100 км, квадрат с углом 300 км
+        east, north, zone = utm_forward(55.810367065, 37.462266845)
+        self.assertEqual(zone, 37)
+        self.assertAlmostEqual(east - 300000.0, 103630.13, delta=0.05)
+        self.assertAlmostEqual(north - 6100000.0, 86044.11, delta=0.05)
 
     def test_ellipsoid_east_distance(self):
         # на широте 55,81° градус долготы около 62,7 км, сфера 6371 км даёт на 0,34 % меньше
@@ -115,13 +129,13 @@ class ObserverTests(unittest.TestCase):
 class TrackTests(unittest.TestCase):
     def test_closed_map_wraps(self):
         square = [(0.0, 0.0, 0.0), (100.0, 0.0, 0.0), (100.0, 100.0, 0.0), (0.0, 100.0, 0.0)]
-        m = TrackMap(ORIGIN, square, closed=True)
+        m = TrackMap(FRAME, square, closed=True)
         self.assertAlmostEqual(m.length, 400.0)
         self.assertAlmostEqual(m.point(410.0)[0], 10.0)
         self.assertAlmostEqual(m.delta(5.0, 395.0), 10.0)
 
     def test_projection_beyond_map_end(self):
-        m = straight_map(100)
+        m = TrackMap(FRAME, [(float(x), 0.0, 0.0) for x in range(101)])
         cands = m.candidates(-20.0, 0.5, 30.0)
         self.assertAlmostEqual(min(c[1] for c in cands), -20.0, places=6)
 
@@ -146,18 +160,8 @@ class TrackTests(unittest.TestCase):
 
 class CoreTests(unittest.TestCase):
     def fix(self, core, t, east=0.0):
-        frame = LocalFrame(*ORIGIN)
-        lat, lon, alt = self._geodetic(frame, east)
-        core.on_fix('master', t, lat, lon, alt, 2)
-        lat2, lon2, alt2 = self._geodetic(frame, east + 12.4)
-        core.on_fix('rover', t, lat2, lon2, alt2, 2)
-
-    @staticmethod
-    def _geodetic(frame, east):
-        # малый сдвиг на восток вдоль параллели
-        lat = ORIGIN[0]
-        lon = ORIGIN[1] + east / (111320.0 * math.cos(math.radians(lat)))
-        return lat, lon, ORIGIN[2]
+        core.on_fix('master', t, *east_of_origin(east), 2)
+        core.on_fix('rover', t, *east_of_origin(east + 12.436), 2)
 
     def run_core(self, core, seconds=30.0, speed=5.0, t0=1000.0, fixes=True):
         outs = []
@@ -189,9 +193,12 @@ class CoreTests(unittest.TestCase):
     def test_position_follows_track(self):
         core = OdometryCore(CoreConfig(), track_map=straight_map(1000))
         outs = self.run_core(core, seconds=20.0, speed=5.0)
-        x, y, _ = outs[-1].position
-        self.assertAlmostEqual(y, 0.0, delta=0.5)
-        self.assertAlmostEqual(x, 5.0 * (outs[-1].stamp - 1000.0), delta=1.5)
+        # base_link на 9,873 м впереди master, на 3 м ниже антенн
+        expected = FRAME.forward(*east_of_origin(5.0 * (outs[-1].stamp - 1000.0) + 9.873))
+        x, y, z = outs[-1].position
+        self.assertAlmostEqual(x, expected[0], delta=1.5)
+        self.assertAlmostEqual(y, expected[1], delta=0.5)
+        self.assertAlmostEqual(z, ORIGIN[2] - 3.0, delta=0.05)
 
     def test_bad_inputs_do_not_crash(self):
         core = OdometryCore(CoreConfig(), track_map=None)
