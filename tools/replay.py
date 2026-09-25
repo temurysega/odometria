@@ -7,7 +7,7 @@ GNSS фиксы передаются ядру все, но оно принима
 Эталон:
   скорость: модуль горизонтальной скорости /sensing/gnss/master/vel
             (rover/vel, если master нет);
-  положение: /sensing/gnss/master/fix в ENU WGS84 от первого валидного фикса.
+  положение: base_link в плоских MGRS и высота, по обеим антеннам и tf.
 Сопоставление по header.stamp с допуском 0,05 с в двух вариантах:
   out2ref  для каждого выхода ближайшая эпоха эталона;
   ref2out  для каждой эпохи эталона ближайший выход.
@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT / 'src' / 'odometria'))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bagdata import load, unique_bags  # noqa: E402
-from build_map import to_enu  # noqa: E402
+from build_map import to_mgrs  # noqa: E402
 from odometria.core import CoreConfig, OdometryCore  # noqa: E402
 from odometria.observer import ObserverConfig  # noqa: E402
 from odometria.track import TrackMap  # noqa: E402
@@ -71,26 +71,73 @@ def run_core(data, core):
     return outputs, np.asarray(timing)
 
 
-def reference(data):
+MASTER_X, ROVER_X, ANTENNA_Z = -9.873, 2.563, 3.0
+
+
+def reference(data, point='base_link'):
+    """Эталон судьи в понимании ответов экспертов.
+
+    Положение: плоские MGRS и высота для base_link. Если в эпоху есть обе
+    антенны, base_link лежит на хорде master и rover по tf; если одна, она
+    сдвигается вдоль направления движения на плечо tf. z = высота антенн
+    минус antenna_z. Скорость: модуль горизонтальной скорости master
+    (rover, если master нет).
+    """
     vel = data.get('master_vel')
     if vel is None:
         vel = data.get('rover_vel')
-    src = 'master' if 'master_fix' in data else ('rover' if 'rover_fix' in data else None)
-    ref = {'vel': None, 'pos': None, 'src': src}
+    ref = {'vel': None, 'pos': None, 'src': None}
     if vel is not None and len(vel):
         offset = vel[:, 1] - vel[:, 0]
         # сбои эталона: скачок метки времени GNSS на секунду
         trusted = np.abs(offset - np.median(offset)) < 0.3
         ref['vel'] = np.c_[vel[:, 1], np.hypot(vel[:, 2], vel[:, 3]), trusted]
-    if src is not None:
-        fix = data[f'{src}_fix']
-        ok = (fix[:, 5] >= 0) & np.isfinite(fix[:, 2])
-        fix = fix[ok]
-        if len(fix):
-            enu = to_enu(fix[:, 2], fix[:, 3], fix[:, 4], origin=tuple(fix[0, 2:5]))
-            offset = fix[:, 1] - fix[:, 0]
-            clean = (fix[:, 5] == 2) & (np.abs(offset - np.median(offset)) < 0.3)
-            ref['pos'] = np.c_[fix[:, 1], enu, clean]
+    fixes = {}
+    for key in ('master', 'rover'):
+        fix = data.get(f'{key}_fix')
+        if fix is not None and len(fix):
+            fix = fix[(fix[:, 5] >= 0) & np.isfinite(fix[:, 2])]
+            if len(fix):
+                off = fix[:, 1] - fix[:, 0]
+                fixes[key] = (fix[:, 1], to_mgrs(fix[:, 2], fix[:, 3], fix[:, 4]),
+                              (fix[:, 5] == 2) & (np.abs(off - np.median(off)) < 0.3))
+    if not fixes:
+        return ref
+    base = ROVER_X - MASTER_X
+    frac = {'master': 0.0, 'rover': 1.0}.get(point, -MASTER_X / base)
+    if 'master' in fixes and 'rover' in fixes:
+        tm, pm, cm = fixes['master']
+        tr, pr, cr = fixes['rover']
+        j = np.clip(np.searchsorted(tr, tm), 1, len(tr) - 1)
+        j = np.where(np.abs(tr[j - 1] - tm) < np.abs(tr[j] - tm), j - 1, j)
+        ok = np.abs(tr[j] - tm) < 0.02
+        chord = np.linalg.norm(pr[j, :2] - pm[:, :2], axis=1)
+        sane = np.abs(chord - base) < 1.5
+        use = ok & sane
+        if use.sum() > 10:
+            p = pm[use] + frac * (pr[j[use]] - pm[use])
+            p[:, 2] -= ANTENNA_Z
+            clean = cm[use] & cr[j[use]] & (np.abs(chord[use] - base) < 0.3)
+            ref['pos'] = np.c_[tm[use], p, clean]
+            ref['src'] = 'обе антенны'
+            return ref
+    key = 'master' if 'master' in fixes else 'rover'
+    t, p, clean = fixes[key]
+    lever = (frac * base) if key == 'master' else ((frac - 1.0) * base)
+    heading = np.zeros((len(p), 2))
+    last = np.array([1.0, 0.0])
+    for i in range(len(p)):
+        k = min(len(p) - 1, i + 20)
+        step = p[k, :2] - p[max(0, i - 20), :2]
+        n = np.linalg.norm(step)
+        if n > 2.0:
+            last = step / n
+        heading[i] = last
+    out = p.copy()
+    out[:, :2] += lever * heading
+    out[:, 2] -= ANTENNA_Z
+    ref['pos'] = np.c_[t, out, clean]
+    ref['src'] = key
     return ref
 
 
@@ -111,6 +158,9 @@ def metrics(outputs, ref, scheme='out2ref'):
     o_t = o_t[order]
     o_v = np.array([outputs[i].velocity for i in order])
     o_p = np.array([outputs[i].position for i in order])
+    # положение сравнивается только по опубликованным сообщениям
+    valid = np.array([getattr(outputs[i], 'position_valid', True) for i in order])
+    p_t, o_p = o_t[valid], o_p[valid]
     res = {}
     if ref['vel'] is not None:
         rt, rv = ref['vel'][:, 0], ref['vel'][:, 1]
@@ -147,12 +197,12 @@ def metrics(outputs, ref, scheme='out2ref'):
         rp = ref['pos'][:, 1:4]
         clean = ref['pos'][:, 4] > 0
         if scheme == 'out2ref':
-            j, ok = match(o_t, rt)
+            j, ok = match(p_t, rt)
             est = o_p[ok]
             truth = rp[j[ok]]
             cl = clean[j[ok]]
         else:
-            j, ok = match(rt, o_t)
+            j, ok = match(rt, p_t)
             est = o_p[j[ok]]
             truth = rp[ok]
             cl = clean[ok]

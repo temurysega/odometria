@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / 'src' / 'odometria'))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bagdata import load, unique_bags  # noqa: E402
-from build_map import to_enu  # noqa: E402
+from build_map import project  # noqa: E402
 from odometria.core import CoreConfig, OdometryCore  # noqa: E402
 from odometria.track import TrackMap  # noqa: E402
 from odometria.traction import TractionModel  # noqa: E402
@@ -48,30 +48,39 @@ def save(fig, name):
 
 def plot_map():
     doc = json.loads((ROOT / 'src/odometria/odometria/data/track_map.json').read_text(encoding='utf-8'))
-    p = np.asarray(doc['points_enu'])
+    p = np.asarray(doc['points'])
     j = int(doc['east_junction_s'])
     tm = TrackMap.load()
+    official = [json.loads(f.read_text(encoding='utf-8')) for f in sorted((ROOT / 'official_maps').glob('*.json'))]
     fig = plt.figure(figsize=(12, 6.2))
-    ax = fig.add_axes([0.05, 0.08, 0.62, 0.84])
+    ax = fig.add_axes([0.06, 0.08, 0.61, 0.84])
     ax.plot(p[:j, 0], p[:j, 1], color=BLUE, lw=1.6, label='на восток')
     ax.plot(p[j:, 0], p[j:, 1], color=ORANGE, lw=1.6, label='на запад и кольца')
+    for k, doc_o in enumerate(official):
+        o = np.array([[q['x'], q['y']] for q in doc_o['points']])
+        ax.plot(o[:, 0], o[:, 1], color=INK, lw=0.8, ls=(0, (4, 4)),
+                label='карта организаторов' if k == 0 else None)
     for m in tm.stops:
         x, y, _ = tm.point(m['s'])
         ax.plot(x, y, 'o', ms=4 + 8 * m['share'], mfc=SURFACE, mec=INK, mew=1.2, zorder=3)
     ax.plot([], [], 'o', ms=8, mfc=SURFACE, mec=INK, mew=1.2, label='ориентир остановки (размер: частота)')
     ax.set_aspect('equal')
-    ax.set_xlabel('восток, м')
-    ax.set_ylabel('север, м')
-    ax.set_title(f'Карта пути: замкнутый контур {tm.length / 1000:.2f} км, {len(tm.stops)} ориентиров')
-    ax.legend(loc='upper left')
-    for k, (box, title) in enumerate((((-120, 30, -160, 60), 'Восточное кольцо'),
-                                       ((-4680, -4440, -1260, -1090), 'Западное кольцо'))):
+    ax.set_xlabel('x MGRS (восток), м')
+    ax.set_ylabel('y MGRS (север), м')
+    ax.set_title(f'Карта пути в MGRS: контур {tm.length / 1000:.2f} км, {len(tm.stops)} ориентиров')
+    ax.legend(loc='upper left', fontsize=9)
+    s_all = np.arange(len(p))
+    boxes = (((s_all > j - 150) & (s_all < j + 260), 'Восточное кольцо'),
+             ((s_all > len(p) - 330) | (s_all < 120), 'Западное кольцо'))
+    for k, (sel, title) in enumerate(boxes):
+        x0, x1 = p[sel, 0].min() - 20, p[sel, 0].max() + 20
+        y0, y1 = p[sel, 1].min() - 20, p[sel, 1].max() + 20
         sub = fig.add_axes([0.71, 0.55 - 0.47 * k, 0.27, 0.38])
         sub.plot(p[:j, 0], p[:j, 1], color=BLUE, lw=1.6)
         sub.plot(p[j:, 0], p[j:, 1], color=ORANGE, lw=1.6)
-        sub.set_xlim(box[0], box[1])
-        sub.set_ylim(box[2], box[3])
-        sub.set_aspect('equal')
+        sub.set_xlim(x0, x1)
+        sub.set_ylim(y0, y1)
+        sub.set_aspect('equal', adjustable='datalim')
         sub.set_title(title, fontsize=10.5)
         sub.tick_params(labelsize=8)
     save(fig, 'map.png')
@@ -145,39 +154,32 @@ def plot_slip(root, cache):
 
 
 def plot_along(root, cache, name='30618_88548b02'):
-    """Вдольпутевая ошибка как разность дуговых координат оценки и истины на карте.
-
-    Истина: RTK фиксы master без скачков метки времени.
-    """
-    from build_map import project
+    """Вдольпутевая ошибка base_link против эталона по обеим антеннам."""
     d = load(Path(root) / name, cache)
     doc = json.loads((ROOT / 'src/odometria/odometria/data/track_map.json').read_text(encoding='utf-8'))
-    line = np.asarray(doc['points_enu'])
+    line = np.asarray(doc['points'])
     junction = int(doc['east_junction_s'])
-    fix = d['master_fix']
-    origin = tuple(fix[fix[:, 5] >= 0][0, 2:5])
-    shift = to_enu(*origin) - to_enu(*origin, origin=origin)
-    offset = fix[:, 1] - fix[:, 0]
-    rover = fix[(fix[:, 5] == 2) & (np.abs(offset - np.median(offset)) < 0.3)]
-    truth = to_enu(rover[:, 2], rover[:, 3], rover[:, 4])
-    start_west = truth[0, 0] < -2000
+    ref = reference(d)
+    rp = ref['pos'][ref['pos'][:, 4] > 0]
+    start_west = rp[0, 1] < 101000
     part = line[:junction + 30] if start_west else line[junction - 30:]
-    s_true, _, d_true = project(part, truth)
+    s_true, _, d_true = project(part, rp[:, 1:4])
     fig, ax = plt.subplots(figsize=(10, 4.2))
     for use, color, label in ((False, ORANGE, 'без ориентиров: только колёса и карта'),
                               (True, BLUE, 'с ориентирами остановок')):
         core = OdometryCore(CoreConfig(use_landmarks=use), track_map=TrackMap.load(), model=TractionModel.load())
         outs, _ = run_core(d, core)
+        outs = [o for o in outs if o.position_valid]
         ot = np.array([o.stamp for o in outs])
         op = np.array([o.position for o in outs])
-        j, ok = match(rover[:, 1], ot)
-        s_est, _, d_est = project(part, op[j[ok]] + shift)
+        j, ok = match(rp[:, 0], ot)
+        s_est, _, d_est = project(part, op[j[ok]])
         good = (d_est < 5) & (d_true[ok] < 3)
         along = s_est[good] - s_true[ok][good]
         ax.plot((s_true[ok][good] - s_true[ok][good][0]) / 1000, along, color=color, lw=1.8, label=label)
     ax.axhline(0, color=INK2, lw=1)
     ax.set_xlabel('пройдено по карте, км')
-    ax.set_ylabel('вдольпутевая ошибка, м')
+    ax.set_ylabel('вдольпутевая ошибка base_link, м')
     ax.set_title('Поездка с масштабом колёс +0,7 %: остановки гасят дрейф и оценивают масштаб')
     ax.legend(loc='lower left')
     save(fig, 'along_track.png')
