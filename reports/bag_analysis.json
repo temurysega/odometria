@@ -1,0 +1,5960 @@
+[
+  {
+    "bag": "30618_01f73500",
+    "messages": {
+      "/sensing/gnss/master/vel": 11907,
+      "/sensing/gnss/master/fix": 12010,
+      "/vehicle/driver_position_cmd": 24295,
+      "/vehicle/front_bogie_velocity": 11694,
+      "/sensing/gnss/rover/fix": 11985,
+      "/sensing/gnss/rover/vel": 11984,
+      "/vehicle/rear_bogie_velocity": 11671
+    },
+    "inputs": {
+      "front": {
+        "count": 11694,
+        "min": 0.0,
+        "median": 12.292559146881104,
+        "max": 53.27838897705078
+      },
+      "rear": {
+        "count": 11671,
+        "min": 0.0,
+        "median": 12.397127151489258,
+        "max": 53.40569305419922
+      },
+      "command": {
+        "count": 24295,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23365,
+    "statuses": {
+      "ok": 23365
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22849,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22849,
+      "min": 0.0,
+      "median": 3.475000575539521,
+      "max": 14.843139324280425
+    },
+    "speed_rmse_mps": 0.03075803772342613,
+    "raw_wheel_rmse_mps": 0.031920386012244346,
+    "speed_bias_mps": -0.01431014094932196,
+    "final_relative_distance_m": 5443.780892124888
+  },
+  {
+    "bag": "30618_0259fe53",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11877,
+      "/vehicle/driver_position_cmd": 24640,
+      "/vehicle/front_bogie_velocity": 11864
+    },
+    "inputs": {
+      "front": {
+        "count": 11864,
+        "min": 0.0,
+        "median": 11.089619636535645,
+        "max": 53.29206085205078
+      },
+      "rear": {
+        "count": 11877,
+        "min": 0.0,
+        "median": 11.04899787902832,
+        "max": 53.3863410949707
+      },
+      "command": {
+        "count": 24640,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23741,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 23740
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5427.392424629262
+  },
+  {
+    "bag": "30618_0652866c",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 14070,
+      "/sensing/gnss/rover/fix": 14453,
+      "/vehicle/front_bogie_velocity": 14060,
+      "/vehicle/driver_position_cmd": 29266,
+      "/sensing/gnss/master/fix": 14616,
+      "/sensing/gnss/master/vel": 14320,
+      "/sensing/gnss/rover/vel": 13865
+    },
+    "inputs": {
+      "front": {
+        "count": 14060,
+        "min": 0.0,
+        "median": 10.371990203857422,
+        "max": 53.25967788696289
+      },
+      "rear": {
+        "count": 14070,
+        "min": 0.0,
+        "median": 10.363418102264404,
+        "max": 53.34130859375
+      },
+      "command": {
+        "count": 29266,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 28130,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 28128
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 27352,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 27352,
+      "min": 0.0,
+      "median": 2.9110910313490423,
+      "max": 14.852969703059383
+    },
+    "speed_rmse_mps": 0.03845166193925478,
+    "raw_wheel_rmse_mps": 0.03530981009558889,
+    "speed_bias_mps": -0.0163374082789729,
+    "final_relative_distance_m": 5622.121414971773
+  },
+  {
+    "bag": "30618_0686195f",
+    "messages": {
+      "/sensing/gnss/master/vel": 11731,
+      "/sensing/gnss/master/fix": 11827,
+      "/vehicle/driver_position_cmd": 23636,
+      "/vehicle/front_bogie_velocity": 10594,
+      "/sensing/gnss/rover/fix": 11687,
+      "/sensing/gnss/rover/vel": 11639,
+      "/vehicle/rear_bogie_velocity": 10570
+    },
+    "inputs": {
+      "front": {
+        "count": 10594,
+        "min": 0.0,
+        "median": 11.485248565673828,
+        "max": 52.65693664550781
+      },
+      "rear": {
+        "count": 10570,
+        "min": 0.0,
+        "median": 11.522417545318604,
+        "max": 52.620361328125
+      },
+      "command": {
+        "count": 23636,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21164,
+    "statuses": {
+      "ok": 21164
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20936,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20936,
+      "min": 0.0,
+      "median": 3.242211128227155,
+      "max": 14.83037882186426
+    },
+    "speed_rmse_mps": 0.0962941386106819,
+    "raw_wheel_rmse_mps": 0.09621045023517581,
+    "speed_bias_mps": -0.07111603600682975,
+    "final_relative_distance_m": 5123.360536671993
+  },
+  {
+    "bag": "30618_073f08d1",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11826,
+      "/sensing/gnss/rover/fix": 12574,
+      "/vehicle/front_bogie_velocity": 11815,
+      "/vehicle/driver_position_cmd": 25487,
+      "/sensing/gnss/master/fix": 12743,
+      "/sensing/gnss/master/vel": 12386,
+      "/sensing/gnss/rover/vel": 12272
+    },
+    "inputs": {
+      "front": {
+        "count": 11815,
+        "min": 0.0,
+        "median": 10.991647720336914,
+        "max": 52.46125793457031
+      },
+      "rear": {
+        "count": 11826,
+        "min": 0.0,
+        "median": 10.962271690368652,
+        "max": 52.24967956542969
+      },
+      "command": {
+        "count": 25487,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23641,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23639
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22887,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22887,
+      "min": 0.0,
+      "median": 3.0682055015920953,
+      "max": 14.62205471197533
+    },
+    "speed_rmse_mps": 0.029690197115353707,
+    "raw_wheel_rmse_mps": 0.02989754215481423,
+    "speed_bias_mps": -0.005143666798674662,
+    "final_relative_distance_m": 5418.423927896242
+  },
+  {
+    "bag": "30618_082f1d65",
+    "messages": {
+      "/sensing/gnss/master/vel": 232,
+      "/sensing/gnss/master/fix": 230,
+      "/vehicle/driver_position_cmd": 461,
+      "/vehicle/front_bogie_velocity": 226,
+      "/sensing/gnss/rover/fix": 228,
+      "/sensing/gnss/rover/vel": 212,
+      "/vehicle/rear_bogie_velocity": 204
+    },
+    "inputs": {
+      "front": {
+        "count": 226,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 1.7331328392028809
+      },
+      "rear": {
+        "count": 204,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 1.762291669845581
+      },
+      "command": {
+        "count": 461,
+        "min": 0,
+        "median": 0,
+        "max": 0
+      }
+    },
+    "estimates": 430,
+    "statuses": {
+      "ok": 430
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 428,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 428,
+      "min": 0.001414213562373095,
+      "median": 0.02322711685435621,
+      "max": 0.37904749042831026
+    },
+    "speed_rmse_mps": 0.02901209054042907,
+    "raw_wheel_rmse_mps": 0.02973161654106869,
+    "speed_bias_mps": -0.025187876918028474,
+    "final_relative_distance_m": 0.08460858291031335
+  },
+  {
+    "bag": "30618_095a115b",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12753,
+      "/sensing/gnss/rover/fix": 13182,
+      "/vehicle/front_bogie_velocity": 12745,
+      "/vehicle/driver_position_cmd": 26484,
+      "/sensing/gnss/master/fix": 13241,
+      "/sensing/gnss/master/vel": 12547,
+      "/sensing/gnss/rover/vel": 13157
+    },
+    "inputs": {
+      "front": {
+        "count": 12745,
+        "min": 0.0,
+        "median": 10.795620918273926,
+        "max": 53.30170440673828
+      },
+      "rear": {
+        "count": 12753,
+        "min": 0.0,
+        "median": 10.765146255493164,
+        "max": 53.2786750793457
+      },
+      "command": {
+        "count": 26484,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 25498,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 25496
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24064,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24064,
+      "min": 0.001,
+      "median": 3.105296995414685,
+      "max": 14.824623840084442
+    },
+    "speed_rmse_mps": 0.03409719967882417,
+    "raw_wheel_rmse_mps": 0.033979562208058804,
+    "speed_bias_mps": -0.0117000590816782,
+    "final_relative_distance_m": 5430.726766854538
+  },
+  {
+    "bag": "30618_0a83c933",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10569,
+      "/vehicle/driver_position_cmd": 21988,
+      "/vehicle/front_bogie_velocity": 10559
+    },
+    "inputs": {
+      "front": {
+        "count": 10559,
+        "min": 0.0,
+        "median": 14.126251220703125,
+        "max": 52.471378326416016
+      },
+      "rear": {
+        "count": 10569,
+        "min": 0.0,
+        "median": 14.12796401977539,
+        "max": 52.6016731262207
+      },
+      "command": {
+        "count": 21988,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21128,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21127
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5406.1050137589045
+  },
+  {
+    "bag": "30618_0d865417",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 123,
+      "/sensing/gnss/rover/fix": 144,
+      "/vehicle/front_bogie_velocity": 115,
+      "/vehicle/driver_position_cmd": 286,
+      "/sensing/gnss/master/fix": 142,
+      "/sensing/gnss/master/vel": 141,
+      "/sensing/gnss/rover/vel": 124
+    },
+    "inputs": {
+      "front": {
+        "count": 115,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 3.8968663215637207
+      },
+      "rear": {
+        "count": 123,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 3.8506736755371094
+      },
+      "command": {
+        "count": 286,
+        "min": -11,
+        "median": 0.0,
+        "max": 6
+      }
+    },
+    "estimates": 238,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 236
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 238,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 238,
+      "min": 0.001414213562373095,
+      "median": 0.009219544457292886,
+      "max": 1.1511737488320346
+    },
+    "speed_rmse_mps": 0.03270073768411931,
+    "raw_wheel_rmse_mps": 0.028208486426767383,
+    "speed_bias_mps": -0.009816369068885101,
+    "final_relative_distance_m": 1.9126249662119517
+  },
+  {
+    "bag": "30618_0e41eac3",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12398,
+      "/vehicle/driver_position_cmd": 26524,
+      "/sensing/gnss/rover/fix": 13008,
+      "/vehicle/front_bogie_velocity": 12386,
+      "/sensing/gnss/master/fix": 13222,
+      "/sensing/gnss/master/vel": 12988,
+      "/sensing/gnss/rover/vel": 12963
+    },
+    "inputs": {
+      "front": {
+        "count": 12386,
+        "min": 0.0,
+        "median": 10.976445198059082,
+        "max": 53.32857131958008
+      },
+      "rear": {
+        "count": 12398,
+        "min": 0.0,
+        "median": 10.980087757110596,
+        "max": 53.38551712036133
+      },
+      "command": {
+        "count": 26524,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24784,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 24783
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24118,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24118,
+      "min": 0.0,
+      "median": 3.0858770898650576,
+      "max": 14.823019429252598
+    },
+    "speed_rmse_mps": 0.03148224212233552,
+    "raw_wheel_rmse_mps": 0.03176924347217843,
+    "speed_bias_mps": -0.011745953897437343,
+    "final_relative_distance_m": 5326.895070851943
+  },
+  {
+    "bag": "30618_0f120b35",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12112,
+      "/sensing/gnss/rover/fix": 13083,
+      "/vehicle/front_bogie_velocity": 12103,
+      "/vehicle/driver_position_cmd": 26413,
+      "/sensing/gnss/master/fix": 13206,
+      "/sensing/gnss/master/vel": 13138,
+      "/sensing/gnss/rover/vel": 13026
+    },
+    "inputs": {
+      "front": {
+        "count": 12103,
+        "min": 0.0,
+        "median": 9.5530424118042,
+        "max": 52.19357681274414
+      },
+      "rear": {
+        "count": 12112,
+        "min": 0.0,
+        "median": 9.516463279724121,
+        "max": 52.318878173828125
+      },
+      "command": {
+        "count": 26413,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24215,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24213
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23987,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23987,
+      "min": 0.0,
+      "median": 2.6670067491478155,
+      "max": 14.501001241293652
+    },
+    "speed_rmse_mps": 0.09372368011684606,
+    "raw_wheel_rmse_mps": 0.09384766679517861,
+    "speed_bias_mps": -0.006526921162207263,
+    "final_relative_distance_m": 5406.170771337994
+  },
+  {
+    "bag": "30618_117c2d02",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11075,
+      "/vehicle/driver_position_cmd": 24123,
+      "/vehicle/front_bogie_velocity": 11063
+    },
+    "inputs": {
+      "front": {
+        "count": 11063,
+        "min": 0.0,
+        "median": 10.161581993103027,
+        "max": 53.16706085205078
+      },
+      "rear": {
+        "count": 11075,
+        "min": 0.0,
+        "median": 10.118537902832031,
+        "max": 53.19741439819336
+      },
+      "command": {
+        "count": 24123,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22138,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 12213,
+      "missing_wheels": 36,
+      "suspect_wheels": 9888
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 12031.514069805273
+  },
+  {
+    "bag": "30618_1551d0a9",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 45,
+      "/sensing/gnss/rover/fix": 41,
+      "/vehicle/front_bogie_velocity": 36,
+      "/vehicle/driver_position_cmd": 78,
+      "/sensing/gnss/master/fix": 39,
+      "/sensing/gnss/master/vel": 36,
+      "/sensing/gnss/rover/vel": 19
+    },
+    "inputs": {
+      "front": {
+        "count": 36,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "rear": {
+        "count": 45,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "command": {
+        "count": 78,
+        "min": 0,
+        "median": 0.0,
+        "max": 0
+      }
+    },
+    "estimates": 81,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 79
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 81,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 81,
+      "min": 0.001,
+      "median": 0.004,
+      "max": 0.00824621125123532
+    },
+    "speed_rmse_mps": 0.004436103283928251,
+    "raw_wheel_rmse_mps": 0.004436103283928251,
+    "speed_bias_mps": -0.00415213706324543,
+    "final_relative_distance_m": 0.0
+  },
+  {
+    "bag": "30618_1cc230fa",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11962,
+      "/sensing/gnss/rover/fix": 12884,
+      "/vehicle/front_bogie_velocity": 11952,
+      "/vehicle/driver_position_cmd": 26282,
+      "/sensing/gnss/master/fix": 13105,
+      "/sensing/gnss/master/vel": 12827,
+      "/sensing/gnss/rover/vel": 12558
+    },
+    "inputs": {
+      "front": {
+        "count": 11952,
+        "min": 0.0,
+        "median": 10.054537296295166,
+        "max": 53.308677673339844
+      },
+      "rear": {
+        "count": 11962,
+        "min": 0.0,
+        "median": 10.04493522644043,
+        "max": 53.34955596923828
+      },
+      "command": {
+        "count": 26282,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23914,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23912
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23359,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23359,
+      "min": 0.0,
+      "median": 2.7795053516768053,
+      "max": 14.840501474006867
+    },
+    "speed_rmse_mps": 0.0330601247387181,
+    "raw_wheel_rmse_mps": 0.03451362708637645,
+    "speed_bias_mps": -0.016651622920585866,
+    "final_relative_distance_m": 5455.681238515722
+  },
+  {
+    "bag": "30618_20096314",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11435,
+      "/vehicle/driver_position_cmd": 23820,
+      "/vehicle/front_bogie_velocity": 11429
+    },
+    "inputs": {
+      "front": {
+        "count": 11429,
+        "min": 0.0,
+        "median": 12.302167892456055,
+        "max": 52.1872444152832
+      },
+      "rear": {
+        "count": 11435,
+        "min": 0.0,
+        "median": 12.294593811035156,
+        "max": 52.207035064697266
+      },
+      "command": {
+        "count": 23820,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22864,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 22863
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5401.291063005415
+  },
+  {
+    "bag": "30618_2050d396",
+    "messages": {
+      "/sensing/gnss/master/vel": 13250,
+      "/sensing/gnss/master/fix": 13432,
+      "/vehicle/driver_position_cmd": 26864,
+      "/vehicle/front_bogie_velocity": 12530,
+      "/sensing/gnss/rover/fix": 13218,
+      "/sensing/gnss/rover/vel": 13253,
+      "/vehicle/rear_bogie_velocity": 12510
+    },
+    "inputs": {
+      "front": {
+        "count": 12530,
+        "min": 0.0,
+        "median": 10.03964614868164,
+        "max": 50.509559631347656
+      },
+      "rear": {
+        "count": 12510,
+        "min": 0.0,
+        "median": 10.097509860992432,
+        "max": 50.465972900390625
+      },
+      "command": {
+        "count": 26864,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 25040,
+    "statuses": {
+      "ok": 24964,
+      "missing_wheels": 73,
+      "suspect_wheels": 3
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24602,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24602,
+      "min": 0.0,
+      "median": 2.796094597827477,
+      "max": 14.039150472874061
+    },
+    "speed_rmse_mps": 0.03496276900872446,
+    "raw_wheel_rmse_mps": 0.09110578506392755,
+    "speed_bias_mps": -0.0045425346811511875,
+    "final_relative_distance_m": 5362.22672881953
+  },
+  {
+    "bag": "30618_2161b58b",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9582,
+      "/vehicle/front_bogie_velocity": 9571,
+      "/vehicle/driver_position_cmd": 21450
+    },
+    "inputs": {
+      "front": {
+        "count": 9571,
+        "min": 0.0,
+        "median": 14.733763694763184,
+        "max": 52.991188049316406
+      },
+      "rear": {
+        "count": 9582,
+        "min": 0.0,
+        "median": 14.725694179534912,
+        "max": 53.095664978027344
+      },
+      "command": {
+        "count": 21450,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19153,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19151
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5321.364966173018
+  },
+  {
+    "bag": "30618_21dd3af3",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9847,
+      "/sensing/gnss/rover/fix": 10657,
+      "/vehicle/front_bogie_velocity": 9838,
+      "/vehicle/driver_position_cmd": 21540,
+      "/sensing/gnss/master/fix": 10769,
+      "/sensing/gnss/master/vel": 10544,
+      "/sensing/gnss/rover/vel": 10462
+    },
+    "inputs": {
+      "front": {
+        "count": 9838,
+        "min": 0.0,
+        "median": 14.457295894622803,
+        "max": 51.85627365112305
+      },
+      "rear": {
+        "count": 9847,
+        "min": 0.0,
+        "median": 14.448155403137207,
+        "max": 51.91298294067383
+      },
+      "command": {
+        "count": 21540,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19685,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19683
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19291,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19291,
+      "min": 0.0,
+      "median": 3.973394644381552,
+      "max": 14.424008874095994
+    },
+    "speed_rmse_mps": 0.04140321999927111,
+    "raw_wheel_rmse_mps": 0.04008843625491672,
+    "speed_bias_mps": -0.0090469121558626,
+    "final_relative_distance_m": 5428.291497523376
+  },
+  {
+    "bag": "30618_2255aade",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11630,
+      "/vehicle/front_bogie_velocity": 11618,
+      "/vehicle/driver_position_cmd": 25135
+    },
+    "inputs": {
+      "front": {
+        "count": 11618,
+        "min": 0.0,
+        "median": 11.330885887145996,
+        "max": 53.30031967163086
+      },
+      "rear": {
+        "count": 11630,
+        "min": 0.0,
+        "median": 11.310612678527832,
+        "max": 53.33366775512695
+      },
+      "command": {
+        "count": 25135,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23248,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23232,
+      "missing_wheels": 11,
+      "suspect_wheels": 3
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5427.277955453866
+  },
+  {
+    "bag": "30618_22c1c589",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10945,
+      "/sensing/gnss/rover/fix": 11507,
+      "/vehicle/front_bogie_velocity": 10930,
+      "/vehicle/driver_position_cmd": 23097,
+      "/sensing/gnss/master/fix": 11548,
+      "/sensing/gnss/master/vel": 11338,
+      "/sensing/gnss/rover/vel": 11248
+    },
+    "inputs": {
+      "front": {
+        "count": 10930,
+        "min": 0.0,
+        "median": 13.006392002105713,
+        "max": 52.402408599853516
+      },
+      "rear": {
+        "count": 10945,
+        "min": 0.0,
+        "median": 12.968886375427246,
+        "max": 52.39929962158203
+      },
+      "command": {
+        "count": 23097,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21875,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 21873
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21377,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21377,
+      "min": 0.0,
+      "median": 3.689326496801279,
+      "max": 14.535001238390041
+    },
+    "speed_rmse_mps": 0.029906009934364052,
+    "raw_wheel_rmse_mps": 0.03036543617209836,
+    "speed_bias_mps": -0.010153094664559137,
+    "final_relative_distance_m": 5412.352124520255
+  },
+  {
+    "bag": "30618_2366c74a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10427,
+      "/sensing/gnss/rover/fix": 10433,
+      "/vehicle/front_bogie_velocity": 10418,
+      "/vehicle/driver_position_cmd": 21666,
+      "/sensing/gnss/master/fix": 10833,
+      "/sensing/gnss/master/vel": 10602,
+      "/sensing/gnss/rover/vel": 10622
+    },
+    "inputs": {
+      "front": {
+        "count": 10418,
+        "min": 0.0,
+        "median": 9.772732257843018,
+        "max": 52.61769485473633
+      },
+      "rear": {
+        "count": 10427,
+        "min": 0.0,
+        "median": 9.742801666259766,
+        "max": 52.58454513549805
+      },
+      "command": {
+        "count": 21666,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 20845,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 20843
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20377,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20377,
+      "min": 0.0,
+      "median": 2.8065389717586324,
+      "max": 14.631060282836646
+    },
+    "speed_rmse_mps": 0.03171270769840727,
+    "raw_wheel_rmse_mps": 0.029360956453728805,
+    "speed_bias_mps": -0.012791732770446476,
+    "final_relative_distance_m": 4548.44077767781
+  },
+  {
+    "bag": "30618_27e994fc",
+    "messages": {
+      "/sensing/gnss/master/vel": 18632,
+      "/sensing/gnss/master/fix": 18827,
+      "/vehicle/driver_position_cmd": 38004,
+      "/vehicle/front_bogie_velocity": 17942,
+      "/sensing/gnss/rover/fix": 18682,
+      "/sensing/gnss/rover/vel": 18583,
+      "/vehicle/rear_bogie_velocity": 17920
+    },
+    "inputs": {
+      "front": {
+        "count": 17942,
+        "min": 0.0,
+        "median": 0.3195578157901764,
+        "max": 52.89765930175781
+      },
+      "rear": {
+        "count": 17920,
+        "min": 0.0,
+        "median": 0.36184634268283844,
+        "max": 52.97887420654297
+      },
+      "command": {
+        "count": 38004,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 35862,
+    "statuses": {
+      "ok": 35819,
+      "missing_wheels": 1,
+      "suspect_wheels": 42
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 35038,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 35038,
+      "min": 0.0,
+      "median": 0.10677546534667971,
+      "max": 14.806082061099081
+    },
+    "speed_rmse_mps": 0.1605277013370887,
+    "raw_wheel_rmse_mps": 0.15518016315953803,
+    "speed_bias_mps": -0.02627864144231044,
+    "final_relative_distance_m": 5619.94640910453
+  },
+  {
+    "bag": "30618_28538acf",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11994,
+      "/vehicle/driver_position_cmd": 25830,
+      "/sensing/gnss/rover/fix": 12582,
+      "/vehicle/front_bogie_velocity": 11983,
+      "/sensing/gnss/master/fix": 12885,
+      "/sensing/gnss/master/vel": 12616,
+      "/sensing/gnss/rover/vel": 12553
+    },
+    "inputs": {
+      "front": {
+        "count": 11983,
+        "min": 0.0,
+        "median": 11.376712799072266,
+        "max": 53.26279830932617
+      },
+      "rear": {
+        "count": 11994,
+        "min": 0.0,
+        "median": 11.342402935028076,
+        "max": 53.28709030151367
+      },
+      "command": {
+        "count": 25830,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23977,
+    "statuses": {
+      "stale_command": 3,
+      "ok": 23925,
+      "suspect_wheels": 49
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23335,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23335,
+      "min": 0.0,
+      "median": 3.143430132832603,
+      "max": 14.836661248407607
+    },
+    "speed_rmse_mps": 0.09573151878610973,
+    "raw_wheel_rmse_mps": 0.07707835740989444,
+    "speed_bias_mps": -0.009835760381892608,
+    "final_relative_distance_m": 5453.962903013939
+  },
+  {
+    "bag": "30618_2cb9ce37",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 7396,
+      "/sensing/gnss/rover/fix": 7408,
+      "/vehicle/front_bogie_velocity": 7384,
+      "/vehicle/driver_position_cmd": 14974,
+      "/sensing/gnss/master/fix": 7487,
+      "/sensing/gnss/master/vel": 7396,
+      "/sensing/gnss/rover/vel": 7397
+    },
+    "inputs": {
+      "front": {
+        "count": 7384,
+        "min": 0.0,
+        "median": 15.609078884124756,
+        "max": 52.730918884277344
+      },
+      "rear": {
+        "count": 7396,
+        "min": 0.0,
+        "median": 15.564103603363037,
+        "max": 52.749420166015625
+      },
+      "command": {
+        "count": 14974,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 14780,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 14778
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 14154,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 14154,
+      "min": 0.001,
+      "median": 4.425793940074481,
+      "max": 14.650301566862028
+    },
+    "speed_rmse_mps": 0.03443395447872925,
+    "raw_wheel_rmse_mps": 0.037745531421541204,
+    "speed_bias_mps": -0.007797878492363099,
+    "final_relative_distance_m": 3961.021561089619
+  },
+  {
+    "bag": "30618_2d2fa7be",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10881,
+      "/vehicle/driver_position_cmd": 24050,
+      "/vehicle/front_bogie_velocity": 10866
+    },
+    "inputs": {
+      "front": {
+        "count": 10866,
+        "min": 0.0,
+        "median": 11.678255081176758,
+        "max": 52.286170959472656
+      },
+      "rear": {
+        "count": 10881,
+        "min": 0.0,
+        "median": 11.694787979125977,
+        "max": 52.20417022705078
+      },
+      "command": {
+        "count": 24050,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21747,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21746
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5395.339881995645
+  },
+  {
+    "bag": "30618_2dbce472",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12613,
+      "/sensing/gnss/rover/fix": 13278,
+      "/vehicle/front_bogie_velocity": 12602,
+      "/vehicle/driver_position_cmd": 27436,
+      "/sensing/gnss/master/fix": 13617,
+      "/sensing/gnss/master/vel": 13372,
+      "/sensing/gnss/rover/vel": 13143
+    },
+    "inputs": {
+      "front": {
+        "count": 12602,
+        "min": 0.0,
+        "median": 10.184866428375244,
+        "max": 52.72325134277344
+      },
+      "rear": {
+        "count": 12613,
+        "min": 0.0,
+        "median": 10.182572364807129,
+        "max": 52.75519943237305
+      },
+      "command": {
+        "count": 27436,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 25215,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 25213
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24481,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24481,
+      "min": 0.0,
+      "median": 2.8293903937067433,
+      "max": 14.6620441958139
+    },
+    "speed_rmse_mps": 0.13379479348731027,
+    "raw_wheel_rmse_mps": 0.13351320216709242,
+    "speed_bias_mps": -0.010188736815820353,
+    "final_relative_distance_m": 5423.342610544908
+  },
+  {
+    "bag": "30618_2f104a1d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11432,
+      "/sensing/gnss/rover/fix": 12266,
+      "/vehicle/front_bogie_velocity": 11422,
+      "/vehicle/driver_position_cmd": 25018,
+      "/sensing/gnss/master/fix": 12509,
+      "/sensing/gnss/master/vel": 12254,
+      "/sensing/gnss/rover/vel": 12158
+    },
+    "inputs": {
+      "front": {
+        "count": 11422,
+        "min": 0.0,
+        "median": 10.784385204315186,
+        "max": 52.41731262207031
+      },
+      "rear": {
+        "count": 11432,
+        "min": 0.0,
+        "median": 10.769452571868896,
+        "max": 52.42288589477539
+      },
+      "command": {
+        "count": 25018,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22854,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22852
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22309,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22309,
+      "min": 0.0,
+      "median": 3.003170491330787,
+      "max": 14.624139290912133
+    },
+    "speed_rmse_mps": 0.031628002817714114,
+    "raw_wheel_rmse_mps": 0.03162526434073607,
+    "speed_bias_mps": -0.007243111881417789,
+    "final_relative_distance_m": 5404.25406682913
+  },
+  {
+    "bag": "30618_2f2f1175",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10797,
+      "/vehicle/driver_position_cmd": 23444,
+      "/vehicle/front_bogie_velocity": 10785
+    },
+    "inputs": {
+      "front": {
+        "count": 10785,
+        "min": 0.0,
+        "median": 11.877202987670898,
+        "max": 53.242977142333984
+      },
+      "rear": {
+        "count": 10797,
+        "min": 0.0,
+        "median": 11.891916275024414,
+        "max": 53.279296875
+      },
+      "command": {
+        "count": 23444,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21582,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21581
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5325.867780758404
+  },
+  {
+    "bag": "30618_33bec73f",
+    "messages": {
+      "/sensing/gnss/master/vel": 11708,
+      "/sensing/gnss/master/fix": 11800,
+      "/vehicle/driver_position_cmd": 23602,
+      "/vehicle/front_bogie_velocity": 11579,
+      "/sensing/gnss/rover/fix": 11658,
+      "/sensing/gnss/rover/vel": 11672,
+      "/vehicle/rear_bogie_velocity": 11562
+    },
+    "inputs": {
+      "front": {
+        "count": 11579,
+        "min": 0.0,
+        "median": 12.01266098022461,
+        "max": 51.87533950805664
+      },
+      "rear": {
+        "count": 11562,
+        "min": 0.0,
+        "median": 11.974927425384521,
+        "max": 51.96113967895508
+      },
+      "command": {
+        "count": 23602,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23141,
+    "statuses": {
+      "ok": 23058,
+      "missing_wheels": 83
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22905,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22905,
+      "min": 0.0,
+      "median": 3.361703288513131,
+      "max": 14.435290263794489
+    },
+    "speed_rmse_mps": 0.0418864953781938,
+    "raw_wheel_rmse_mps": 0.08242091448932858,
+    "speed_bias_mps": -0.011712804795668868,
+    "final_relative_distance_m": 5360.946490531536
+  },
+  {
+    "bag": "30618_3b36e5cd",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11658,
+      "/sensing/gnss/rover/fix": 12547,
+      "/vehicle/front_bogie_velocity": 11649,
+      "/vehicle/driver_position_cmd": 25163,
+      "/sensing/gnss/master/fix": 12521,
+      "/sensing/gnss/master/vel": 12362,
+      "/sensing/gnss/rover/vel": 12002
+    },
+    "inputs": {
+      "front": {
+        "count": 11649,
+        "min": 0.0,
+        "median": 11.204096794128418,
+        "max": 53.16502380371094
+      },
+      "rear": {
+        "count": 11658,
+        "min": 0.0,
+        "median": 11.166153907775879,
+        "max": 53.25056838989258
+      },
+      "command": {
+        "count": 25163,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23307,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23305
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22907,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22907,
+      "min": 0.0,
+      "median": 3.1078811109822078,
+      "max": 14.79713840578644
+    },
+    "speed_rmse_mps": 0.03467071164472146,
+    "raw_wheel_rmse_mps": 0.03636355799994667,
+    "speed_bias_mps": -0.01357632538638402,
+    "final_relative_distance_m": 5427.846252507351
+  },
+  {
+    "bag": "30618_3ba2326f",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12135,
+      "/vehicle/driver_position_cmd": 25594,
+      "/vehicle/front_bogie_velocity": 12126
+    },
+    "inputs": {
+      "front": {
+        "count": 12126,
+        "min": 0.0,
+        "median": 10.827592849731445,
+        "max": 53.320960998535156
+      },
+      "rear": {
+        "count": 12135,
+        "min": 0.0,
+        "median": 10.817615509033203,
+        "max": 53.36811447143555
+      },
+      "command": {
+        "count": 25594,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24261,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 24260
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5213.79287681861
+  },
+  {
+    "bag": "30618_3e012faf",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9565,
+      "/vehicle/driver_position_cmd": 20453,
+      "/vehicle/front_bogie_velocity": 9555
+    },
+    "inputs": {
+      "front": {
+        "count": 9555,
+        "min": -0.37830111384391785,
+        "median": 15.826393127441406,
+        "max": 53.163177490234375
+      },
+      "rear": {
+        "count": 9565,
+        "min": -0.3889772891998291,
+        "median": 15.765559196472168,
+        "max": 53.232139587402344
+      },
+      "command": {
+        "count": 20453,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19120,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 19109,
+      "missing_wheels": 10
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5176.898017638712
+  },
+  {
+    "bag": "30618_3e9f4952",
+    "messages": {
+      "/sensing/gnss/master/vel": 12951,
+      "/sensing/gnss/master/fix": 13230,
+      "/vehicle/driver_position_cmd": 26458,
+      "/vehicle/front_bogie_velocity": 12411,
+      "/sensing/gnss/rover/fix": 12961,
+      "/vehicle/rear_bogie_velocity": 12390,
+      "/sensing/gnss/rover/vel": 12780
+    },
+    "inputs": {
+      "front": {
+        "count": 12411,
+        "min": 0.0,
+        "median": 10.197872161865234,
+        "max": 53.20570755004883
+      },
+      "rear": {
+        "count": 12390,
+        "min": 0.0,
+        "median": 10.242143630981445,
+        "max": 53.256080627441406
+      },
+      "command": {
+        "count": 26458,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24801,
+    "statuses": {
+      "ok": 24801
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24131,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24131,
+      "min": 0.0,
+      "median": 2.8501685915047204,
+      "max": 14.8180099203638
+    },
+    "speed_rmse_mps": 0.03214272709901549,
+    "raw_wheel_rmse_mps": 0.03190148383488052,
+    "speed_bias_mps": -0.015464069973782631,
+    "final_relative_distance_m": 5451.220069854622
+  },
+  {
+    "bag": "30618_40ffd323",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12019,
+      "/sensing/gnss/rover/fix": 12527,
+      "/vehicle/front_bogie_velocity": 12009,
+      "/vehicle/driver_position_cmd": 25607,
+      "/sensing/gnss/master/fix": 12801,
+      "/sensing/gnss/master/vel": 12701,
+      "/sensing/gnss/rover/vel": 12526
+    },
+    "inputs": {
+      "front": {
+        "count": 12009,
+        "min": 0.0,
+        "median": 11.850935935974121,
+        "max": 53.03779983520508
+      },
+      "rear": {
+        "count": 12019,
+        "min": 0.0,
+        "median": 11.863572120666504,
+        "max": 53.05264663696289
+      },
+      "command": {
+        "count": 25607,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24028,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23990,
+      "missing_wheels": 13,
+      "suspect_wheels": 23
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23764,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23764,
+      "min": 0.0,
+      "median": 3.30319617946013,
+      "max": 14.766729529587789
+    },
+    "speed_rmse_mps": 0.0580800552101276,
+    "raw_wheel_rmse_mps": 0.04171602864477773,
+    "speed_bias_mps": -0.012296541874220242,
+    "final_relative_distance_m": 5467.998143761877
+  },
+  {
+    "bag": "30618_437e855c",
+    "messages": {
+      "/sensing/gnss/master/vel": 11273,
+      "/sensing/gnss/master/fix": 11504,
+      "/vehicle/driver_position_cmd": 23010,
+      "/vehicle/front_bogie_velocity": 10425,
+      "/sensing/gnss/rover/fix": 11253,
+      "/sensing/gnss/rover/vel": 10878,
+      "/vehicle/rear_bogie_velocity": 10400
+    },
+    "inputs": {
+      "front": {
+        "count": 10425,
+        "min": 0.0,
+        "median": 12.814300537109375,
+        "max": 52.87898254394531
+      },
+      "rear": {
+        "count": 10400,
+        "min": 0.0,
+        "median": 12.875650405883789,
+        "max": 52.89360809326172
+      },
+      "command": {
+        "count": 23010,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 20825,
+    "statuses": {
+      "ok": 20825
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20381,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20381,
+      "min": 0.0,
+      "median": 3.514014228770282,
+      "max": 14.734693922847534
+    },
+    "speed_rmse_mps": 0.03454117886123724,
+    "raw_wheel_rmse_mps": 0.03461469430948651,
+    "speed_bias_mps": -0.016712332951166402,
+    "final_relative_distance_m": 5420.578161471626
+  },
+  {
+    "bag": "30618_45ff6f99",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 169,
+      "/vehicle/driver_position_cmd": 338,
+      "/sensing/gnss/rover/fix": 161,
+      "/vehicle/front_bogie_velocity": 160,
+      "/sensing/gnss/master/fix": 159,
+      "/sensing/gnss/master/vel": 157,
+      "/sensing/gnss/rover/vel": 137
+    },
+    "inputs": {
+      "front": {
+        "count": 160,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "rear": {
+        "count": 169,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "command": {
+        "count": 338,
+        "min": 0,
+        "median": 0.0,
+        "max": 0
+      }
+    },
+    "estimates": 329,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 328
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 329,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 329,
+      "min": 0.0,
+      "median": 0.004242640687119285,
+      "max": 0.011180339887498949
+    },
+    "speed_rmse_mps": 0.004958490308533197,
+    "raw_wheel_rmse_mps": 0.004958490308533197,
+    "speed_bias_mps": -0.004542189423894495,
+    "final_relative_distance_m": 0.0
+  },
+  {
+    "bag": "30618_46e21b9b",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11075,
+      "/vehicle/driver_position_cmd": 24123,
+      "/vehicle/front_bogie_velocity": 11063
+    },
+    "inputs": {
+      "front": {
+        "count": 11063,
+        "min": 0.0,
+        "median": 10.161581993103027,
+        "max": 53.16706085205078
+      },
+      "rear": {
+        "count": 11075,
+        "min": 0.0,
+        "median": 10.118537902832031,
+        "max": 53.19741439819336
+      },
+      "command": {
+        "count": 24123,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22138,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 12213,
+      "missing_wheels": 36,
+      "suspect_wheels": 9888
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 12031.514069805273
+  },
+  {
+    "bag": "30618_49fe4c54",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 13135,
+      "/vehicle/driver_position_cmd": 27664,
+      "/sensing/gnss/rover/fix": 13637,
+      "/vehicle/front_bogie_velocity": 13128,
+      "/sensing/gnss/master/fix": 13821,
+      "/sensing/gnss/master/vel": 13406,
+      "/sensing/gnss/rover/vel": 13408
+    },
+    "inputs": {
+      "front": {
+        "count": 13128,
+        "min": 0.0,
+        "median": 10.412943363189697,
+        "max": 53.274986267089844
+      },
+      "rear": {
+        "count": 13135,
+        "min": 0.0,
+        "median": 10.4030122756958,
+        "max": 53.34132385253906
+      },
+      "command": {
+        "count": 27664,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 26263,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 26262
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 25293,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 25293,
+      "min": 0.0,
+      "median": 2.921325726446813,
+      "max": 14.815028383368016
+    },
+    "speed_rmse_mps": 0.040450419025315494,
+    "raw_wheel_rmse_mps": 0.03722387965241147,
+    "speed_bias_mps": -0.012079618117591139,
+    "final_relative_distance_m": 5519.332777282761
+  },
+  {
+    "bag": "30618_4d487b0d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9579,
+      "/sensing/gnss/rover/fix": 10425,
+      "/vehicle/front_bogie_velocity": 9569,
+      "/vehicle/driver_position_cmd": 21505,
+      "/sensing/gnss/master/fix": 10417,
+      "/sensing/gnss/master/vel": 10296,
+      "/sensing/gnss/rover/vel": 10411
+    },
+    "inputs": {
+      "front": {
+        "count": 9569,
+        "min": 0.0,
+        "median": 15.043163299560547,
+        "max": 53.251007080078125
+      },
+      "rear": {
+        "count": 9579,
+        "min": 0.0,
+        "median": 15.033035278320312,
+        "max": 53.245216369628906
+      },
+      "command": {
+        "count": 21505,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19148,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19146
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18190,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18190,
+      "min": 0.0,
+      "median": 4.224112331443269,
+      "max": 14.813009721187656
+    },
+    "speed_rmse_mps": 0.6700289365616122,
+    "raw_wheel_rmse_mps": 0.6702906561534516,
+    "speed_bias_mps": 0.07187860431763599,
+    "final_relative_distance_m": 5478.307156039067
+  },
+  {
+    "bag": "30618_4e1e3181",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12321,
+      "/vehicle/front_bogie_velocity": 12319,
+      "/vehicle/driver_position_cmd": 25444
+    },
+    "inputs": {
+      "front": {
+        "count": 12319,
+        "min": 0.0,
+        "median": 10.15771484375,
+        "max": 51.41792297363281
+      },
+      "rear": {
+        "count": 12321,
+        "min": 0.0,
+        "median": 10.134136199951172,
+        "max": 51.507568359375
+      },
+      "command": {
+        "count": 25444,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24640,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24638
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5398.086472006851
+  },
+  {
+    "bag": "30618_5036aa78",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 1016,
+      "/vehicle/driver_position_cmd": 2050,
+      "/vehicle/front_bogie_velocity": 1005
+    },
+    "inputs": {
+      "front": {
+        "count": 1005,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 12.235203742980957
+      },
+      "rear": {
+        "count": 1016,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 12.241190910339355
+      },
+      "command": {
+        "count": 2050,
+        "min": -15,
+        "median": 0.0,
+        "max": 7
+      }
+    },
+    "estimates": 2021,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 2020
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 30.310883803492175
+  },
+  {
+    "bag": "30618_5eb8d2c9",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 7396,
+      "/sensing/gnss/rover/fix": 7408,
+      "/vehicle/front_bogie_velocity": 7384,
+      "/vehicle/driver_position_cmd": 14974,
+      "/sensing/gnss/master/fix": 7487,
+      "/sensing/gnss/master/vel": 7396,
+      "/sensing/gnss/rover/vel": 7397
+    },
+    "inputs": {
+      "front": {
+        "count": 7384,
+        "min": 0.0,
+        "median": 15.609078884124756,
+        "max": 52.730918884277344
+      },
+      "rear": {
+        "count": 7396,
+        "min": 0.0,
+        "median": 15.564103603363037,
+        "max": 52.749420166015625
+      },
+      "command": {
+        "count": 14974,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 14780,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 14778
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 14154,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 14154,
+      "min": 0.001,
+      "median": 4.425793940074481,
+      "max": 14.650301566862028
+    },
+    "speed_rmse_mps": 0.03443395447872925,
+    "raw_wheel_rmse_mps": 0.037745531421541204,
+    "speed_bias_mps": -0.007797878492363099,
+    "final_relative_distance_m": 3961.021561089619
+  },
+  {
+    "bag": "30618_616ec56b",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11262,
+      "/vehicle/driver_position_cmd": 24868,
+      "/sensing/gnss/rover/fix": 12248,
+      "/vehicle/front_bogie_velocity": 11250,
+      "/sensing/gnss/master/fix": 12423,
+      "/sensing/gnss/master/vel": 11909,
+      "/sensing/gnss/rover/vel": 12062
+    },
+    "inputs": {
+      "front": {
+        "count": 11250,
+        "min": 0.0,
+        "median": 11.225663661956787,
+        "max": 52.17718505859375
+      },
+      "rear": {
+        "count": 11262,
+        "min": 0.0,
+        "median": 11.163533687591553,
+        "max": 52.1683235168457
+      },
+      "command": {
+        "count": 24868,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22512,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 22511
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21524,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21524,
+      "min": 0.0,
+      "median": 3.073344269684085,
+      "max": 14.505136814246187
+    },
+    "speed_rmse_mps": 0.03862738741390422,
+    "raw_wheel_rmse_mps": 0.03357370694398881,
+    "speed_bias_mps": -0.011967210896356361,
+    "final_relative_distance_m": 5388.415799558792
+  },
+  {
+    "bag": "30618_6236f680",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12302,
+      "/vehicle/driver_position_cmd": 25532,
+      "/vehicle/front_bogie_velocity": 12288
+    },
+    "inputs": {
+      "front": {
+        "count": 12288,
+        "min": 0.0,
+        "median": 10.332437515258789,
+        "max": 52.91934585571289
+      },
+      "rear": {
+        "count": 12302,
+        "min": 0.0,
+        "median": 10.320889472961426,
+        "max": 52.77287292480469
+      },
+      "command": {
+        "count": 25532,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24590,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 24589
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5387.787011826714
+  },
+  {
+    "bag": "30618_67b89902",
+    "messages": {
+      "/sensing/gnss/master/vel": 9786,
+      "/sensing/gnss/master/fix": 9859,
+      "/vehicle/driver_position_cmd": 19718,
+      "/vehicle/front_bogie_velocity": 9540,
+      "/sensing/gnss/rover/fix": 9588,
+      "/sensing/gnss/rover/vel": 9776,
+      "/vehicle/rear_bogie_velocity": 9519
+    },
+    "inputs": {
+      "front": {
+        "count": 9540,
+        "min": 0.0,
+        "median": 16.63516616821289,
+        "max": 51.736270904541016
+      },
+      "rear": {
+        "count": 9519,
+        "min": 0.0,
+        "median": 16.72502326965332,
+        "max": 51.67670822143555
+      },
+      "command": {
+        "count": 19718,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19059,
+    "statuses": {
+      "ok": 19059
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18825,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18825,
+      "min": 0.0009999999999999998,
+      "median": 4.590488971776318,
+      "max": 14.374369029630484
+    },
+    "speed_rmse_mps": 0.02993606820503606,
+    "raw_wheel_rmse_mps": 0.028735689734141808,
+    "speed_bias_mps": -0.010642785669981822,
+    "final_relative_distance_m": 5380.030251806978
+  },
+  {
+    "bag": "30618_68847170",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11472,
+      "/vehicle/driver_position_cmd": 24284,
+      "/sensing/gnss/rover/fix": 11914,
+      "/vehicle/front_bogie_velocity": 11461,
+      "/sensing/gnss/master/fix": 12132,
+      "/sensing/gnss/master/vel": 12084,
+      "/sensing/gnss/rover/vel": 11893
+    },
+    "inputs": {
+      "front": {
+        "count": 11461,
+        "min": 0.0,
+        "median": 11.781839370727539,
+        "max": 52.13591766357422
+      },
+      "rear": {
+        "count": 11472,
+        "min": 0.0,
+        "median": 11.778090000152588,
+        "max": 52.34231185913086
+      },
+      "command": {
+        "count": 24284,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22933,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 22932
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22731,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22731,
+      "min": 0.0,
+      "median": 3.2700808858497674,
+      "max": 14.580691478801684
+    },
+    "speed_rmse_mps": 0.031238569295435715,
+    "raw_wheel_rmse_mps": 0.03093074345163488,
+    "speed_bias_mps": -0.009829236020184694,
+    "final_relative_distance_m": 5400.7740179955645
+  },
+  {
+    "bag": "30618_68d1748a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11380,
+      "/sensing/gnss/rover/fix": 12243,
+      "/vehicle/front_bogie_velocity": 11373,
+      "/vehicle/driver_position_cmd": 25183,
+      "/sensing/gnss/master/fix": 12458,
+      "/sensing/gnss/master/vel": 12364,
+      "/sensing/gnss/rover/vel": 12305
+    },
+    "inputs": {
+      "front": {
+        "count": 11373,
+        "min": 0.0,
+        "median": 11.137443542480469,
+        "max": 53.292327880859375
+      },
+      "rear": {
+        "count": 11380,
+        "min": 0.0,
+        "median": 11.111658573150635,
+        "max": 53.28239440917969
+      },
+      "command": {
+        "count": 25183,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22753,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22723,
+      "missing_wheels": 22,
+      "suspect_wheels": 6
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22255,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22255,
+      "min": 0.0,
+      "median": 3.1531071976702596,
+      "max": 14.844365564078513
+    },
+    "speed_rmse_mps": 0.1483624455257633,
+    "raw_wheel_rmse_mps": 0.15761352941312198,
+    "speed_bias_mps": -0.0077805033002724565,
+    "final_relative_distance_m": 5429.049577835423
+  },
+  {
+    "bag": "30618_6cb3280a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12038,
+      "/sensing/gnss/rover/fix": 12251,
+      "/vehicle/front_bogie_velocity": 12027,
+      "/vehicle/driver_position_cmd": 24531,
+      "/sensing/gnss/master/fix": 12263,
+      "/sensing/gnss/master/vel": 11624,
+      "/sensing/gnss/rover/vel": 11974
+    },
+    "inputs": {
+      "front": {
+        "count": 12027,
+        "min": 0.0,
+        "median": 11.151331901550293,
+        "max": 52.78706741333008
+      },
+      "rear": {
+        "count": 12038,
+        "min": 0.0,
+        "median": 11.119725704193115,
+        "max": 52.76532745361328
+      },
+      "command": {
+        "count": 24531,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24065,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24063
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22817,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22817,
+      "min": 0.0,
+      "median": 3.288067061359911,
+      "max": 14.715826888082095
+    },
+    "speed_rmse_mps": 0.03105562023686883,
+    "raw_wheel_rmse_mps": 0.0332897915181194,
+    "speed_bias_mps": -0.011637890360487636,
+    "final_relative_distance_m": 5411.453679134075
+  },
+  {
+    "bag": "30618_74559c73",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 992,
+      "/vehicle/driver_position_cmd": 1984,
+      "/vehicle/front_bogie_velocity": 981
+    },
+    "inputs": {
+      "front": {
+        "count": 981,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 23.05743408203125
+      },
+      "rear": {
+        "count": 992,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 22.781780242919922
+      },
+      "command": {
+        "count": 1984,
+        "min": -15,
+        "median": 0.0,
+        "max": 7
+      }
+    },
+    "estimates": 1973,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 1972
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 142.34314056752183
+  },
+  {
+    "bag": "30618_748832b9",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10856,
+      "/sensing/gnss/rover/fix": 10874,
+      "/vehicle/front_bogie_velocity": 10845,
+      "/vehicle/driver_position_cmd": 22289,
+      "/sensing/gnss/master/fix": 11145,
+      "/sensing/gnss/master/vel": 11048,
+      "/sensing/gnss/rover/vel": 10895
+    },
+    "inputs": {
+      "front": {
+        "count": 10845,
+        "min": 0.0,
+        "median": 13.679853439331055,
+        "max": 52.32819366455078
+      },
+      "rear": {
+        "count": 10856,
+        "min": 0.0,
+        "median": 13.63705825805664,
+        "max": 52.38608932495117
+      },
+      "command": {
+        "count": 22289,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21701,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 21699
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21501,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21501,
+      "min": 0.0,
+      "median": 3.782000661025854,
+      "max": 14.628525557963796
+    },
+    "speed_rmse_mps": 0.03273378052264013,
+    "raw_wheel_rmse_mps": 0.033313316942828054,
+    "speed_bias_mps": -0.013289225866968625,
+    "final_relative_distance_m": 5407.748176750405
+  },
+  {
+    "bag": "30618_76e1f9c7",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11926,
+      "/sensing/gnss/rover/fix": 12971,
+      "/vehicle/front_bogie_velocity": 11916,
+      "/vehicle/driver_position_cmd": 25959,
+      "/sensing/gnss/master/fix": 12979,
+      "/sensing/gnss/master/vel": 12469,
+      "/sensing/gnss/rover/vel": 12708
+    },
+    "inputs": {
+      "front": {
+        "count": 11916,
+        "min": 0.0,
+        "median": 11.372601509094238,
+        "max": 52.95013427734375
+      },
+      "rear": {
+        "count": 11926,
+        "min": 0.0,
+        "median": 11.352899551391602,
+        "max": 52.98790740966797
+      },
+      "command": {
+        "count": 25959,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23842,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23840
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22808,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22808,
+      "min": 0.0,
+      "median": 3.29248583676744,
+      "max": 14.72034517258342
+    },
+    "speed_rmse_mps": 0.03388921766969979,
+    "raw_wheel_rmse_mps": 0.0327564277264097,
+    "speed_bias_mps": -0.010689207710930624,
+    "final_relative_distance_m": 5455.12185133694
+  },
+  {
+    "bag": "30618_7849303f",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10856,
+      "/sensing/gnss/rover/fix": 10874,
+      "/vehicle/front_bogie_velocity": 10845,
+      "/vehicle/driver_position_cmd": 22289,
+      "/sensing/gnss/master/fix": 11145,
+      "/sensing/gnss/master/vel": 11048,
+      "/sensing/gnss/rover/vel": 10895
+    },
+    "inputs": {
+      "front": {
+        "count": 10845,
+        "min": 0.0,
+        "median": 13.679853439331055,
+        "max": 52.32819366455078
+      },
+      "rear": {
+        "count": 10856,
+        "min": 0.0,
+        "median": 13.63705825805664,
+        "max": 52.38608932495117
+      },
+      "command": {
+        "count": 22289,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21701,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 21699
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21501,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21501,
+      "min": 0.0,
+      "median": 3.782000661025854,
+      "max": 14.628525557963796
+    },
+    "speed_rmse_mps": 0.03273378052264013,
+    "raw_wheel_rmse_mps": 0.033313316942828054,
+    "speed_bias_mps": -0.013289225866968625,
+    "final_relative_distance_m": 5407.748176750405
+  },
+  {
+    "bag": "30618_79b204dc",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10122,
+      "/vehicle/front_bogie_velocity": 10113,
+      "/vehicle/driver_position_cmd": 21290
+    },
+    "inputs": {
+      "front": {
+        "count": 10113,
+        "min": 0.0,
+        "median": 14.407153129577637,
+        "max": 51.675968170166016
+      },
+      "rear": {
+        "count": 10122,
+        "min": 0.0,
+        "median": 14.427273750305176,
+        "max": 51.52169418334961
+      },
+      "command": {
+        "count": 21290,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 20235,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 20233
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5388.496812285673
+  },
+  {
+    "bag": "30618_7a152380",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11537,
+      "/vehicle/driver_position_cmd": 25140,
+      "/vehicle/front_bogie_velocity": 11525
+    },
+    "inputs": {
+      "front": {
+        "count": 11525,
+        "min": 0.0,
+        "median": 11.004416465759277,
+        "max": 53.150962829589844
+      },
+      "rear": {
+        "count": 11537,
+        "min": 0.0,
+        "median": 11.007206916809082,
+        "max": 53.168487548828125
+      },
+      "command": {
+        "count": 25140,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23062,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 23061
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5426.152515118242
+  },
+  {
+    "bag": "30618_7b4d83f4",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11278,
+      "/sensing/gnss/rover/fix": 11429,
+      "/vehicle/front_bogie_velocity": 11265,
+      "/vehicle/driver_position_cmd": 23189,
+      "/sensing/gnss/master/fix": 11581,
+      "/sensing/gnss/master/vel": 11389,
+      "/sensing/gnss/rover/vel": 11195
+    },
+    "inputs": {
+      "front": {
+        "count": 11265,
+        "min": 0.0,
+        "median": 13.412031173706055,
+        "max": 52.25661849975586
+      },
+      "rear": {
+        "count": 11278,
+        "min": 0.0,
+        "median": 13.408479690551758,
+        "max": 52.290794372558594
+      },
+      "command": {
+        "count": 23189,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22543,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22541
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22084,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22084,
+      "min": 0.0,
+      "median": 3.771870216996498,
+      "max": 14.530225772506082
+    },
+    "speed_rmse_mps": 0.02973221058134435,
+    "raw_wheel_rmse_mps": 0.029784522111282782,
+    "speed_bias_mps": -0.006579796133923234,
+    "final_relative_distance_m": 5414.045014733066
+  },
+  {
+    "bag": "30618_7bfbb5ed",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11630,
+      "/vehicle/front_bogie_velocity": 11618,
+      "/vehicle/driver_position_cmd": 25135
+    },
+    "inputs": {
+      "front": {
+        "count": 11618,
+        "min": 0.0,
+        "median": 11.330885887145996,
+        "max": 53.30031967163086
+      },
+      "rear": {
+        "count": 11630,
+        "min": 0.0,
+        "median": 11.310612678527832,
+        "max": 53.33366775512695
+      },
+      "command": {
+        "count": 25135,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23248,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23232,
+      "missing_wheels": 11,
+      "suspect_wheels": 3
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5427.277955453866
+  },
+  {
+    "bag": "30618_7d88fa79",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12302,
+      "/vehicle/driver_position_cmd": 25532,
+      "/vehicle/front_bogie_velocity": 12288
+    },
+    "inputs": {
+      "front": {
+        "count": 12288,
+        "min": 0.0,
+        "median": 10.332437515258789,
+        "max": 52.91934585571289
+      },
+      "rear": {
+        "count": 12302,
+        "min": 0.0,
+        "median": 10.320889472961426,
+        "max": 52.77287292480469
+      },
+      "command": {
+        "count": 25532,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24590,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 24589
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5387.787011826714
+  },
+  {
+    "bag": "30618_8158f0b0",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10953,
+      "/vehicle/driver_position_cmd": 23697,
+      "/sensing/gnss/rover/fix": 11519,
+      "/vehicle/front_bogie_velocity": 10942,
+      "/sensing/gnss/master/fix": 11839,
+      "/sensing/gnss/master/vel": 11634,
+      "/sensing/gnss/rover/vel": 11636
+    },
+    "inputs": {
+      "front": {
+        "count": 10942,
+        "min": 0.0,
+        "median": 13.814752101898193,
+        "max": 53.30903625488281
+      },
+      "rear": {
+        "count": 10953,
+        "min": 0.0,
+        "median": 13.799708366394043,
+        "max": 53.327842712402344
+      },
+      "command": {
+        "count": 23697,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21895,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21894
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21461,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21461,
+      "min": 0.001,
+      "median": 3.8422463481666553,
+      "max": 14.85135717703941
+    },
+    "speed_rmse_mps": 0.033007756509597475,
+    "raw_wheel_rmse_mps": 0.03400849422528166,
+    "speed_bias_mps": -0.015475642615781578,
+    "final_relative_distance_m": 5508.567800409161
+  },
+  {
+    "bag": "30618_81c22fee",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10626,
+      "/vehicle/driver_position_cmd": 23703,
+      "/vehicle/front_bogie_velocity": 10615
+    },
+    "inputs": {
+      "front": {
+        "count": 10615,
+        "min": 0.0,
+        "median": 11.684009552001953,
+        "max": 53.278873443603516
+      },
+      "rear": {
+        "count": 10626,
+        "min": 0.0,
+        "median": 11.674275398254395,
+        "max": 53.36872863769531
+      },
+      "command": {
+        "count": 23703,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21241,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21240
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5413.776341215742
+  },
+  {
+    "bag": "30618_87afe526",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11385,
+      "/sensing/gnss/rover/fix": 12122,
+      "/vehicle/front_bogie_velocity": 11376,
+      "/vehicle/driver_position_cmd": 24366,
+      "/sensing/gnss/master/fix": 12170,
+      "/sensing/gnss/master/vel": 12039,
+      "/sensing/gnss/rover/vel": 12080
+    },
+    "inputs": {
+      "front": {
+        "count": 11376,
+        "min": 0.0,
+        "median": 12.196277618408203,
+        "max": 53.315303802490234
+      },
+      "rear": {
+        "count": 11385,
+        "min": 0.0,
+        "median": 12.210797309875488,
+        "max": 53.29495620727539
+      },
+      "command": {
+        "count": 24366,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22761,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22759
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22461,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22461,
+      "min": 0.0,
+      "median": 3.3591799594543907,
+      "max": 14.820075168500328
+    },
+    "speed_rmse_mps": 0.0913612303943028,
+    "raw_wheel_rmse_mps": 0.0883431131104559,
+    "speed_bias_mps": -0.004429892052389577,
+    "final_relative_distance_m": 5441.810398215763
+  },
+  {
+    "bag": "30618_88548b02",
+    "messages": {
+      "/sensing/gnss/master/vel": 12446,
+      "/sensing/gnss/master/fix": 12558,
+      "/vehicle/driver_position_cmd": 25114,
+      "/vehicle/front_bogie_velocity": 11596,
+      "/sensing/gnss/rover/fix": 12289,
+      "/sensing/gnss/rover/vel": 12347,
+      "/vehicle/rear_bogie_velocity": 11575
+    },
+    "inputs": {
+      "front": {
+        "count": 11596,
+        "min": 0.0,
+        "median": 10.810038089752197,
+        "max": 51.784061431884766
+      },
+      "rear": {
+        "count": 11575,
+        "min": 0.0,
+        "median": 10.819685935974121,
+        "max": 51.70948028564453
+      },
+      "command": {
+        "count": 25114,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23171,
+    "statuses": {
+      "ok": 23171
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22911,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22911,
+      "min": 0.0,
+      "median": 3.0286143696416685,
+      "max": 14.471539862778943
+    },
+    "speed_rmse_mps": 0.053946316183740343,
+    "raw_wheel_rmse_mps": 0.05301234047610711,
+    "speed_bias_mps": -0.03307845984208431,
+    "final_relative_distance_m": 5334.750796208039
+  },
+  {
+    "bag": "30618_887a2b9a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10122,
+      "/vehicle/front_bogie_velocity": 10113,
+      "/vehicle/driver_position_cmd": 21290
+    },
+    "inputs": {
+      "front": {
+        "count": 10113,
+        "min": 0.0,
+        "median": 14.407153129577637,
+        "max": 51.675968170166016
+      },
+      "rear": {
+        "count": 10122,
+        "min": 0.0,
+        "median": 14.427273750305176,
+        "max": 51.52169418334961
+      },
+      "command": {
+        "count": 21290,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 20235,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 20233
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5388.496812285673
+  },
+  {
+    "bag": "30618_8eb8615c",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10881,
+      "/vehicle/driver_position_cmd": 24050,
+      "/vehicle/front_bogie_velocity": 10866
+    },
+    "inputs": {
+      "front": {
+        "count": 10866,
+        "min": 0.0,
+        "median": 11.678255081176758,
+        "max": 52.286170959472656
+      },
+      "rear": {
+        "count": 10881,
+        "min": 0.0,
+        "median": 11.694787979125977,
+        "max": 52.20417022705078
+      },
+      "command": {
+        "count": 24050,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21747,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21746
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5395.339881995645
+  },
+  {
+    "bag": "30618_8f08df08",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11537,
+      "/vehicle/driver_position_cmd": 25140,
+      "/vehicle/front_bogie_velocity": 11525
+    },
+    "inputs": {
+      "front": {
+        "count": 11525,
+        "min": 0.0,
+        "median": 11.004416465759277,
+        "max": 53.150962829589844
+      },
+      "rear": {
+        "count": 11537,
+        "min": 0.0,
+        "median": 11.007206916809082,
+        "max": 53.168487548828125
+      },
+      "command": {
+        "count": 25140,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23062,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 23061
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5426.152515118242
+  },
+  {
+    "bag": "30618_92b1b453",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10626,
+      "/vehicle/driver_position_cmd": 23703,
+      "/vehicle/front_bogie_velocity": 10615
+    },
+    "inputs": {
+      "front": {
+        "count": 10615,
+        "min": 0.0,
+        "median": 11.684009552001953,
+        "max": 53.278873443603516
+      },
+      "rear": {
+        "count": 10626,
+        "min": 0.0,
+        "median": 11.674275398254395,
+        "max": 53.36872863769531
+      },
+      "command": {
+        "count": 23703,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21241,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21240
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5413.776341215742
+  },
+  {
+    "bag": "30618_93dc866e",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10427,
+      "/sensing/gnss/rover/fix": 10433,
+      "/vehicle/front_bogie_velocity": 10418,
+      "/vehicle/driver_position_cmd": 21666,
+      "/sensing/gnss/master/fix": 10833,
+      "/sensing/gnss/master/vel": 10602,
+      "/sensing/gnss/rover/vel": 10622
+    },
+    "inputs": {
+      "front": {
+        "count": 10418,
+        "min": 0.0,
+        "median": 9.772732257843018,
+        "max": 52.61769485473633
+      },
+      "rear": {
+        "count": 10427,
+        "min": 0.0,
+        "median": 9.742801666259766,
+        "max": 52.58454513549805
+      },
+      "command": {
+        "count": 21666,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 20845,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 20843
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20377,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20377,
+      "min": 0.0,
+      "median": 2.8065389717586324,
+      "max": 14.631060282836646
+    },
+    "speed_rmse_mps": 0.03171270769840727,
+    "raw_wheel_rmse_mps": 0.029360956453728805,
+    "speed_bias_mps": -0.012791732770446476,
+    "final_relative_distance_m": 4548.44077767781
+  },
+  {
+    "bag": "30618_95c49c30",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12321,
+      "/vehicle/front_bogie_velocity": 12319,
+      "/vehicle/driver_position_cmd": 25444
+    },
+    "inputs": {
+      "front": {
+        "count": 12319,
+        "min": 0.0,
+        "median": 10.15771484375,
+        "max": 51.41792297363281
+      },
+      "rear": {
+        "count": 12321,
+        "min": 0.0,
+        "median": 10.134136199951172,
+        "max": 51.507568359375
+      },
+      "command": {
+        "count": 25444,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24640,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24638
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5398.086472006851
+  },
+  {
+    "bag": "30618_98161270",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 423,
+      "/vehicle/driver_position_cmd": 849,
+      "/sensing/gnss/rover/fix": 415,
+      "/vehicle/front_bogie_velocity": 411,
+      "/sensing/gnss/master/fix": 412,
+      "/sensing/gnss/master/vel": 362,
+      "/sensing/gnss/rover/vel": 394
+    },
+    "inputs": {
+      "front": {
+        "count": 411,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "rear": {
+        "count": 423,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "command": {
+        "count": 849,
+        "min": 0,
+        "median": 0,
+        "max": 0
+      }
+    },
+    "estimates": 834,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 833
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 736,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 736,
+      "min": 0.0,
+      "median": 0.0058309518948453,
+      "max": 0.018
+    },
+    "speed_rmse_mps": 0.007043729866681616,
+    "raw_wheel_rmse_mps": 0.007043729866681616,
+    "speed_bias_mps": -0.006321553451527098,
+    "final_relative_distance_m": 0.0
+  },
+  {
+    "bag": "30618_9bbe6faa",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10970,
+      "/vehicle/driver_position_cmd": 24451,
+      "/vehicle/front_bogie_velocity": 10958
+    },
+    "inputs": {
+      "front": {
+        "count": 10958,
+        "min": 0.0,
+        "median": 10.91272783279419,
+        "max": 52.68022918701172
+      },
+      "rear": {
+        "count": 10970,
+        "min": 0.0,
+        "median": 10.879010677337646,
+        "max": 52.63801193237305
+      },
+      "command": {
+        "count": 24451,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21928,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21927
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5407.145686082442
+  },
+  {
+    "bag": "30618_9c09b081",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12670,
+      "/sensing/gnss/rover/fix": 12941,
+      "/vehicle/front_bogie_velocity": 12662,
+      "/vehicle/driver_position_cmd": 26626,
+      "/sensing/gnss/master/fix": 13307,
+      "/sensing/gnss/master/vel": 12999,
+      "/sensing/gnss/rover/vel": 12914
+    },
+    "inputs": {
+      "front": {
+        "count": 12662,
+        "min": 0.0,
+        "median": 11.413208484649658,
+        "max": 53.30847930908203
+      },
+      "rear": {
+        "count": 12670,
+        "min": 0.0,
+        "median": 11.40784215927124,
+        "max": 53.362335205078125
+      },
+      "command": {
+        "count": 26626,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 25332,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 25330
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24622,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24622,
+      "min": 0.0,
+      "median": 3.192391579991402,
+      "max": 14.816911587776987
+    },
+    "speed_rmse_mps": 0.035262401398919785,
+    "raw_wheel_rmse_mps": 0.03431185969901476,
+    "speed_bias_mps": -0.01374151900367977,
+    "final_relative_distance_m": 5468.547473470845
+  },
+  {
+    "bag": "30618_9c10cd0d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10970,
+      "/vehicle/driver_position_cmd": 24451,
+      "/vehicle/front_bogie_velocity": 10958
+    },
+    "inputs": {
+      "front": {
+        "count": 10958,
+        "min": 0.0,
+        "median": 10.91272783279419,
+        "max": 52.68022918701172
+      },
+      "rear": {
+        "count": 10970,
+        "min": 0.0,
+        "median": 10.879010677337646,
+        "max": 52.63801193237305
+      },
+      "command": {
+        "count": 24451,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21928,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21927
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5407.145686082442
+  },
+  {
+    "bag": "30618_a395846d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11962,
+      "/sensing/gnss/rover/fix": 12884,
+      "/vehicle/front_bogie_velocity": 11952,
+      "/vehicle/driver_position_cmd": 26282,
+      "/sensing/gnss/master/fix": 13105,
+      "/sensing/gnss/master/vel": 12827,
+      "/sensing/gnss/rover/vel": 12558
+    },
+    "inputs": {
+      "front": {
+        "count": 11952,
+        "min": 0.0,
+        "median": 10.054537296295166,
+        "max": 53.308677673339844
+      },
+      "rear": {
+        "count": 11962,
+        "min": 0.0,
+        "median": 10.04493522644043,
+        "max": 53.34955596923828
+      },
+      "command": {
+        "count": 26282,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23914,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23912
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23359,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23359,
+      "min": 0.0,
+      "median": 2.7795053516768053,
+      "max": 14.840501474006867
+    },
+    "speed_rmse_mps": 0.0330601247387181,
+    "raw_wheel_rmse_mps": 0.03451362708637645,
+    "speed_bias_mps": -0.016651622920585866,
+    "final_relative_distance_m": 5455.681238515722
+  },
+  {
+    "bag": "30618_a53d5f6f",
+    "messages": {
+      "/sensing/gnss/master/vel": 11813,
+      "/sensing/gnss/master/fix": 11949,
+      "/vehicle/driver_position_cmd": 24253,
+      "/vehicle/front_bogie_velocity": 11071,
+      "/sensing/gnss/rover/fix": 11859,
+      "/sensing/gnss/rover/vel": 11809,
+      "/vehicle/rear_bogie_velocity": 11049
+    },
+    "inputs": {
+      "front": {
+        "count": 11071,
+        "min": 0.0,
+        "median": 12.061281204223633,
+        "max": 53.24879837036133
+      },
+      "rear": {
+        "count": 11049,
+        "min": 0.0,
+        "median": 12.133926391601562,
+        "max": 53.391971588134766
+      },
+      "command": {
+        "count": 24253,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22120,
+    "statuses": {
+      "ok": 22120
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21478,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21478,
+      "min": 0.0,
+      "median": 3.413837723149711,
+      "max": 14.856922494244897
+    },
+    "speed_rmse_mps": 0.04359532478472423,
+    "raw_wheel_rmse_mps": 0.04289854577703052,
+    "speed_bias_mps": -0.01685203548648813,
+    "final_relative_distance_m": 5423.599003181529
+  },
+  {
+    "bag": "30618_a869780d",
+    "messages": {
+      "/sensing/gnss/master/vel": 10602,
+      "/sensing/gnss/master/fix": 10866,
+      "/vehicle/driver_position_cmd": 21731,
+      "/vehicle/front_bogie_velocity": 9898,
+      "/sensing/gnss/rover/fix": 10629,
+      "/sensing/gnss/rover/vel": 10536,
+      "/vehicle/rear_bogie_velocity": 9872
+    },
+    "inputs": {
+      "front": {
+        "count": 9898,
+        "min": 0.0,
+        "median": 15.035873413085938,
+        "max": 53.144500732421875
+      },
+      "rear": {
+        "count": 9872,
+        "min": 0.0,
+        "median": 15.092633247375488,
+        "max": 53.230045318603516
+      },
+      "command": {
+        "count": 21731,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19770,
+    "statuses": {
+      "ok": 19770
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19255,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19255,
+      "min": 0.0,
+      "median": 4.24724910971796,
+      "max": 14.75776233038058
+    },
+    "speed_rmse_mps": 0.03611677642640082,
+    "raw_wheel_rmse_mps": 0.04166856221707755,
+    "speed_bias_mps": -0.013430791598170226,
+    "final_relative_distance_m": 5295.493868546282
+  },
+  {
+    "bag": "30618_ab5921a4",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10637,
+      "/sensing/gnss/rover/fix": 11029,
+      "/vehicle/front_bogie_velocity": 10627,
+      "/vehicle/driver_position_cmd": 23083,
+      "/sensing/gnss/master/fix": 11541,
+      "/sensing/gnss/master/vel": 11262,
+      "/sensing/gnss/rover/vel": 11260
+    },
+    "inputs": {
+      "front": {
+        "count": 10627,
+        "min": 0.0,
+        "median": 14.270610809326172,
+        "max": 53.04800796508789
+      },
+      "rear": {
+        "count": 10637,
+        "min": 0.0,
+        "median": 14.236763000488281,
+        "max": 53.06875991821289
+      },
+      "command": {
+        "count": 23083,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21264,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 21262
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20610,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20610,
+      "min": 0.0,
+      "median": 4.0008404117135195,
+      "max": 14.776121818664057
+    },
+    "speed_rmse_mps": 0.04209242988581879,
+    "raw_wheel_rmse_mps": 0.03883787119265117,
+    "speed_bias_mps": -0.012261909435473936,
+    "final_relative_distance_m": 5451.478361538143
+  },
+  {
+    "bag": "30618_ae4eb346",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11658,
+      "/sensing/gnss/rover/fix": 12547,
+      "/vehicle/front_bogie_velocity": 11649,
+      "/vehicle/driver_position_cmd": 25163,
+      "/sensing/gnss/master/fix": 12521,
+      "/sensing/gnss/master/vel": 12362,
+      "/sensing/gnss/rover/vel": 12002
+    },
+    "inputs": {
+      "front": {
+        "count": 11649,
+        "min": 0.0,
+        "median": 11.204096794128418,
+        "max": 53.16502380371094
+      },
+      "rear": {
+        "count": 11658,
+        "min": 0.0,
+        "median": 11.166153907775879,
+        "max": 53.25056838989258
+      },
+      "command": {
+        "count": 25163,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23307,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23305
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22907,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22907,
+      "min": 0.0,
+      "median": 3.1078811109822078,
+      "max": 14.79713840578644
+    },
+    "speed_rmse_mps": 0.03467071164472146,
+    "raw_wheel_rmse_mps": 0.03636355799994667,
+    "speed_bias_mps": -0.01357632538638402,
+    "final_relative_distance_m": 5427.846252507351
+  },
+  {
+    "bag": "30618_af7496f0",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 2580,
+      "/sensing/gnss/rover/fix": 2553,
+      "/vehicle/front_bogie_velocity": 2570,
+      "/vehicle/driver_position_cmd": 5306,
+      "/sensing/gnss/master/fix": 2653,
+      "/sensing/gnss/master/vel": 2642,
+      "/sensing/gnss/rover/vel": 2617
+    },
+    "inputs": {
+      "front": {
+        "count": 2570,
+        "min": 0.0,
+        "median": 0.8067638278007507,
+        "max": 38.95448684692383
+      },
+      "rear": {
+        "count": 2580,
+        "min": 0.0,
+        "median": 0.7778361141681671,
+        "max": 39.00223922729492
+      },
+      "command": {
+        "count": 5306,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 5150,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 5148
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 4469,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 4469,
+      "min": 0.002,
+      "median": 0.2356883535518885,
+      "max": 10.818529151414252
+    },
+    "speed_rmse_mps": 0.039564684358258856,
+    "raw_wheel_rmse_mps": 0.04235047614648511,
+    "speed_bias_mps": -0.018714806566146488,
+    "final_relative_distance_m": 448.21078701615085
+  },
+  {
+    "bag": "30618_b1098bdb",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12135,
+      "/vehicle/driver_position_cmd": 25594,
+      "/vehicle/front_bogie_velocity": 12126
+    },
+    "inputs": {
+      "front": {
+        "count": 12126,
+        "min": 0.0,
+        "median": 10.827592849731445,
+        "max": 53.320960998535156
+      },
+      "rear": {
+        "count": 12135,
+        "min": 0.0,
+        "median": 10.817615509033203,
+        "max": 53.36811447143555
+      },
+      "command": {
+        "count": 25594,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24261,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 24260
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5213.79287681861
+  },
+  {
+    "bag": "30618_b15eafc3",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11695,
+      "/sensing/gnss/rover/fix": 12422,
+      "/vehicle/front_bogie_velocity": 11688,
+      "/vehicle/driver_position_cmd": 25157,
+      "/sensing/gnss/master/fix": 12578,
+      "/sensing/gnss/master/vel": 12417,
+      "/sensing/gnss/rover/vel": 12473
+    },
+    "inputs": {
+      "front": {
+        "count": 11688,
+        "min": 0.0,
+        "median": 10.71284294128418,
+        "max": 52.127197265625
+      },
+      "rear": {
+        "count": 11695,
+        "min": 0.0,
+        "median": 10.6836519241333,
+        "max": 51.99272918701172
+      },
+      "command": {
+        "count": 25157,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23383,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23381
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22999,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22999,
+      "min": 0.001,
+      "median": 2.9492197273177183,
+      "max": 14.430008870406143
+    },
+    "speed_rmse_mps": 0.03581526356763578,
+    "raw_wheel_rmse_mps": 0.03470792235140172,
+    "speed_bias_mps": -0.01228375975037473,
+    "final_relative_distance_m": 5400.086731834896
+  },
+  {
+    "bag": "30618_b3042f78",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9579,
+      "/sensing/gnss/rover/fix": 10425,
+      "/vehicle/front_bogie_velocity": 9569,
+      "/vehicle/driver_position_cmd": 21505,
+      "/sensing/gnss/master/fix": 10417,
+      "/sensing/gnss/master/vel": 10296,
+      "/sensing/gnss/rover/vel": 10411
+    },
+    "inputs": {
+      "front": {
+        "count": 9569,
+        "min": 0.0,
+        "median": 15.043163299560547,
+        "max": 53.251007080078125
+      },
+      "rear": {
+        "count": 9579,
+        "min": 0.0,
+        "median": 15.033035278320312,
+        "max": 53.245216369628906
+      },
+      "command": {
+        "count": 21505,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19148,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19146
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18190,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18190,
+      "min": 0.0,
+      "median": 4.224112331443269,
+      "max": 14.813009721187656
+    },
+    "speed_rmse_mps": 0.6700289365616122,
+    "raw_wheel_rmse_mps": 0.6702906561534516,
+    "speed_bias_mps": 0.07187860431763599,
+    "final_relative_distance_m": 5478.307156039067
+  },
+  {
+    "bag": "30618_b8044aa0",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11670,
+      "/sensing/gnss/rover/fix": 12679,
+      "/vehicle/front_bogie_velocity": 11660,
+      "/vehicle/driver_position_cmd": 25490,
+      "/sensing/gnss/master/fix": 12745,
+      "/sensing/gnss/master/vel": 12124,
+      "/sensing/gnss/rover/vel": 12559
+    },
+    "inputs": {
+      "front": {
+        "count": 11660,
+        "min": 0.0,
+        "median": 10.727705955505371,
+        "max": 52.00754928588867
+      },
+      "rear": {
+        "count": 11670,
+        "min": 0.0,
+        "median": 10.68381643295288,
+        "max": 52.09009552001953
+      },
+      "command": {
+        "count": 25490,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23330,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23328
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22108,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22108,
+      "min": 0.0,
+      "median": 3.0877047386984353,
+      "max": 14.53209018001196
+    },
+    "speed_rmse_mps": 0.03512604515251514,
+    "raw_wheel_rmse_mps": 0.03293064089953911,
+    "speed_bias_mps": -0.008311779039047815,
+    "final_relative_distance_m": 5401.847161677998
+  },
+  {
+    "bag": "30618_b83d854d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11470,
+      "/sensing/gnss/rover/fix": 11856,
+      "/vehicle/front_bogie_velocity": 11461,
+      "/vehicle/driver_position_cmd": 24110,
+      "/sensing/gnss/master/fix": 12054,
+      "/sensing/gnss/master/vel": 11823,
+      "/sensing/gnss/rover/vel": 11766
+    },
+    "inputs": {
+      "front": {
+        "count": 11461,
+        "min": 0.0,
+        "median": 12.521622657775879,
+        "max": 52.814208984375
+      },
+      "rear": {
+        "count": 11470,
+        "min": 0.0,
+        "median": 12.512365818023682,
+        "max": 52.8015022277832
+      },
+      "command": {
+        "count": 24110,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22931,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22929
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22397,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22397,
+      "min": 0.0,
+      "median": 3.5381107953256636,
+      "max": 14.683611442693516
+    },
+    "speed_rmse_mps": 0.032177210358318074,
+    "raw_wheel_rmse_mps": 0.03120492613148065,
+    "speed_bias_mps": -0.010566129457942743,
+    "final_relative_distance_m": 5414.913990574433
+  },
+  {
+    "bag": "30618_b95ca60a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9791,
+      "/sensing/gnss/rover/fix": 10837,
+      "/vehicle/front_bogie_velocity": 9781,
+      "/vehicle/driver_position_cmd": 21767,
+      "/sensing/gnss/master/fix": 10869,
+      "/sensing/gnss/master/vel": 10631,
+      "/sensing/gnss/rover/vel": 10675
+    },
+    "inputs": {
+      "front": {
+        "count": 9781,
+        "min": 0.0,
+        "median": 14.502355575561523,
+        "max": 52.19764709472656
+      },
+      "rear": {
+        "count": 9791,
+        "min": 0.0,
+        "median": 14.457376480102539,
+        "max": 52.251258850097656
+      },
+      "command": {
+        "count": 21767,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19572,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19570
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19028,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19028,
+      "min": 0.0,
+      "median": 4.067333954791321,
+      "max": 14.49629832060585
+    },
+    "speed_rmse_mps": 0.1060514258940594,
+    "raw_wheel_rmse_mps": 0.10701986600409373,
+    "speed_bias_mps": -0.005698512720939909,
+    "final_relative_distance_m": 5404.227536915993
+  },
+  {
+    "bag": "30618_bab2fe58",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 558,
+      "/vehicle/driver_position_cmd": 1141,
+      "/sensing/gnss/rover/fix": 563,
+      "/vehicle/front_bogie_velocity": 548,
+      "/sensing/gnss/master/fix": 560,
+      "/sensing/gnss/master/vel": 540,
+      "/sensing/gnss/rover/vel": 540
+    },
+    "inputs": {
+      "front": {
+        "count": 548,
+        "min": 0.0,
+        "median": 9.530601978302002,
+        "max": 26.71249771118164
+      },
+      "rear": {
+        "count": 558,
+        "min": 0.0,
+        "median": 9.233474731445312,
+        "max": 26.672882080078125
+      },
+      "command": {
+        "count": 1141,
+        "min": -15,
+        "median": -8,
+        "max": 0
+      }
+    },
+    "estimates": 1106,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 1105
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 1068,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 1068,
+      "min": 0.001,
+      "median": 2.4620777930400317,
+      "max": 7.41283110558982
+    },
+    "speed_rmse_mps": 0.06642764433187333,
+    "raw_wheel_rmse_mps": 0.031877067364998984,
+    "speed_bias_mps": -0.0486665099484788,
+    "final_relative_distance_m": 154.98981030683828
+  },
+  {
+    "bag": "30618_bc5e53c2",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 268,
+      "/sensing/gnss/rover/fix": 293,
+      "/vehicle/front_bogie_velocity": 257,
+      "/vehicle/driver_position_cmd": 580,
+      "/sensing/gnss/master/fix": 289,
+      "/sensing/gnss/master/vel": 265,
+      "/sensing/gnss/rover/vel": 270
+    },
+    "inputs": {
+      "front": {
+        "count": 257,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "rear": {
+        "count": 268,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "command": {
+        "count": 580,
+        "min": 0,
+        "median": 0.0,
+        "max": 0
+      }
+    },
+    "estimates": 525,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 523
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 489,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 489,
+      "min": 0.001,
+      "median": 0.0058309518948453,
+      "max": 0.05685068161420758
+    },
+    "speed_rmse_mps": 0.010420798771436134,
+    "raw_wheel_rmse_mps": 0.010420798771436134,
+    "speed_bias_mps": -0.00748996272687953,
+    "final_relative_distance_m": 0.0
+  },
+  {
+    "bag": "30618_bcc9e7a2",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9565,
+      "/vehicle/driver_position_cmd": 20453,
+      "/vehicle/front_bogie_velocity": 9555
+    },
+    "inputs": {
+      "front": {
+        "count": 9555,
+        "min": -0.37830111384391785,
+        "median": 15.826393127441406,
+        "max": 53.163177490234375
+      },
+      "rear": {
+        "count": 9565,
+        "min": -0.3889772891998291,
+        "median": 15.765559196472168,
+        "max": 53.232139587402344
+      },
+      "command": {
+        "count": 20453,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19120,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 19109,
+      "missing_wheels": 10
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5176.898017638712
+  },
+  {
+    "bag": "30618_cfd9fd5a",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11877,
+      "/vehicle/driver_position_cmd": 24640,
+      "/vehicle/front_bogie_velocity": 11864
+    },
+    "inputs": {
+      "front": {
+        "count": 11864,
+        "min": 0.0,
+        "median": 11.089619636535645,
+        "max": 53.29206085205078
+      },
+      "rear": {
+        "count": 11877,
+        "min": 0.0,
+        "median": 11.04899787902832,
+        "max": 53.3863410949707
+      },
+      "command": {
+        "count": 24640,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23741,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 23740
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5427.392424629262
+  },
+  {
+    "bag": "30618_d4ba7005",
+    "messages": {
+      "/sensing/gnss/master/vel": 11571,
+      "/sensing/gnss/master/fix": 11609,
+      "/vehicle/driver_position_cmd": 23218,
+      "/vehicle/front_bogie_velocity": 10955,
+      "/sensing/gnss/rover/fix": 11444,
+      "/sensing/gnss/rover/vel": 11488,
+      "/vehicle/rear_bogie_velocity": 10933
+    },
+    "inputs": {
+      "front": {
+        "count": 10955,
+        "min": 0.0,
+        "median": 12.518067359924316,
+        "max": 51.89950942993164
+      },
+      "rear": {
+        "count": 10933,
+        "min": 0.0,
+        "median": 12.587321281433105,
+        "max": 52.010311126708984
+      },
+      "command": {
+        "count": 23218,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21888,
+    "statuses": {
+      "ok": 21888
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21782,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21782,
+      "min": 0.0,
+      "median": 3.4970017875325077,
+      "max": 14.475120241296787
+    },
+    "speed_rmse_mps": 0.03402436900676049,
+    "raw_wheel_rmse_mps": 0.03097676799532711,
+    "speed_bias_mps": -0.014309068755920721,
+    "final_relative_distance_m": 5336.048968203032
+  },
+  {
+    "bag": "30618_dd8d0741",
+    "messages": {
+      "/sensing/gnss/master/vel": 12439,
+      "/sensing/gnss/master/fix": 12609,
+      "/vehicle/driver_position_cmd": 25357,
+      "/vehicle/front_bogie_velocity": 11724,
+      "/sensing/gnss/rover/fix": 12297,
+      "/sensing/gnss/rover/vel": 12201,
+      "/vehicle/rear_bogie_velocity": 11705
+    },
+    "inputs": {
+      "front": {
+        "count": 11724,
+        "min": 0.0,
+        "median": 10.887391090393066,
+        "max": 53.29092788696289
+      },
+      "rear": {
+        "count": 11705,
+        "min": 0.0,
+        "median": 10.908534049987793,
+        "max": 53.40488815307617
+      },
+      "command": {
+        "count": 25357,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 23429,
+    "statuses": {
+      "ok": 23429
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22860,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22860,
+      "min": 0.0,
+      "median": 3.1019908760169987,
+      "max": 14.845542495981748
+    },
+    "speed_rmse_mps": 0.05022594591904163,
+    "raw_wheel_rmse_mps": 0.050957249534372716,
+    "speed_bias_mps": -0.013139190454980205,
+    "final_relative_distance_m": 5449.869926193688
+  },
+  {
+    "bag": "30618_dd8e6395",
+    "messages": {
+      "/sensing/gnss/master/vel": 12219,
+      "/sensing/gnss/master/fix": 12287,
+      "/vehicle/driver_position_cmd": 24574,
+      "/vehicle/front_bogie_velocity": 11259,
+      "/sensing/gnss/rover/fix": 12118,
+      "/sensing/gnss/rover/vel": 12105,
+      "/vehicle/rear_bogie_velocity": 11239
+    },
+    "inputs": {
+      "front": {
+        "count": 11259,
+        "min": 0.0,
+        "median": 12.07387638092041,
+        "max": 52.71636962890625
+      },
+      "rear": {
+        "count": 11239,
+        "min": 0.0,
+        "median": 12.170684814453125,
+        "max": 52.761531829833984
+      },
+      "command": {
+        "count": 24574,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22498,
+    "statuses": {
+      "ok": 22498
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22346,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22346,
+      "min": 0.0,
+      "median": 3.3531932541981533,
+      "max": 14.655197064522879
+    },
+    "speed_rmse_mps": 0.03351020602741996,
+    "raw_wheel_rmse_mps": 0.03271412811283175,
+    "speed_bias_mps": -0.0166076160655614,
+    "final_relative_distance_m": 5359.145894571896
+  },
+  {
+    "bag": "30618_ddad08d6",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10797,
+      "/vehicle/driver_position_cmd": 23444,
+      "/vehicle/front_bogie_velocity": 10785
+    },
+    "inputs": {
+      "front": {
+        "count": 10785,
+        "min": 0.0,
+        "median": 11.877202987670898,
+        "max": 53.242977142333984
+      },
+      "rear": {
+        "count": 10797,
+        "min": 0.0,
+        "median": 11.891916275024414,
+        "max": 53.279296875
+      },
+      "command": {
+        "count": 23444,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21582,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21581
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5325.867780758404
+  },
+  {
+    "bag": "30618_defd0170",
+    "messages": {
+      "/sensing/gnss/master/vel": 10391,
+      "/sensing/gnss/master/fix": 10476,
+      "/vehicle/driver_position_cmd": 20953,
+      "/vehicle/front_bogie_velocity": 9578,
+      "/sensing/gnss/rover/fix": 10329,
+      "/sensing/gnss/rover/vel": 10305,
+      "/vehicle/rear_bogie_velocity": 9552
+    },
+    "inputs": {
+      "front": {
+        "count": 9578,
+        "min": 0.0,
+        "median": 14.223499774932861,
+        "max": 51.484840393066406
+      },
+      "rear": {
+        "count": 9552,
+        "min": 0.0,
+        "median": 14.281499862670898,
+        "max": 51.504295349121094
+      },
+      "command": {
+        "count": 20953,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19130,
+    "statuses": {
+      "ok": 19130
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18908,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18908,
+      "min": 0.0,
+      "median": 4.051336316896453,
+      "max": 14.536334957615693
+    },
+    "speed_rmse_mps": 0.10952215148484114,
+    "raw_wheel_rmse_mps": 0.11289341584832645,
+    "speed_bias_mps": -0.08074558655456401,
+    "final_relative_distance_m": 5126.999899707144
+  },
+  {
+    "bag": "30618_e151d6e4",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 411,
+      "/vehicle/driver_position_cmd": 821,
+      "/vehicle/front_bogie_velocity": 401
+    },
+    "inputs": {
+      "front": {
+        "count": 401,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "rear": {
+        "count": 411,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0
+      },
+      "command": {
+        "count": 821,
+        "min": 0,
+        "median": 0,
+        "max": 0
+      }
+    },
+    "estimates": 812,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 811
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 0.0
+  },
+  {
+    "bag": "30618_e2dcf65f",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10237,
+      "/sensing/gnss/rover/fix": 10349,
+      "/vehicle/front_bogie_velocity": 10225,
+      "/vehicle/driver_position_cmd": 21901,
+      "/sensing/gnss/master/fix": 10950,
+      "/sensing/gnss/master/vel": 10710,
+      "/sensing/gnss/rover/vel": 10644
+    },
+    "inputs": {
+      "front": {
+        "count": 10225,
+        "min": 0.0,
+        "median": 14.108016967773438,
+        "max": 52.57931900024414
+      },
+      "rear": {
+        "count": 10237,
+        "min": 0.0,
+        "median": 14.107633590698242,
+        "max": 52.566001892089844
+      },
+      "command": {
+        "count": 21901,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 20462,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 20460
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19908,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19908,
+      "min": 0.0,
+      "median": 3.91300626117567,
+      "max": 14.566003775916029
+    },
+    "speed_rmse_mps": 0.03402002095834795,
+    "raw_wheel_rmse_mps": 0.0321857168069248,
+    "speed_bias_mps": -0.008050978115858531,
+    "final_relative_distance_m": 5321.874213896153
+  },
+  {
+    "bag": "30618_e392e5bd",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10569,
+      "/vehicle/driver_position_cmd": 21988,
+      "/vehicle/front_bogie_velocity": 10559
+    },
+    "inputs": {
+      "front": {
+        "count": 10559,
+        "min": 0.0,
+        "median": 14.126251220703125,
+        "max": 52.471378326416016
+      },
+      "rear": {
+        "count": 10569,
+        "min": 0.0,
+        "median": 14.12796401977539,
+        "max": 52.6016731262207
+      },
+      "command": {
+        "count": 21988,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21128,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 21127
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5406.1050137589045
+  },
+  {
+    "bag": "30618_e3d94878",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11072,
+      "/sensing/gnss/rover/fix": 11473,
+      "/vehicle/front_bogie_velocity": 11064,
+      "/vehicle/driver_position_cmd": 23421,
+      "/sensing/gnss/master/fix": 11710,
+      "/sensing/gnss/master/vel": 11438,
+      "/sensing/gnss/rover/vel": 11442
+    },
+    "inputs": {
+      "front": {
+        "count": 11064,
+        "min": 0.0,
+        "median": 13.533820152282715,
+        "max": 51.70038604736328
+      },
+      "rear": {
+        "count": 11072,
+        "min": 0.0,
+        "median": 13.52028512954712,
+        "max": 51.67435073852539
+      },
+      "command": {
+        "count": 23421,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 22136,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22134
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21532,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21532,
+      "min": 0.0,
+      "median": 3.693188523922264,
+      "max": 14.36900347971285
+    },
+    "speed_rmse_mps": 0.031777477859452855,
+    "raw_wheel_rmse_mps": 0.03218906689426621,
+    "speed_bias_mps": -0.0058797749233451164,
+    "final_relative_distance_m": 5409.767598593452
+  },
+  {
+    "bag": "30618_e7dcdab1",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11435,
+      "/vehicle/driver_position_cmd": 23820,
+      "/vehicle/front_bogie_velocity": 11429
+    },
+    "inputs": {
+      "front": {
+        "count": 11429,
+        "min": 0.0,
+        "median": 12.302167892456055,
+        "max": 52.1872444152832
+      },
+      "rear": {
+        "count": 11435,
+        "min": 0.0,
+        "median": 12.294593811035156,
+        "max": 52.207035064697266
+      },
+      "command": {
+        "count": 23820,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22864,
+    "statuses": {
+      "stale_command": 1,
+      "ok": 22863
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5401.291063005415
+  },
+  {
+    "bag": "30618_e9a34502",
+    "messages": {
+      "/sensing/gnss/master/vel": 11904,
+      "/sensing/gnss/master/fix": 12040,
+      "/vehicle/driver_position_cmd": 24078,
+      "/vehicle/front_bogie_velocity": 11065,
+      "/sensing/gnss/rover/fix": 11836,
+      "/sensing/gnss/rover/vel": 11795,
+      "/vehicle/rear_bogie_velocity": 11043
+    },
+    "inputs": {
+      "front": {
+        "count": 11065,
+        "min": 0.0,
+        "median": 11.494982719421387,
+        "max": 51.448020935058594
+      },
+      "rear": {
+        "count": 11043,
+        "min": 0.0,
+        "median": 11.551592826843262,
+        "max": 51.59529495239258
+      },
+      "command": {
+        "count": 24078,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22108,
+    "statuses": {
+      "ok": 22108
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 21828,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 21828,
+      "min": 0.0,
+      "median": 3.1815814932396673,
+      "max": 14.314002235573389
+    },
+    "speed_rmse_mps": 0.029897394724033327,
+    "raw_wheel_rmse_mps": 0.030351062389219436,
+    "speed_bias_mps": -0.010527789648425271,
+    "final_relative_distance_m": 5378.601877551023
+  },
+  {
+    "bag": "30618_efb92709",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12019,
+      "/sensing/gnss/rover/fix": 12527,
+      "/vehicle/front_bogie_velocity": 12009,
+      "/vehicle/driver_position_cmd": 25607,
+      "/sensing/gnss/master/fix": 12801,
+      "/sensing/gnss/master/vel": 12701,
+      "/sensing/gnss/rover/vel": 12526
+    },
+    "inputs": {
+      "front": {
+        "count": 12009,
+        "min": 0.0,
+        "median": 11.850935935974121,
+        "max": 53.03779983520508
+      },
+      "rear": {
+        "count": 12019,
+        "min": 0.0,
+        "median": 11.863572120666504,
+        "max": 53.05264663696289
+      },
+      "command": {
+        "count": 25607,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24028,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23990,
+      "missing_wheels": 13,
+      "suspect_wheels": 23
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 23764,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 23764,
+      "min": 0.0,
+      "median": 3.30319617946013,
+      "max": 14.766729529587789
+    },
+    "speed_rmse_mps": 0.0580800552101276,
+    "raw_wheel_rmse_mps": 0.04171602864477773,
+    "speed_bias_mps": -0.012296541874220242,
+    "final_relative_distance_m": 5467.998143761877
+  },
+  {
+    "bag": "30618_f19a4ac3",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11539,
+      "/sensing/gnss/rover/fix": 11831,
+      "/vehicle/front_bogie_velocity": 11530,
+      "/vehicle/driver_position_cmd": 23934,
+      "/sensing/gnss/master/fix": 11966,
+      "/sensing/gnss/master/vel": 11518,
+      "/sensing/gnss/rover/vel": 11552
+    },
+    "inputs": {
+      "front": {
+        "count": 11530,
+        "min": 0.0,
+        "median": 13.144484996795654,
+        "max": 51.62820053100586
+      },
+      "rear": {
+        "count": 11539,
+        "min": 0.0,
+        "median": 13.114484786987305,
+        "max": 51.75703048706055
+      },
+      "command": {
+        "count": 23934,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23069,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23067
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22049,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22049,
+      "min": 0.0,
+      "median": 3.643208750538459,
+      "max": 14.397451336955442
+    },
+    "speed_rmse_mps": 0.03294986116797821,
+    "raw_wheel_rmse_mps": 0.031430807367050645,
+    "speed_bias_mps": -0.007711386480140094,
+    "final_relative_distance_m": 5410.361635030057
+  },
+  {
+    "bag": "30618_f28179bb",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9582,
+      "/vehicle/front_bogie_velocity": 9571,
+      "/vehicle/driver_position_cmd": 21450
+    },
+    "inputs": {
+      "front": {
+        "count": 9571,
+        "min": 0.0,
+        "median": 14.733763694763184,
+        "max": 52.991188049316406
+      },
+      "rear": {
+        "count": 9582,
+        "min": 0.0,
+        "median": 14.725694179534912,
+        "max": 53.095664978027344
+      },
+      "command": {
+        "count": 21450,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19153,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19151
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 0,
+    "gnss_reference": null,
+    "gnss_speed_mps": {
+      "count": 0,
+      "min": null,
+      "median": null,
+      "max": null
+    },
+    "speed_rmse_mps": null,
+    "raw_wheel_rmse_mps": null,
+    "speed_bias_mps": null,
+    "final_relative_distance_m": 5321.364966173018
+  },
+  {
+    "bag": "30618_f3a0694d",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12038,
+      "/sensing/gnss/rover/fix": 12251,
+      "/vehicle/front_bogie_velocity": 12027,
+      "/vehicle/driver_position_cmd": 24531,
+      "/sensing/gnss/master/fix": 12263,
+      "/sensing/gnss/master/vel": 11624,
+      "/sensing/gnss/rover/vel": 11974
+    },
+    "inputs": {
+      "front": {
+        "count": 12027,
+        "min": 0.0,
+        "median": 11.151331901550293,
+        "max": 52.78706741333008
+      },
+      "rear": {
+        "count": 12038,
+        "min": 0.0,
+        "median": 11.119725704193115,
+        "max": 52.76532745361328
+      },
+      "command": {
+        "count": 24531,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24065,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24063
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22817,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22817,
+      "min": 0.0,
+      "median": 3.288067061359911,
+      "max": 14.715826888082095
+    },
+    "speed_rmse_mps": 0.03105562023686883,
+    "raw_wheel_rmse_mps": 0.0332897915181194,
+    "speed_bias_mps": -0.011637890360487636,
+    "final_relative_distance_m": 5411.453679134075
+  },
+  {
+    "bag": "30618_f3b8c99b",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9847,
+      "/sensing/gnss/rover/fix": 10657,
+      "/vehicle/front_bogie_velocity": 9838,
+      "/vehicle/driver_position_cmd": 21540,
+      "/sensing/gnss/master/fix": 10769,
+      "/sensing/gnss/master/vel": 10544,
+      "/sensing/gnss/rover/vel": 10462
+    },
+    "inputs": {
+      "front": {
+        "count": 9838,
+        "min": 0.0,
+        "median": 14.457295894622803,
+        "max": 51.85627365112305
+      },
+      "rear": {
+        "count": 9847,
+        "min": 0.0,
+        "median": 14.448155403137207,
+        "max": 51.91298294067383
+      },
+      "command": {
+        "count": 21540,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19685,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19683
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19291,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19291,
+      "min": 0.0,
+      "median": 3.973394644381552,
+      "max": 14.424008874095994
+    },
+    "speed_rmse_mps": 0.04140321999927111,
+    "raw_wheel_rmse_mps": 0.04008843625491672,
+    "speed_bias_mps": -0.0090469121558626,
+    "final_relative_distance_m": 5428.291497523376
+  },
+  {
+    "bag": "30639_0ab96c59",
+    "messages": {
+      "/sensing/gnss/master/vel": 823,
+      "/sensing/gnss/master/fix": 821,
+      "/vehicle/driver_position_cmd": 1639,
+      "/vehicle/front_bogie_velocity": 811,
+      "/sensing/gnss/rover/fix": 819,
+      "/sensing/gnss/rover/vel": 805,
+      "/vehicle/rear_bogie_velocity": 790
+    },
+    "inputs": {
+      "front": {
+        "count": 811,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 3.763625144958496
+      },
+      "rear": {
+        "count": 790,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 3.7473363876342773
+      },
+      "command": {
+        "count": 1639,
+        "min": 0,
+        "median": 0,
+        "max": 6
+      }
+    },
+    "estimates": 1601,
+    "statuses": {
+      "ok": 1601
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 1599,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 1599,
+      "min": 0.0,
+      "median": 0.004242640687119285,
+      "max": 1.086203019697515
+    },
+    "speed_rmse_mps": 0.012892181752382383,
+    "raw_wheel_rmse_mps": 0.00908983870930647,
+    "speed_bias_mps": -0.00433872875981318,
+    "final_relative_distance_m": 1.7194565359879914
+  },
+  {
+    "bag": "30639_0be558e2",
+    "messages": {
+      "/sensing/gnss/master/vel": 10554,
+      "/sensing/gnss/master/fix": 12866,
+      "/vehicle/driver_position_cmd": 25829,
+      "/vehicle/front_bogie_velocity": 12440,
+      "/sensing/gnss/rover/fix": 12695,
+      "/sensing/gnss/rover/vel": 12675,
+      "/vehicle/rear_bogie_velocity": 12424
+    },
+    "inputs": {
+      "front": {
+        "count": 12440,
+        "min": 0.0,
+        "median": 11.46331787109375,
+        "max": 53.729705810546875
+      },
+      "rear": {
+        "count": 12424,
+        "min": 0.0,
+        "median": 11.483755111694336,
+        "max": 53.91954040527344
+      },
+      "command": {
+        "count": 25829,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 24864,
+    "statuses": {
+      "ok": 24864
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19850,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19850,
+      "min": 0.001,
+      "median": 3.5824534888816073,
+      "max": 15.021163104100829
+    },
+    "speed_rmse_mps": 0.04004018343818981,
+    "raw_wheel_rmse_mps": 0.04259418870720629,
+    "speed_bias_mps": -0.021765105700663145,
+    "final_relative_distance_m": 5517.575145344598
+  },
+  {
+    "bag": "30639_253671cc",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9721,
+      "/vehicle/front_bogie_velocity": 9720,
+      "/sensing/gnss/rover/fix": 10819,
+      "/vehicle/driver_position_cmd": 21639,
+      "/sensing/gnss/master/fix": 10819,
+      "/sensing/gnss/master/vel": 10804,
+      "/sensing/gnss/rover/vel": 10787
+    },
+    "inputs": {
+      "front": {
+        "count": 9720,
+        "min": 0.0,
+        "median": 15.036713123321533,
+        "max": 49.41766357421875
+      },
+      "rear": {
+        "count": 9721,
+        "min": 0.0,
+        "median": 15.008723258972168,
+        "max": 49.39704132080078
+      },
+      "command": {
+        "count": 21639,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 19441,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19439
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19417,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19417,
+      "min": 0.001,
+      "median": 4.167000479961575,
+      "max": 13.66485656712137
+    },
+    "speed_rmse_mps": 0.05446187341621716,
+    "raw_wheel_rmse_mps": 0.0544868406094884,
+    "speed_bias_mps": 0.014392474134745743,
+    "final_relative_distance_m": 5264.203699226059
+  },
+  {
+    "bag": "30639_2b4a6347",
+    "messages": {
+      "/sensing/gnss/master/vel": 10112,
+      "/sensing/gnss/master/fix": 11114,
+      "/vehicle/driver_position_cmd": 22224,
+      "/vehicle/front_bogie_velocity": 10896,
+      "/sensing/gnss/rover/fix": 11111,
+      "/sensing/gnss/rover/vel": 11094,
+      "/vehicle/rear_bogie_velocity": 10870
+    },
+    "inputs": {
+      "front": {
+        "count": 10896,
+        "min": 0.0,
+        "median": 14.5520658493042,
+        "max": 50.98779296875
+      },
+      "rear": {
+        "count": 10870,
+        "min": 0.0,
+        "median": 14.56507921218872,
+        "max": 51.0322380065918
+      },
+      "command": {
+        "count": 22224,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21766,
+    "statuses": {
+      "ok": 21766
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19774,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19774,
+      "min": 0.0,
+      "median": 3.951355463635232,
+      "max": 14.246002842902989
+    },
+    "speed_rmse_mps": 0.040285662186374895,
+    "raw_wheel_rmse_mps": 0.035541139605531215,
+    "speed_bias_mps": -0.016425966400817314,
+    "final_relative_distance_m": 5391.423729205605
+  },
+  {
+    "bag": "30639_3b3d9eb8",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10542,
+      "/vehicle/front_bogie_velocity": 11559,
+      "/sensing/gnss/rover/fix": 12183,
+      "/vehicle/driver_position_cmd": 24372,
+      "/sensing/gnss/master/fix": 12185,
+      "/sensing/gnss/master/vel": 12149,
+      "/sensing/gnss/rover/vel": 12161
+    },
+    "inputs": {
+      "front": {
+        "count": 11559,
+        "min": 0.0,
+        "median": 12.381814002990723,
+        "max": 46.44280242919922
+      },
+      "rear": {
+        "count": 10542,
+        "min": 0.0,
+        "median": 11.376718044281006,
+        "max": 46.515995025634766
+      },
+      "command": {
+        "count": 24372,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22101,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 22087,
+      "missing_wheels": 12
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22019,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22019,
+      "min": 0.001,
+      "median": 3.261067616594296,
+      "max": 12.749384377294458
+    },
+    "speed_rmse_mps": 0.07608729445981809,
+    "raw_wheel_rmse_mps": 0.07805855123232261,
+    "speed_bias_mps": 0.03118702091984092,
+    "final_relative_distance_m": 5481.412566096768
+  },
+  {
+    "bag": "30639_4285f2bc",
+    "messages": {
+      "/sensing/gnss/master/vel": 11107,
+      "/sensing/gnss/master/fix": 12997,
+      "/vehicle/driver_position_cmd": 25512,
+      "/vehicle/front_bogie_velocity": 12318,
+      "/sensing/gnss/rover/fix": 13030,
+      "/sensing/gnss/rover/vel": 12976,
+      "/vehicle/rear_bogie_velocity": 11929
+    },
+    "inputs": {
+      "front": {
+        "count": 12318,
+        "min": 0.0,
+        "median": 11.571543216705322,
+        "max": 53.44352340698242
+      },
+      "rear": {
+        "count": 11929,
+        "min": 0.0,
+        "median": 11.787824630737305,
+        "max": 53.57524871826172
+      },
+      "command": {
+        "count": 25512,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 24247,
+    "statuses": {
+      "ok": 24247
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20605,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20605,
+      "min": 0.0,
+      "median": 3.2006805526325177,
+      "max": 14.921540470072117
+    },
+    "speed_rmse_mps": 0.08157768473358973,
+    "raw_wheel_rmse_mps": 0.07749191467772927,
+    "speed_bias_mps": -0.01326207388222662,
+    "final_relative_distance_m": 5464.3261017068935
+  },
+  {
+    "bag": "30639_44226bde",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9875,
+      "/vehicle/front_bogie_velocity": 10016,
+      "/sensing/gnss/rover/fix": 10832,
+      "/vehicle/driver_position_cmd": 21662,
+      "/sensing/gnss/master/fix": 10830,
+      "/sensing/gnss/master/vel": 10824,
+      "/sensing/gnss/rover/vel": 10800
+    },
+    "inputs": {
+      "front": {
+        "count": 10016,
+        "min": 0.0,
+        "median": 15.637584686279297,
+        "max": 50.98558044433594
+      },
+      "rear": {
+        "count": 9875,
+        "min": 0.0,
+        "median": 16.114763259887695,
+        "max": 51.03921127319336
+      },
+      "command": {
+        "count": 21662,
+        "min": -15,
+        "median": 0.0,
+        "max": 13
+      }
+    },
+    "estimates": 19891,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19889
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19885,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19885,
+      "min": 0.001,
+      "median": 4.38433256037906,
+      "max": 14.062486728882625
+    },
+    "speed_rmse_mps": 0.052832891736908034,
+    "raw_wheel_rmse_mps": 0.05302161090572687,
+    "speed_bias_mps": 0.017318377067351117,
+    "final_relative_distance_m": 5431.356337404276
+  },
+  {
+    "bag": "30639_50956d6e",
+    "messages": {
+      "/sensing/gnss/master/vel": 9205,
+      "/sensing/gnss/master/fix": 11036,
+      "/vehicle/driver_position_cmd": 22094,
+      "/vehicle/front_bogie_velocity": 10904,
+      "/sensing/gnss/rover/fix": 10759,
+      "/sensing/gnss/rover/vel": 10736,
+      "/vehicle/rear_bogie_velocity": 10892
+    },
+    "inputs": {
+      "front": {
+        "count": 10904,
+        "min": 0.0,
+        "median": 14.54376220703125,
+        "max": 53.21037673950195
+      },
+      "rear": {
+        "count": 10892,
+        "min": 0.0,
+        "median": 14.57844066619873,
+        "max": 53.3238639831543
+      },
+      "command": {
+        "count": 22094,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 21796,
+    "statuses": {
+      "ok": 21722,
+      "missing_wheels": 74
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18026,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18026,
+      "min": 0.0,
+      "median": 3.9744773730647895,
+      "max": 14.554260029283522
+    },
+    "speed_rmse_mps": 0.13071100607546732,
+    "raw_wheel_rmse_mps": 0.14182474357324762,
+    "speed_bias_mps": -0.030049783147521148,
+    "final_relative_distance_m": 5445.526933956035
+  },
+  {
+    "bag": "30639_584b6e32",
+    "messages": {
+      "/sensing/gnss/master/vel": 9351,
+      "/sensing/gnss/master/fix": 11404,
+      "/vehicle/driver_position_cmd": 22806,
+      "/vehicle/front_bogie_velocity": 11133,
+      "/sensing/gnss/rover/fix": 11401,
+      "/sensing/gnss/rover/vel": 11386,
+      "/vehicle/rear_bogie_velocity": 10965
+    },
+    "inputs": {
+      "front": {
+        "count": 11133,
+        "min": 0.0,
+        "median": 13.890636444091797,
+        "max": 53.122676849365234
+      },
+      "rear": {
+        "count": 10965,
+        "min": 0.0,
+        "median": 14.127836227416992,
+        "max": 53.160865783691406
+      },
+      "command": {
+        "count": 22806,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 22098,
+    "statuses": {
+      "ok": 22098
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18094,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18094,
+      "min": 0.0,
+      "median": 3.7073371845571317,
+      "max": 43.83506744605282
+    },
+    "speed_rmse_mps": 0.3797210393013401,
+    "raw_wheel_rmse_mps": 0.3792738497338904,
+    "speed_bias_mps": -0.030242166664898,
+    "final_relative_distance_m": 5456.965236811386
+  },
+  {
+    "bag": "30639_92226df0",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 11538,
+      "/vehicle/front_bogie_velocity": 11539,
+      "/sensing/gnss/rover/fix": 12075,
+      "/vehicle/driver_position_cmd": 24340,
+      "/sensing/gnss/master/fix": 12042,
+      "/sensing/gnss/master/vel": 10723,
+      "/sensing/gnss/rover/vel": 11954
+    },
+    "inputs": {
+      "front": {
+        "count": 11539,
+        "min": 0.0,
+        "median": 13.477418899536133,
+        "max": 50.80611038208008
+      },
+      "rear": {
+        "count": 11538,
+        "min": 0.0,
+        "median": 13.48552417755127,
+        "max": 50.759803771972656
+      },
+      "command": {
+        "count": 24340,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 23077,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 23075
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20273,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20273,
+      "min": 0.0,
+      "median": 3.597003475116475,
+      "max": 13.963075771476712
+    },
+    "speed_rmse_mps": 0.06460489398323484,
+    "raw_wheel_rmse_mps": 0.06489530444222717,
+    "speed_bias_mps": 0.030078561044980273,
+    "final_relative_distance_m": 5463.657687177027
+  },
+  {
+    "bag": "30639_927002c2",
+    "messages": {
+      "/sensing/gnss/master/vel": 10711,
+      "/sensing/gnss/master/fix": 11446,
+      "/vehicle/driver_position_cmd": 22891,
+      "/vehicle/front_bogie_velocity": 10497,
+      "/sensing/gnss/rover/fix": 11442,
+      "/sensing/gnss/rover/vel": 11426,
+      "/vehicle/rear_bogie_velocity": 10242
+    },
+    "inputs": {
+      "front": {
+        "count": 10497,
+        "min": 0.0,
+        "median": 12.662764549255371,
+        "max": 52.49944305419922
+      },
+      "rear": {
+        "count": 10242,
+        "min": 0.0,
+        "median": 12.506700038909912,
+        "max": 52.53517150878906
+      },
+      "command": {
+        "count": 22891,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 20739,
+    "statuses": {
+      "ok": 20739
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19511,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19511,
+      "min": 0.0,
+      "median": 3.535135923836593,
+      "max": 14.640459555628711
+    },
+    "speed_rmse_mps": 0.0547940376034848,
+    "raw_wheel_rmse_mps": 0.047127359415071304,
+    "speed_bias_mps": -0.025692493943375895,
+    "final_relative_distance_m": 5361.67455662084
+  },
+  {
+    "bag": "30639_9c362687",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12278,
+      "/vehicle/front_bogie_velocity": 12279,
+      "/sensing/gnss/rover/fix": 13585,
+      "/vehicle/driver_position_cmd": 27166,
+      "/sensing/gnss/master/fix": 13581,
+      "/sensing/gnss/master/vel": 13578,
+      "/sensing/gnss/rover/vel": 13548
+    },
+    "inputs": {
+      "front": {
+        "count": 12279,
+        "min": -0.26383981108665466,
+        "median": 11.030654907226562,
+        "max": 50.73042678833008
+      },
+      "rear": {
+        "count": 12278,
+        "min": -0.2638704776763916,
+        "median": 11.027774810791016,
+        "max": 50.82175064086914
+      },
+      "command": {
+        "count": 27166,
+        "min": -15,
+        "median": 0.0,
+        "max": 13
+      }
+    },
+    "estimates": 24557,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24550,
+      "missing_wheels": 5
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 24535,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 24535,
+      "min": 0.001,
+      "median": 3.0582360929136914,
+      "max": 13.995234403181676
+    },
+    "speed_rmse_mps": 0.054202307790880325,
+    "raw_wheel_rmse_mps": 0.051770845722993335,
+    "speed_bias_mps": 0.014079227718743502,
+    "final_relative_distance_m": 5434.759253718404
+  },
+  {
+    "bag": "30639_9f0b519f",
+    "messages": {
+      "/sensing/gnss/master/vel": 9835,
+      "/sensing/gnss/master/fix": 10309,
+      "/vehicle/driver_position_cmd": 20618,
+      "/vehicle/front_bogie_velocity": 9825,
+      "/sensing/gnss/rover/fix": 10306,
+      "/sensing/gnss/rover/vel": 10293,
+      "/vehicle/rear_bogie_velocity": 9746
+    },
+    "inputs": {
+      "front": {
+        "count": 9825,
+        "min": 0.0,
+        "median": 15.40917682647705,
+        "max": 51.6516227722168
+      },
+      "rear": {
+        "count": 9746,
+        "min": 0.0,
+        "median": 15.5166654586792,
+        "max": 51.6940803527832
+      },
+      "command": {
+        "count": 20618,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19571,
+    "statuses": {
+      "ok": 19571
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 18697,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 18697,
+      "min": 0.0,
+      "median": 4.231546407638701,
+      "max": 14.409293702329759
+    },
+    "speed_rmse_mps": 0.036720249156140645,
+    "raw_wheel_rmse_mps": 0.04214484411268875,
+    "speed_bias_mps": -0.022779436853864736,
+    "final_relative_distance_m": 5367.244122794209
+  },
+  {
+    "bag": "30639_c31df386",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 12554,
+      "/vehicle/front_bogie_velocity": 12361,
+      "/sensing/gnss/rover/fix": 13610,
+      "/vehicle/driver_position_cmd": 27219,
+      "/sensing/gnss/master/fix": 13607,
+      "/sensing/gnss/master/vel": 12003,
+      "/sensing/gnss/rover/vel": 13581
+    },
+    "inputs": {
+      "front": {
+        "count": 12361,
+        "min": 0.0,
+        "median": 11.463943481445312,
+        "max": 50.10219192504883
+      },
+      "rear": {
+        "count": 12554,
+        "min": 0.0,
+        "median": 11.324361801147461,
+        "max": 50.09877395629883
+      },
+      "command": {
+        "count": 27219,
+        "min": -15,
+        "median": 0,
+        "max": 13
+      }
+    },
+    "estimates": 24915,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 24913
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 22229,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 22229,
+      "min": 0.0009999999999999998,
+      "median": 3.0022035240802714,
+      "max": 13.767008171712545
+    },
+    "speed_rmse_mps": 0.06296312723553381,
+    "raw_wheel_rmse_mps": 0.061781273336553706,
+    "speed_bias_mps": 0.018765245899629142,
+    "final_relative_distance_m": 5464.9243304229785
+  },
+  {
+    "bag": "30639_d3c43d69",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 9831,
+      "/vehicle/front_bogie_velocity": 9832,
+      "/sensing/gnss/rover/fix": 10883,
+      "/vehicle/driver_position_cmd": 21986,
+      "/sensing/gnss/master/fix": 10858,
+      "/sensing/gnss/master/vel": 10782,
+      "/sensing/gnss/rover/vel": 10843
+    },
+    "inputs": {
+      "front": {
+        "count": 9832,
+        "min": 0.0,
+        "median": 14.31642198562622,
+        "max": 46.54769515991211
+      },
+      "rear": {
+        "count": 9831,
+        "min": 0.0,
+        "median": 14.27506160736084,
+        "max": 46.55259323120117
+      },
+      "command": {
+        "count": 21986,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19663,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 19661
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 19307,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 19307,
+      "min": 0.0,
+      "median": 3.882211998332909,
+      "max": 12.86610994045986
+    },
+    "speed_rmse_mps": 0.10660404342326979,
+    "raw_wheel_rmse_mps": 0.10713760765528874,
+    "speed_bias_mps": 0.009462085107929478,
+    "final_relative_distance_m": 5234.588084724309
+  },
+  {
+    "bag": "30639_d601d28f",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 8998,
+      "/vehicle/front_bogie_velocity": 8997,
+      "/sensing/gnss/rover/fix": 9931,
+      "/vehicle/driver_position_cmd": 20154,
+      "/sensing/gnss/master/fix": 10077,
+      "/sensing/gnss/master/vel": 8238,
+      "/sensing/gnss/rover/vel": 9904
+    },
+    "inputs": {
+      "front": {
+        "count": 8997,
+        "min": 0.0,
+        "median": 19.291542053222656,
+        "max": 50.95289611816406
+      },
+      "rear": {
+        "count": 8998,
+        "min": 0.0,
+        "median": 19.289729118347168,
+        "max": 50.956260681152344
+      },
+      "command": {
+        "count": 20154,
+        "min": -15,
+        "median": 0.0,
+        "max": 13
+      }
+    },
+    "estimates": 17995,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 17993
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 14707,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 14707,
+      "min": 0.001,
+      "median": 4.5581668464416705,
+      "max": 13.881246197658193
+    },
+    "speed_rmse_mps": 0.10351603635051625,
+    "raw_wheel_rmse_mps": 0.1057706650816078,
+    "speed_bias_mps": 0.06734816471191013,
+    "final_relative_distance_m": 5498.733988026941
+  },
+  {
+    "bag": "30639_d927f360",
+    "messages": {
+      "/sensing/gnss/master/vel": 8989,
+      "/sensing/gnss/master/fix": 10964,
+      "/vehicle/driver_position_cmd": 21930,
+      "/vehicle/front_bogie_velocity": 10171,
+      "/sensing/gnss/rover/fix": 10961,
+      "/sensing/gnss/rover/vel": 10949,
+      "/vehicle/rear_bogie_velocity": 9780
+    },
+    "inputs": {
+      "front": {
+        "count": 10171,
+        "min": 0.0,
+        "median": 14.129293441772461,
+        "max": 50.743221282958984
+      },
+      "rear": {
+        "count": 9780,
+        "min": 0.0,
+        "median": 14.081412315368652,
+        "max": 50.78117370605469
+      },
+      "command": {
+        "count": 21930,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 19951,
+    "statuses": {
+      "ok": 19951
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 16259,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 16259,
+      "min": 0.0,
+      "median": 3.9158391182478374,
+      "max": 14.150081413193353
+    },
+    "speed_rmse_mps": 0.045050452407439524,
+    "raw_wheel_rmse_mps": 0.0388614347207911,
+    "speed_bias_mps": -0.024043565287794676,
+    "final_relative_distance_m": 5380.05727279123
+  },
+  {
+    "bag": "30639_dce52be4",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 10582,
+      "/vehicle/front_bogie_velocity": 10581,
+      "/sensing/gnss/rover/fix": 11427,
+      "/vehicle/driver_position_cmd": 22943,
+      "/sensing/gnss/master/fix": 11432,
+      "/sensing/gnss/master/vel": 10989,
+      "/sensing/gnss/rover/vel": 11399
+    },
+    "inputs": {
+      "front": {
+        "count": 10581,
+        "min": 0.0,
+        "median": 13.627179145812988,
+        "max": 50.724117279052734
+      },
+      "rear": {
+        "count": 10582,
+        "min": 0.0,
+        "median": 13.618293285369873,
+        "max": 50.788238525390625
+      },
+      "command": {
+        "count": 22943,
+        "min": -15,
+        "median": 0,
+        "max": 15
+      }
+    },
+    "estimates": 21163,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 21161
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 20265,
+    "gnss_reference": "master",
+    "gnss_speed_mps": {
+      "count": 20265,
+      "min": 0.0,
+      "median": 3.4223800198107748,
+      "max": 13.795893374479233
+    },
+    "speed_rmse_mps": 0.3278600503107147,
+    "raw_wheel_rmse_mps": 0.3291289399174236,
+    "speed_bias_mps": 0.03586913880510625,
+    "final_relative_distance_m": 5232.019620960095
+  },
+  {
+    "bag": "30639_e4379d7f",
+    "messages": {
+      "/vehicle/rear_bogie_velocity": 13425,
+      "/vehicle/front_bogie_velocity": 13425,
+      "/sensing/gnss/rover/fix": 5727,
+      "/vehicle/driver_position_cmd": 28726,
+      "/sensing/gnss/rover/vel": 5705
+    },
+    "inputs": {
+      "front": {
+        "count": 13425,
+        "min": 0.0,
+        "median": 9.810417175292969,
+        "max": 50.68344497680664
+      },
+      "rear": {
+        "count": 13425,
+        "min": 0.0,
+        "median": 9.807251930236816,
+        "max": 50.63395690917969
+      },
+      "command": {
+        "count": 28726,
+        "min": -15,
+        "median": 0.0,
+        "max": 15
+      }
+    },
+    "estimates": 26850,
+    "statuses": {
+      "stale_command": 2,
+      "ok": 26840,
+      "missing_wheels": 8
+    },
+    "out_of_order_stamps": 0,
+    "gnss_speed_pairs": 10737,
+    "gnss_reference": "rover",
+    "gnss_speed_mps": {
+      "count": 10737,
+      "min": 0.001,
+      "median": 2.7177073058002406,
+      "max": 32.46491128895934
+    },
+    "speed_rmse_mps": 0.38214865497129896,
+    "raw_wheel_rmse_mps": 0.382439991654629,
+    "speed_bias_mps": 0.00579176209677291,
+    "final_relative_distance_m": 5384.688805512771
+  }
+]
