@@ -1,0 +1,97 @@
+{
+ "environment": "docker ros:humble (Ubuntu 22.04, ROS 2 Humble), сборка colcon из чистого клона, tools/ros_check.sh",
+ "realtime_5min": {
+  "bag": "30618_01f73500",
+  "rate": 1,
+  "duration_s": 300,
+  "latency": {
+   "velocity": {
+    "rate_hz": 48.11,
+    "latency": {
+     "n": 14504,
+     "p50_ms": 3.196,
+     "p95_ms": 6.905,
+     "p99_ms": 8.177,
+     "max_ms": 34.558
+    }
+   },
+   "position": {
+    "rate_hz": 48.11,
+    "latency": {
+     "n": 14504,
+     "p50_ms": 3.891,
+     "p95_ms": 7.645,
+     "p99_ms": 8.903,
+     "max_ms": 35.007
+    }
+   }
+  },
+  "process": {
+   "VmHWM_kb": 65444,
+   "VmRSS_kb": 65444,
+   "cpu_share_of_one_core": 0.131
+  },
+  "accuracy_out2ref": {
+   "v_rmse": 0.0403,
+   "v_bias": 0.0005,
+   "v_rmse_clean": 0.0403,
+   "p_rmse_3d": 1.1984,
+   "along_rmse": 1.481,
+   "cross_rmse": 0.1146,
+   "drift_pct": 0.0188,
+   "final_err_3d": 0.1677
+  }
+ },
+ "stress_x4_full_bag": {
+  "bag": "30618_27e994fc",
+  "rate": 4,
+  "bag_duration_s": 1897.5,
+  "latency": {
+   "velocity": {
+    "rate_hz": 189.68,
+    "latency": {
+     "n": 90412,
+     "p50_ms": 3.441,
+     "p95_ms": 6.883,
+     "p99_ms": 7.784,
+     "max_ms": 11.891
+    }
+   },
+   "position": {
+    "rate_hz": 189.68,
+    "latency": {
+     "n": 90412,
+     "p50_ms": 4.073,
+     "p95_ms": 7.627,
+     "p99_ms": 8.304,
+     "max_ms": 52.51
+    }
+   }
+  },
+  "process": {
+   "VmHWM_kb": 66708,
+   "VmRSS_kb": 66708,
+   "cpu_share_of_one_core": 0.436
+  },
+  "accuracy_out2ref": {
+   "v_rmse": 0.1632,
+   "v_bias": 0.0001,
+   "v_rmse_clean": 0.0393,
+   "p_rmse_3d": 3.4323,
+   "along_rmse": 2.8121,
+   "cross_rmse": 1.4403,
+   "drift_pct": null,
+   "final_err_3d": 6.1527
+  },
+  "offline_core_same_bag": {
+   "v_rmse": 0.1632,
+   "v_bias": 0.0001,
+   "v_rmse_clean": 0.0374,
+   "p_rmse_3d": 3.4366,
+   "along_rmse": 2.8102,
+   "cross_rmse": 1.4415,
+   "drift_pct": 0.1084,
+   "final_err_3d": 6.1681
+  }
+ }
+}

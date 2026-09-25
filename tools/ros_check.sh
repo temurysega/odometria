@@ -22,7 +22,7 @@ REC_PID=$!
 sleep 3
 START=$(date +%s.%N)
 CPU0=$(awk '{print $14+$15}' /proc/$NODE_PID/stat)
-timeout $SECONDS_PLAY ros2 bag play /bags/$BAG > /out/play.log 2>&1
+timeout $SECONDS_PLAY ros2 bag play --rate ${RATE:-1} /bags/$BAG > /out/play.log 2>&1
 END=$(date +%s.%N)
 CPU1=$(awk '{print $14+$15}' /proc/$NODE_PID/stat)
 TICKS=$(getconf CLK_TCK)
