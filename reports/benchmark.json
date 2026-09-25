@@ -1,0 +1,32 @@
+{
+ "bag": "30618_27e994fc",
+ "duration_s": 1897.5,
+ "outputs": 90410,
+ "output_rate_hz": 47.65,
+ "processing": {
+  "wheel": {
+   "n": 35862,
+   "p50_ms": 0.0152,
+   "p99_ms": 0.0835,
+   "max_ms": 5.886
+  },
+  "cmd": {
+   "n": 38004,
+   "p50_ms": 0.0017,
+   "p99_ms": 0.0703,
+   "max_ms": 5.175
+  },
+  "fix": {
+   "n": 37509,
+   "p50_ms": 0.0013,
+   "p99_ms": 0.0017,
+   "max_ms": 0.032
+  }
+ },
+ "wall_s": 1.73,
+ "realtime_factor": 1094.7,
+ "cpu_share_of_one_core": 0.0009,
+ "python_peak_alloc_mb": 3.85,
+ "note": "чистое ядро на одном ядре CPU; время DDS измеряет latency_probe",
+ "platform": "win32"
+}

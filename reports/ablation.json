@@ -1,0 +1,107 @@
+{
+ "итог": {
+  "v_rmse_pooled": 0.1131,
+  "v_mae_pooled": 0.0279,
+  "v_rmse_median_bag": 0.0336,
+  "v_rmse_worst_bag": 0.7171,
+  "v_bias_mean": -0.0,
+  "v_rmse_pooled_clean": 0.0393,
+  "v_rmse_worst_bag_clean": 0.1365,
+  "p_rmse3d_pooled": 6.9659,
+  "p_rmse3d_clean_median": 1.6038,
+  "p_rmse3d_median_bag": 2.0935,
+  "p_rmse3d_worst_bag": 27.4784,
+  "along_rmse_median": 1.5485,
+  "cross_rmse_median": 1.2051,
+  "drift_pct_median": 0.0197,
+  "final_err_median": 0.988
+ },
+ "итог ref2out": {
+  "v_rmse_pooled": 0.113,
+  "p_rmse3d_pooled": 7.0178
+ },
+ "калман": {
+  "v_rmse_pooled": 0.1137,
+  "v_mae_pooled": 0.0288,
+  "v_rmse_median_bag": 0.0336,
+  "v_rmse_worst_bag": 0.7172,
+  "v_bias_mean": -0.0001,
+  "v_rmse_pooled_clean": 0.0408,
+  "v_rmse_worst_bag_clean": 0.1367,
+  "p_rmse3d_pooled": 8.1279,
+  "p_rmse3d_clean_median": 1.5927,
+  "p_rmse3d_median_bag": 2.1606,
+  "p_rmse3d_worst_bag": 27.3989,
+  "along_rmse_median": 1.4802,
+  "cross_rmse_median": 1.2144,
+  "drift_pct_median": 0.0194,
+  "final_err_median": 1.0475
+ },
+ "калман ref2out": {
+  "v_rmse_pooled": 0.1136,
+  "p_rmse3d_pooled": 8.1576
+ },
+ "без ориентиров": {
+  "v_rmse_pooled": 0.1155,
+  "v_mae_pooled": 0.0322,
+  "v_rmse_median_bag": 0.0348,
+  "v_rmse_worst_bag": 0.7131,
+  "v_bias_mean": -0.0029,
+  "v_rmse_pooled_clean": 0.0462,
+  "v_rmse_worst_bag_clean": 0.1419,
+  "p_rmse3d_pooled": 16.4014,
+  "p_rmse3d_clean_median": 4.1437,
+  "p_rmse3d_median_bag": 4.8607,
+  "p_rmse3d_worst_bag": 53.8129,
+  "along_rmse_median": 4.249,
+  "cross_rmse_median": 1.4111,
+  "drift_pct_median": 0.1371,
+  "final_err_median": 6.7941
+ },
+ "без ориентиров ref2out": {
+  "v_rmse_pooled": 0.1154,
+  "p_rmse3d_pooled": 16.5777
+ },
+ "без карты": {
+  "v_rmse_pooled": 0.1156,
+  "v_mae_pooled": 0.0322,
+  "v_rmse_median_bag": 0.0349,
+  "v_rmse_worst_bag": 0.7132,
+  "v_bias_mean": -0.003,
+  "v_rmse_pooled_clean": 0.0464,
+  "v_rmse_worst_bag_clean": 0.1419,
+  "p_rmse3d_pooled": 3884.1197,
+  "p_rmse3d_clean_median": 1897.4568,
+  "p_rmse3d_median_bag": 1873.3273,
+  "p_rmse3d_worst_bag": 6457.3184,
+  "along_rmse_median": 899.1942,
+  "cross_rmse_median": 1673.1356,
+  "drift_pct_median": 152.9048,
+  "final_err_median": 2888.9698
+ },
+ "без карты ref2out": {
+  "v_rmse_pooled": 0.1155,
+  "p_rmse3d_pooled": 3882.5902
+ },
+ "полная карта (in-sample)": {
+  "v_rmse_pooled": 0.1131,
+  "v_mae_pooled": 0.0279,
+  "v_rmse_median_bag": 0.0335,
+  "v_rmse_worst_bag": 0.7171,
+  "v_bias_mean": 0.0001,
+  "v_rmse_pooled_clean": 0.0392,
+  "v_rmse_worst_bag_clean": 0.1367,
+  "p_rmse3d_pooled": 6.8006,
+  "p_rmse3d_clean_median": 1.4707,
+  "p_rmse3d_median_bag": 1.9045,
+  "p_rmse3d_worst_bag": 27.4755,
+  "along_rmse_median": 1.4023,
+  "cross_rmse_median": 0.7247,
+  "drift_pct_median": 0.0185,
+  "final_err_median": 0.9467
+ },
+ "полная карта (in-sample) ref2out": {
+  "v_rmse_pooled": 0.113,
+  "p_rmse3d_pooled": 6.8563
+ }
+}
