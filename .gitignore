@@ -1,0 +1,13 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+cache/
+maps/
+*.db3
+*.zip
+*.npz
+данные и условия/
