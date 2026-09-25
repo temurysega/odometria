@@ -3,8 +3,12 @@
 GNSS читается только здесь, при подготовке карты. Узел получает готовый
 файл и в рабочем контуре GNSS не использует.
 
+Координаты карты: плоские MGRS (UTM зона 37 минус угол квадрата сетки
+300 000 / 6 100 000 м), высота антенны. В этой же системе заданы карты
+организаторов и, по ответу экспертов, эталон.
+
 Шаги:
-1. RTK фиксы master антенны переводятся в ENU карты по эллипсоиду WGS84.
+1. RTK фиксы master антенны переводятся в MGRS по эллипсоиду WGS84.
 2. Для каждого направления берётся опорная поездка, фиксы усредняются по
    пройденному колёсами пути, выбросы режутся скользящей медианой.
 3. Осевая уточняется медианой поперечных отклонений и высот всех поездок.
@@ -24,7 +28,10 @@ from bagdata import load, unique_bags
 
 MAP_ORIGIN = (55.810367065, 37.462266845, 150.0)
 WEST_TERMINAL = np.array([-4565.0, -1195.0])
-EAST_PLATFORM = np.array([2.0, 3.5])
+MGRS_ZONE = 37
+MGRS_ORIGIN = (300000.0, 6100000.0)
+# платформа восточного кольца в MGRS
+EAST_PLATFORM = np.array([103632.1, 86047.6])
 A = 6378137.0
 F = 1.0 / 298.257223563
 E2 = F * (2.0 - F)
@@ -51,6 +58,28 @@ def to_enu(lat, lon, alt, origin=MAP_ORIGIN):
     return (ecef(lat, lon, alt) - ecef(*origin)) @ rotation(*origin[:2]).T
 
 
+def to_mgrs(lat, lon, alt, zone=MGRS_ZONE, origin=MGRS_ORIGIN):
+    """Векторный UTM (ряды Крюгера) минус угол квадрата сетки MGRS."""
+    n = F / (2.0 - F)
+    big_a = A / (1.0 + n) * (1.0 + n ** 2 / 4.0 + n ** 4 / 64.0)
+    alpha = (n / 2 - 2 * n ** 2 / 3 + 5 * n ** 3 / 16 + 41 * n ** 4 / 180,
+             13 * n ** 2 / 48 - 3 * n ** 3 / 5 + 557 * n ** 4 / 1440,
+             61 * n ** 3 / 240 - 103 * n ** 4 / 140,
+             49561 * n ** 4 / 161280)
+    phi = np.radians(lat)
+    dlon = np.radians(lon) - np.radians(6.0 * zone - 183.0)
+    c = 2.0 * np.sqrt(n) / (1.0 + n)
+    t = np.sinh(np.arctanh(np.sin(phi)) - c * np.arctanh(c * np.sin(phi)))
+    xi = np.arctan2(t, np.cos(dlon))
+    eta = np.arctanh(np.sin(dlon) / np.sqrt(1.0 + t * t))
+    east, north = eta.copy(), xi.copy()
+    for j, a in enumerate(alpha, start=1):
+        east = east + a * np.cos(2 * j * xi) * np.sinh(2 * j * eta)
+        north = north + a * np.sin(2 * j * xi) * np.cosh(2 * j * eta)
+    return np.stack([500000.0 + 0.9996 * big_a * east - origin[0],
+                     0.9996 * big_a * north - origin[1], np.asarray(alt, dtype=float)], -1)
+
+
 def wheel_distance(data):
     f, r = data['front'], data['rear']
     t = np.unique(np.r_[f[:, 1], r[:, 1]])
@@ -68,7 +97,7 @@ def rtk_trip(data):
     if len(fix) < 100:
         return None
     t, _, dist = wheel_distance(data)
-    return {'t': fix[:, 1], 'E': to_enu(fix[:, 2], fix[:, 3], fix[:, 4]),
+    return {'t': fix[:, 1], 'E': to_mgrs(fix[:, 2], fix[:, 3], fix[:, 4]),
             'D': np.interp(fix[:, 1], t, dist), 'rtk_share': ok.mean()}
 
 
@@ -188,6 +217,29 @@ def refine(line, trips, iterations=3, max_lateral=2.0):
     return line
 
 
+def load_official(path):
+    doc = json.loads(Path(path).read_text(encoding='utf-8'))
+    return np.array([[p['x'], p['y'], p['z']] for p in doc['points']])[doc['paths'][0]['point_indices']]
+
+
+def splice_official(line, official):
+    """Основной ход берётся из карты организаторов, концы у колец из своих данных.
+
+    Карта организаторов описывает base_link (на 3,1 м ниже антенн), поэтому
+    её высота поднимается до уровня антенны по медиане на общем участке.
+    """
+    s, lat, dist = project(line, official)
+    near = dist < 1.0
+    lift = float(np.median(line[np.clip(np.round(s[near]).astype(int), 0, len(line) - 1), 2] - official[near, 2]))
+    s0, s1 = s[0], s[-1]
+    if dist[0] > 1.5 or dist[-1] > 1.5 or s1 <= s0:
+        raise ValueError('карта организаторов не стыкуется с линией')
+    head = line[:int(np.floor(s0))]
+    tail = line[int(np.ceil(s1)) + 1:]
+    body = official + np.array([0.0, 0.0, lift])
+    return resample(np.vstack([head, body, tail])), lift, float(s0), float(s1)
+
+
 def join_at_east(east, west):
     """Контур: восточное направление, затем западное с точки стыковки."""
     tree = cKDTree(west[:, :2])
@@ -267,12 +319,32 @@ def cluster_stops(positions, passes, gap=6.0, min_count=4):
     return marks
 
 
+def official_check(circuit, paths):
+    """Сверка с картами организаторов: поперечное отклонение и разница высот."""
+    out = []
+    for path in paths:
+        doc = json.loads(Path(path).read_text(encoding='utf-8'))
+        pts = np.array([[p['x'], p['y'], p['z']] for p in doc['points']])[doc['paths'][0]['point_indices']]
+        s, lat, dist = project(circuit, pts)
+        ok = dist < 5.0
+        idx = np.clip(np.round(s[ok]).astype(int), 0, len(circuit) - 1)
+        dz = circuit[idx, 2] - pts[ok, 2]
+        out.append({'map': Path(path).stem, 'points': int(len(pts)), 'covered_share': round(float(ok.mean()), 4),
+                    'lateral_abs_median_m': round(float(np.median(np.abs(lat[ok]))), 3),
+                    'lateral_abs_p95_m': round(float(np.percentile(np.abs(lat[ok]), 95)), 3),
+                    'antenna_minus_map_z_median_m': round(float(np.median(dz)), 3)})
+        print('сверка', out[-1])
+    return out
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('data', type=Path, help='каталог с распакованными bag')
     parser.add_argument('--cache', type=Path, default=None)
     parser.add_argument('--exclude', default='', help='список bag через запятую')
     parser.add_argument('--exclude-days', default='', help='даты записи через запятую, например 2026-05-05')
+    parser.add_argument('--official', type=Path, nargs='*', default=[],
+                        help='карты организаторов (json с points и paths) для сверки')
     parser.add_argument('--output', type=Path,
                         default=Path(__file__).resolve().parents[1] / 'src/odometria/odometria/data/track_map.json')
     args = parser.parse_args()
@@ -312,6 +384,15 @@ def main():
         line = refine(seed_line(seed), [t for _, t in trips[side]])
         lines[side] = line
         print(f'{side}: опорная {seed_name}, поездок {len(trips[side])}, длина {len(line)} м')
+    spliced = []
+    for path in args.official:
+        official = load_official(path)
+        # направление карты по её началу: западный конец значит рейс на восток
+        side = 'E' if official[0, 0] < official[-1, 0] else 'W'
+        lines[side], lift, s0, s1 = splice_official(lines[side], official)
+        spliced.append({'map': Path(path).stem, 'direction': side, 'lift_m': round(lift, 3),
+                        'replaced_s': [round(s0, 1), round(s1, 1)]})
+        print(f'{side}: основной ход {s1 - s0:.0f} м из карты организаторов, подъём высоты {lift:.3f} м')
     circuit = join_at_east(lines['E'], lines['W'])
     loop_source, loop = west_loop(lines['E'], lines['W'], raw)
     closed = False
@@ -337,14 +418,16 @@ def main():
 
     marks = cluster_stops(stops, passes)
     print(f'контур {len(circuit)} м, остановок {len(stops)}, ориентиров {len(marks)}')
+    check = {'spliced': spliced, 'agreement': official_check(circuit, args.official)} if args.official else None
     doc = {
-        'description': 'Осевая master антенны по RTK фиксам и ориентиры остановок',
+        'description': 'Траектория master антенны по RTK фиксам (MGRS, высота антенны) и ориентиры остановок',
         'built': datetime.date.today().isoformat(),
-        'origin_wgs84': list(MAP_ORIGIN),
+        'frame': {'type': 'MGRS', 'utm_zone': MGRS_ZONE, 'grid_origin': list(MGRS_ORIGIN)},
+        'official_map_check': check,
         'step_m': 1.0,
         'east_junction_s': float(len(lines['E'])),
         'closed': closed,
-        'points_enu': [[round(float(x), 3) for x in p] for p in circuit],
+        'points': [[round(float(x), 3) for x in p] for p in circuit],
         'stops': marks,
         'excluded_bags': sorted(exclude),
     }

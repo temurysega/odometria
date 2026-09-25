@@ -128,7 +128,7 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'src/odometria/odometria/data/traction_model.json')
     args = parser.parse_args()
     doc = json.loads(args.map.read_text(encoding='utf-8'))
-    circuit = np.asarray(doc['points_enu'])
+    circuit = np.asarray(doc['points'])
     grade = np.gradient(gaussian_filter1d(circuit[:, 2], 10, mode='nearest'))
     sets = []
     for folder in unique_bags(args.data, args.cache):
