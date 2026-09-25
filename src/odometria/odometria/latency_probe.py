@@ -10,6 +10,7 @@ import json
 import time
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 from nav_msgs.msg import Odometry
@@ -75,7 +76,8 @@ def main(args=None):
     node = LatencyProbe()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
+        # штатная остановка по сигналу
         pass
     finally:
         node.report()

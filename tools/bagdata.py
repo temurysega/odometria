@@ -20,6 +20,8 @@ TOPICS = {
     'master_vel': '/sensing/gnss/master/vel',
     'rover_fix': '/sensing/gnss/rover/fix',
     'rover_vel': '/sensing/gnss/rover/vel',
+    'out_velocity': '/result/velocity',
+    'out_position': '/result/position',
 }
 KEY_BY_TOPIC = {v: k for k, v in TOPICS.items()}
 
@@ -50,6 +52,13 @@ def decode(blob, kind):
         cov = struct.unpack_from('<9d', blob, o + 24)
         ctype = struct.unpack_from('<B', blob, o + 96)[0]
         return stamp, (*lla, status, cov[0], cov[4], cov[8], ctype)
+    if kind.endswith('Odometry'):
+        o = _aligned(off, 4)
+        length = struct.unpack_from('<I', blob, o)[0]
+        o = _aligned(o + 4 + length, 8)
+        position = struct.unpack_from('<3d', blob, o)
+        twist = struct.unpack_from('<d', blob, o + 8 * (3 + 4 + 36))[0]
+        return stamp, (*position, twist)
     raise ValueError(kind)
 
 
