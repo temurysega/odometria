@@ -158,6 +158,26 @@ class TrackTests(unittest.TestCase):
         self.assertAlmostEqual(f.s, stops[-1], delta=1.0)
 
 
+    def test_off_mark_stop_does_not_corrupt_scale(self):
+        # на третьей платформе вагон встал на 3,7 м раньше обычного места
+        stops = list(range(400, 3000, 400))
+        m = straight_map(3000, stops)
+        f = ParticleTrack(0.0, sigma_s=0.3, sigma_k=0.008, count=800)
+        loc = Localizer(m)
+        loc.filter, loc.start_s = f, 0.0
+        travelled = 0.0
+        for i, stop in enumerate(stops):
+            actual = stop - (3.7 if i == 2 else 0.0)
+            f.advance(actual - travelled)
+            travelled = actual
+            loc.last_landmark_distance = -1e9
+            loc.try_landmark(travelled)
+            if i == 2:
+                self.assertAlmostEqual(f.k, 1.0, delta=0.002)
+        self.assertAlmostEqual(f.k, 1.0, delta=0.0015)
+        self.assertAlmostEqual(f.s, stops[-1], delta=1.0)
+
+
 class CoreTests(unittest.TestCase):
     def fix(self, core, t, east=0.0):
         core.on_fix('master', t, *east_of_origin(east), 2)

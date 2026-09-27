@@ -295,9 +295,11 @@ class ParticleTrack:
         wsum = sum(self.weight[i] for i in best) or 1.0
         s = sum(self.weight[i] * self.base[i] for i in best) / wsum
         k = sum(self.weight[i] * self.scale[i] for i in best) / wsum
-        self.var_s = sum(self.weight[i] * (self.base[i] - s) ** 2 for i in best) / wsum
-        self.var_k = sum(self.weight[i] * (self.scale[i] - k) ** 2 for i in best) / wsum
-        self.cov_sk = sum(self.weight[i] * (self.base[i] - s) * (self.scale[i] - k) for i in best) / wsum
+        # оценка по самой вероятной группе, но разброс по всем гипотезам:
+        # две равные остановки в сотнях метров не должны выглядеть точным местом
+        self.var_s = sum(w * (b - s) ** 2 for w, b in zip(self.weight, self.base))
+        self.var_k = sum(w * (q - k) ** 2 for w, q in zip(self.weight, self.scale))
+        self.cov_sk = sum(w * (b - s) * (q - k) for w, b, q in zip(self.weight, self.base, self.scale))
         self.s, self.k = s, k
         self.share = wsum
 
@@ -334,6 +336,8 @@ class Localizer:
         self.landmark_max_jump = landmark_max_jump
         self.landmark_confidence = landmark_confidence
         self.landmark_random_stop = landmark_random_stop
+        self.landmark_tail_weight = 0.2
+        self.landmark_tail_sigma = 3.0
         self.particles = particles
         self.relock_share = 0.3
         self.relock_distance = 2000.0
@@ -366,6 +370,9 @@ class Localizer:
         if self.first_fix_time is None:
             self.first_fix_time = t
         self.fixes[source].append((t, lat, lon, alt, distance, -1 if status is None else int(status)))
+        # без колёс окно может не закрываться долго: память ограничена
+        if len(self.fixes[source]) > 256:
+            del self.fixes[source][:-256]
         return True
 
     def window_closed(self, t):
@@ -416,7 +423,8 @@ class Localizer:
         self.map_error = best[0]
         self.start_s = base + distance
         # точность старта по статусу фикса: 2 RTK, 1 SBAS, 0 автономное решение
-        status_sigma = {2: 0.3, 1: 1.5}.get(max(f[5] for f in fixes), 3.0)
+        grades = sorted(f[5] for f in fixes)
+        status_sigma = {2: 0.3, 1: 1.5}.get(grades[len(grades) // 2], 3.0)
         # старт в стороне от карты означает неизвестный путь (обход внутри
         # кольца, тупик конечной), длина которого может отличаться от карты
         topology_sigma = 1.5 * self.map_error if self.map_error > 2.0 else 0.0
@@ -440,7 +448,8 @@ class Localizer:
             b = self.frame.forward(*r[0][1:4])
             e, n = b[0] - a[0], b[1] - a[1]
             norm = math.hypot(e, n)
-            if 5.0 < norm < 30.0:
+            # курс по линии антенн, только если база похожа на tf
+            if abs(norm - self.antenna_baseline) < 1.5:
                 return e / norm, n / norm
         pts = m or r
         if len(pts) >= 2:
@@ -454,20 +463,20 @@ class Localizer:
 
     def _match(self, x, y, heading):
         options = self.map.candidates(x, y, self.max_map_offset)
-        if not options:
-            # стоянка на пути, которого нет в карте (конечная с несколькими
-            # тупиками): берём ближайший путь того же направления, смещение
-            # до него плавно убирается на первых метрах движения
-            options = self.map.candidates(x, y, 4.0 * self.max_map_offset)
-            if heading is None or not options:
-                return None
-            options = [o for o in options if o[2] * heading[0] + o[3] * heading[1] > 0.7]
-            if not options:
-                return None
         if heading is not None:
-            # на двухпутном участке соседний путь в 4 м, отсекаем встречное направление
+            # курс по двум антеннам различает встречные пути; даже если свой
+            # путь чуть дальше допуска, ближний встречный не берём: такая
+            # ошибка старта держится всю поездку и даёт сотни метров
             aligned = [o for o in options if o[2] * heading[0] + o[3] * heading[1] > 0.5]
-            options = aligned or options
+            if not aligned:
+                expanded = self.map.candidates(x, y, 4.0 * self.max_map_offset)
+                aligned = [o for o in expanded if o[2] * heading[0] + o[3] * heading[1] > 0.5]
+            options = aligned
+        elif not options:
+            return None
+        if not options:
+            # курс и карта не согласуются: абсолютную привязку не делаем
+            return None
         dist, s, _, _ = min(options, key=lambda o: o[0])
         return dist, s
 
@@ -531,15 +540,23 @@ class Localizer:
         if not marks:
             return None
         background = self.landmark_random_stop / 120.0
-        terms = [(m['s'], m['share'] / (math.sqrt(2.0 * math.pi) * m['sigma']),
-                  -0.5 / m['sigma'] ** 2) for m in marks]
+        # хвост: иногда вагон встаёт у платформы на несколько метров раньше
+        # или дальше обычного (очередь, второй вагон), такая остановка не
+        # должна тянуть положение и масштаб как точная
+        tail_w, tail_s = self.landmark_tail_weight, self.landmark_tail_sigma
+        terms = []
+        for m in marks:
+            narrow = (1.0 - tail_w) * m['share'] / (math.sqrt(2.0 * math.pi) * m['sigma'])
+            wide = tail_w * m['share'] / (math.sqrt(2.0 * math.pi) * tail_s)
+            terms.append((m['s'], narrow, -0.5 / m['sigma'] ** 2, wide, -0.5 / tail_s ** 2))
+        cutoff = max(8.0, 4.0 * tail_s)
 
         def likelihood(x):
             total = background
-            for center, peak, gain in terms:
+            for center, narrow, gain, wide, gain_wide in terms:
                 d = delta(x, center)
-                if abs(d) < 8.0:
-                    total += peak * math.exp(gain * d * d)
+                if abs(d) < cutoff:
+                    total += narrow * math.exp(gain * d * d) + wide * math.exp(gain_wide * d * d)
             return total
 
         shift = f.observe(likelihood)
@@ -635,7 +652,9 @@ class Localizer:
         if w > 0.0:
             p = tuple(a + w * o for a, o in zip(p, self.origin_offset))
         yaw = math.atan2(rover[1] - master[1], rover[0] - master[0])
-        return p, yaw, self.filter.p[0][0], 0.05 ** 2 + (w * 2.0) ** 2
+        # далёкая стартовая привязка не означает точного знания поперечной координаты
+        map_sigma = self.map_error or 0.0
+        return p, yaw, self.filter.p[0][0], 0.05 ** 2 + (w * 2.0) ** 2 + (w * map_sigma) ** 2
 
     def grade(self):
         if self.filter is None or self.start_s is None:

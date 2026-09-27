@@ -1,1 +1,1 @@
-"""Tram odometry using only driver commands and bogie velocities."""
+"""Резервная одометрия трамвая по позиции контроллера и скоростям тележек."""

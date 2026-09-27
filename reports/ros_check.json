@@ -5,45 +5,45 @@
   "bag": "30618_01f73500",
   "rate": 1,
   "duration_s": 300,
+  "code": "объединённая версия",
   "latency": {
    "velocity": {
-    "rate_hz": 48.13,
+    "rate_hz": 48.16,
     "latency": {
-     "n": 14525,
-     "p50_ms": 3.486,
-     "p95_ms": 7.397,
-     "p99_ms": 8.702,
-     "max_ms": 34.264
+     "n": 14533,
+     "p50_ms": 3.309,
+     "p95_ms": 7.224,
+     "p99_ms": 8.493,
+     "max_ms": 47.507
     }
    },
    "position": {
-    "rate_hz": 48.09,
+    "rate_hz": 48.14,
     "latency": {
-     "n": 14513,
-     "p50_ms": 4.262,
-     "p95_ms": 8.149,
-     "p99_ms": 9.442,
-     "max_ms": 34.755
+     "n": 14527,
+     "p50_ms": 4.037,
+     "p95_ms": 7.856,
+     "p99_ms": 9.148,
+     "max_ms": 47.8
     }
    }
   },
   "process": {
-   "VmHWM_kb": 64868,
-   "VmRSS_kb": 64868,
-   "cpu_share_of_one_core": 0.138
+   "VmHWM_kb": 65244,
+   "VmRSS_kb": 65244,
+   "cpu_share_of_one_core": 0.135
   },
   "accuracy_out2ref": {
-   "v_rmse": 0.0396,
+   "v_rmse": 0.0387,
    "v_bias": -0.0003,
-   "v_rmse_clean": 0.0396,
-   "p_rmse_3d": 0.9682,
-   "along_rmse": 0.9965,
-   "cross_rmse": 0.4042,
-   "z_rmse": 0.4116,
-   "drift_pct": 0.0084,
-   "final_err_3d": 0.0749
-  },
-  "ros_vs_offline_position_rmse_m": 0.0057
+   "v_rmse_clean": 0.0387,
+   "p_rmse_3d": 0.9535,
+   "along_rmse": 0.9642,
+   "cross_rmse": 0.4121,
+   "z_rmse": 0.4126,
+   "drift_pct": 0.0075,
+   "final_err_3d": 0.0673
+  }
  },
  "stress_x4_full_bag": {
   "bag": "30618_27e994fc",
@@ -97,6 +97,7 @@
    "z_rmse": 1.5738,
    "drift_pct": 0.1365,
    "final_err_3d": 7.7272
-  }
+  },
+  "code": "версия до объединения с решением сокомандника"
  }
 }

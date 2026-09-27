@@ -1,24 +1,24 @@
 {
  "итог": {
-  "v_rmse_pooled": 0.113,
+  "v_rmse_pooled": 0.1131,
   "v_mae_pooled": 0.0277,
-  "v_rmse_median_bag": 0.0332,
-  "v_rmse_worst_bag": 0.7169,
-  "v_bias_mean": -0.0024,
-  "v_rmse_pooled_clean": 0.039,
+  "v_rmse_median_bag": 0.0334,
+  "v_rmse_worst_bag": 0.7168,
+  "v_bias_mean": -0.0022,
+  "v_rmse_pooled_clean": 0.0391,
   "v_rmse_worst_bag_clean": 0.1366,
-  "p_rmse3d_pooled": 6.7774,
-  "p_rmse3d_clean_median": 0.9637,
-  "p_rmse3d_median_bag": 1.6916,
-  "p_rmse3d_worst_bag": 26.9155,
-  "along_rmse_median": 1.0409,
-  "cross_rmse_median": 0.6976,
+  "p_rmse3d_pooled": 6.7542,
+  "p_rmse3d_clean_median": 1.0231,
+  "p_rmse3d_median_bag": 1.7102,
+  "p_rmse3d_worst_bag": 26.9922,
+  "along_rmse_median": 1.0512,
+  "cross_rmse_median": 0.6886,
   "drift_pct_median": 0.0346,
-  "final_err_median": 1.8004
+  "final_err_median": 1.8409
  },
  "итог ref2out": {
-  "v_rmse_pooled": 0.1129,
-  "p_rmse3d_pooled": 6.8284
+  "v_rmse_pooled": 0.113,
+  "p_rmse3d_pooled": 6.8053
  },
  "калман": {
   "v_rmse_pooled": 0.1138,
@@ -28,39 +28,39 @@
   "v_bias_mean": -0.0021,
   "v_rmse_pooled_clean": 0.0413,
   "v_rmse_worst_bag_clean": 0.1367,
-  "p_rmse3d_pooled": 9.5073,
-  "p_rmse3d_clean_median": 0.9946,
-  "p_rmse3d_median_bag": 1.6763,
+  "p_rmse3d_pooled": 9.5057,
+  "p_rmse3d_clean_median": 0.9947,
+  "p_rmse3d_median_bag": 1.6838,
   "p_rmse3d_worst_bag": 47.9067,
-  "along_rmse_median": 1.0379,
+  "along_rmse_median": 1.0382,
   "cross_rmse_median": 0.7004,
   "drift_pct_median": 0.0351,
   "final_err_median": 1.8525
  },
  "калман ref2out": {
   "v_rmse_pooled": 0.1137,
-  "p_rmse3d_pooled": 9.655
+  "p_rmse3d_pooled": 9.6535
  },
  "без ориентиров": {
   "v_rmse_pooled": 0.1155,
   "v_mae_pooled": 0.0322,
-  "v_rmse_median_bag": 0.0349,
+  "v_rmse_median_bag": 0.0348,
   "v_rmse_worst_bag": 0.7131,
   "v_bias_mean": -0.0029,
-  "v_rmse_pooled_clean": 0.0462,
+  "v_rmse_pooled_clean": 0.0463,
   "v_rmse_worst_bag_clean": 0.1419,
-  "p_rmse3d_pooled": 16.0207,
-  "p_rmse3d_clean_median": 2.6559,
-  "p_rmse3d_median_bag": 3.1804,
-  "p_rmse3d_worst_bag": 54.988,
-  "along_rmse_median": 2.7242,
+  "p_rmse3d_pooled": 16.0183,
+  "p_rmse3d_clean_median": 2.6565,
+  "p_rmse3d_median_bag": 3.1786,
+  "p_rmse3d_worst_bag": 54.987,
+  "along_rmse_median": 2.7243,
   "cross_rmse_median": 1.3153,
-  "drift_pct_median": 0.1059,
-  "final_err_median": 5.4213
+  "drift_pct_median": 0.1056,
+  "final_err_median": 4.94
  },
  "без ориентиров ref2out": {
   "v_rmse_pooled": 0.1155,
-  "p_rmse3d_pooled": 16.22
+  "p_rmse3d_pooled": 16.2174
  },
  "без карты": {
   "v_rmse_pooled": 0.1156,
@@ -84,25 +84,25 @@
   "p_rmse3d_pooled": 3805.714
  },
  "полная карта (in-sample)": {
-  "v_rmse_pooled": 0.113,
-  "v_mae_pooled": 0.0277,
-  "v_rmse_median_bag": 0.0334,
-  "v_rmse_worst_bag": 0.7169,
+  "v_rmse_pooled": 0.1131,
+  "v_mae_pooled": 0.0278,
+  "v_rmse_median_bag": 0.0335,
+  "v_rmse_worst_bag": 0.7168,
   "v_bias_mean": -0.0023,
-  "v_rmse_pooled_clean": 0.039,
+  "v_rmse_pooled_clean": 0.0391,
   "v_rmse_worst_bag_clean": 0.1366,
-  "p_rmse3d_pooled": 6.541,
-  "p_rmse3d_clean_median": 1.0092,
-  "p_rmse3d_median_bag": 1.673,
-  "p_rmse3d_worst_bag": 26.9122,
-  "along_rmse_median": 1.0644,
-  "cross_rmse_median": 0.6913,
-  "drift_pct_median": 0.0475,
-  "final_err_median": 2.3585
+  "p_rmse3d_pooled": 6.5295,
+  "p_rmse3d_clean_median": 1.0301,
+  "p_rmse3d_median_bag": 1.6617,
+  "p_rmse3d_worst_bag": 26.9969,
+  "along_rmse_median": 1.0702,
+  "cross_rmse_median": 0.6827,
+  "drift_pct_median": 0.0482,
+  "final_err_median": 2.4124
  },
  "полная карта (in-sample) ref2out": {
-  "v_rmse_pooled": 0.1129,
-  "p_rmse3d_pooled": 6.5967
+  "v_rmse_pooled": 0.113,
+  "p_rmse3d_pooled": 6.5855
  },
- "_note": "эталон: base_link в плоских MGRS (зона 37, угол 300000/6100000) и высота, по обеим антеннам и tf; карты без дня проверяемой записи"
+ "_note": "эталон: base_link в плоских MGRS (зона 37, угол 300000/6100000) и высота, по обеим антеннам и tf; ориентиры и свои участки карты без дня проверяемой записи"
 }

@@ -153,6 +153,9 @@ class OdometryCore:
             return []
         self._check_jump(stamp)
         self.counters.command += 1
+        if not self.localizer.ready and self.localizer.window_closed(stamp - 0.05):
+            # окно GNSS закрывается и тогда, когда колёса молчат
+            self.localizer.finalize(self.observer.distance)
         self.observer.set_command(position)
         self.command_stamp = stamp
         if self.last_wheel is None:
@@ -182,17 +185,23 @@ class OdometryCore:
         self.last_wheel = stamp if self.last_wheel is None else max(self.last_wheel, stamp)
         if self.first_wheel is None:
             self.first_wheel = stamp
+        variance = None
         if obs.t is not None and stamp < obs.t:
             # опоздавшее сообщение: приводим измерение к текущему моменту
             self.counters.late += 1
             t = obs.t
             if value is not None and math.isfinite(value):
-                value += obs.accel * (obs.t - stamp) / obs.cfg.wheel_scale
+                age = obs.t - stamp
+                corrected = value + obs.accel * age / obs.cfg.wheel_scale
+                # экстраполяция торможения от неотрицательного колеса не даёт реверса
+                value = max(0.0, corrected) if value >= 0.0 else corrected
+                # ускорение для приведения тоже оценено: старому отсчёту меньше веса
+                variance = obs.cfg.sigma_wheel ** 2 + (obs.cfg.sigma_model * age) ** 2
         if self.command_stamp is None or t - self.command_stamp > self.cfg.command_timeout + 0.1:
             obs.set_command(0)
         obs.grade = self.localizer.grade()
         before = obs.distance
-        status = obs.update(side, t, value)
+        status = obs.update(side, t, value, measurement_variance=variance)
         self._after_motion(t, obs.distance - before)
         self.last_status = status
         return self._emit(t)
