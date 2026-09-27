@@ -360,7 +360,7 @@ src/tram_vehicle_msgs/            сообщения из датасета
 tools/                            офлайн инструменты (numpy, scipy, matplotlib)
 tests/                            модульные тесты ядра
 reports/                          отчёты оценки и бенчмарка
-docs/                             разбор датасета, критерии, графики
+docs/                             разбор датасета, критерии, графики, главная страница (index.html)
 official_maps/                    карты организаторов (MGRS, base_link)
 ```
 
