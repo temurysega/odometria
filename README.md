@@ -158,6 +158,17 @@ docker run --rm -v $PWD:/repo:ro -v /path/to/check-code:/check:ro -v /tmp/out:/o
 
 Офлайн то же сопоставление без ROS: `python tools/judge_check.py /path/to/check-code/bags/30618_88aea4d9`.
 
+Сборка прямо в каталоге `check-code` организаторов. Там `tram_vehicle_msgs` урезан до `VelocitySensor`, а организаторы разрешили взять полный пакет из основного датасета: он лежит в репозитории, в нём тот же `VelocitySensor` и `DriverControllerCommand`. Пакет узла и сообщения копируются с заменой:
+
+```bash
+cp -r odometria_ws/src/odometria check-code/src/
+cp -r odometria_ws/src/tram_vehicle_msgs/. check-code/src/tram_vehicle_msgs/
+cd check-code && colcon build && source install/setup.bash
+ros2 launch odometria odometria.launch.py
+```
+
+Весь репозиторий внутрь `check-code/src` клонировать не нужно: два пакета `tram_vehicle_msgs` в одном воркспейсе `colcon` не соберёт. Если узел всё же окажется рядом с урезанным пакетом, он не падает, а пишет предупреждение и работает по тележкам без модели привода (на проверочном bag 0,029 м/с и 1,55 м вместо 0,024 м/с и 0,97 м).
+
 ## Что показал анализ данных
 
 Разбор всех 122 записей определил архитектуру. Полный разбор в [`docs/DATASET.md`](docs/DATASET.md), здесь главное.

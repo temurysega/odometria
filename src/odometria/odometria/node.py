@@ -27,7 +27,14 @@ from rclpy.node import Node
 from rclpy.qos import HistoryPolicy, QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import NavSatFix
 from std_msgs.msg import Bool
-from tram_vehicle_msgs.msg import DriverControllerCommand, VelocitySensor
+from tram_vehicle_msgs.msg import VelocitySensor
+
+try:
+    from tram_vehicle_msgs.msg import DriverControllerCommand
+except ImportError:
+    # в урезанном tram_vehicle_msgs (как в check-code) нет сообщения
+    # контроллера: узел работает по тележкам, а не падает при запуске
+    DriverControllerCommand = None
 
 from .core import CoreConfig, OdometryCore
 from .observer import ObserverConfig
@@ -90,8 +97,13 @@ class OdometryNode(Node):
                                  lambda m: self.on_wheel('front', m), qos)
         self.create_subscription(VelocitySensor, '/vehicle/rear_bogie_velocity',
                                  lambda m: self.on_wheel('rear', m), qos)
-        self.create_subscription(DriverControllerCommand, '/vehicle/driver_position_cmd',
-                                 self.on_command, qos)
+        if DriverControllerCommand is not None:
+            self.create_subscription(DriverControllerCommand, '/vehicle/driver_position_cmd',
+                                     self.on_command, qos)
+        else:
+            self.get_logger().warning(
+                'в tram_vehicle_msgs нет DriverControllerCommand: контроллер не читается, '
+                'скорость по тележкам без модели привода; соберите tram_vehicle_msgs из репозитория')
         self.gnss_subs = []
         self.init_reported = False
         self.qos = qos
