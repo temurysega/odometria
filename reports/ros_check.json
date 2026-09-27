@@ -49,55 +49,55 @@
   "bag": "30618_27e994fc",
   "rate": 4,
   "bag_duration_s": 1897.5,
+  "code": "объединённая версия (bffedcd), чистый клон",
   "latency": {
    "velocity": {
-    "rate_hz": 189.68,
+    "rate_hz": 189.67,
     "latency": {
-     "n": 90410,
-     "p50_ms": 3.513,
-     "p95_ms": 6.942,
-     "p99_ms": 7.826,
-     "max_ms": 63.483
+     "n": 90412,
+     "p50_ms": 3.262,
+     "p95_ms": 6.57,
+     "p99_ms": 7.614,
+     "max_ms": 12.761
     }
    },
    "position": {
-    "rate_hz": 189.68,
+    "rate_hz": 189.67,
     "latency": {
-     "n": 90410,
-     "p50_ms": 4.132,
-     "p95_ms": 7.669,
-     "p99_ms": 8.332,
-     "max_ms": 50.308
+     "n": 90412,
+     "p50_ms": 3.884,
+     "p95_ms": 7.335,
+     "p99_ms": 8.165,
+     "max_ms": 13.2
     }
    }
   },
   "process": {
-   "VmHWM_kb": 65372,
-   "VmRSS_kb": 65372,
-   "cpu_share_of_one_core": 0.45
+   "VmHWM_kb": 64768,
+   "VmRSS_kb": 64768,
+   "cpu_share_of_one_core": 0.418
   },
   "accuracy_out2ref": {
-   "v_rmse": 0.163,
-   "v_bias": -0.0018,
-   "v_rmse_clean": 0.0395,
-   "p_rmse_3d": 4.15,
-   "along_rmse": 3.0375,
-   "cross_rmse": 1.6011,
-   "z_rmse": 1.5732,
+   "v_rmse": 0.1631,
+   "v_bias": -0.0021,
+   "v_rmse_clean": 0.0394,
+   "p_rmse_3d": 3.9598,
+   "along_rmse": 2.8916,
+   "cross_rmse": 1.5343,
+   "z_rmse": 1.5741,
    "drift_pct": null,
-   "final_err_3d": 7.743
+   "final_err_3d": 7.469
   },
   "offline_core_same_bag": {
-   "v_rmse": 0.163,
-   "v_bias": -0.0015,
-   "v_rmse_clean": 0.0373,
-   "p_rmse_3d": 4.1504,
-   "along_rmse": 3.0554,
-   "cross_rmse": 1.5992,
-   "z_rmse": 1.5738,
-   "drift_pct": 0.1365,
-   "final_err_3d": 7.7272
-  },
-  "code": "версия до объединения с решением сокомандника"
+   "v_rmse": 0.1631,
+   "v_bias": -0.0025,
+   "v_rmse_clean": 0.0375,
+   "p_rmse_3d": 4.0086,
+   "along_rmse": 2.8981,
+   "cross_rmse": 1.541,
+   "z_rmse": 1.5742,
+   "drift_pct": 0.1342,
+   "final_err_3d": 7.5938
+  }
  }
 }
