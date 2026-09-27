@@ -230,31 +230,37 @@ a:focus-visible {
   background-size: 96px 96px;
   mask-image: radial-gradient(ellipse at 50% 28%, black, transparent 72%);
 }
-.hero-art {
+.hero-route {
   position: absolute;
-  top: 120px;
-  left: calc(50% - 110px);
-  width: 220px;
-  height: 270px;
+  top: 105px;
+  left: max(6vw, 24px);
+  right: max(6vw, 24px);
+  height: calc(100% - 590px);
+  min-height: 170px;
   z-index: -1;
-  transform: rotate(-23deg);
 }
-.hero-art i {
-  position: absolute;
-  inset: 12% 10%;
-  border-radius: 26%;
-  background: linear-gradient(140deg, #59baff, #07f 50%, #004bc7);
-  box-shadow: inset 2px 3px 7px #ffffff80, 8px 15px 16px #06409630;
-  transform: rotate(10deg);
+.hero-route svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
-.hero-art i:nth-child(2) {
-  transform: translate(0, 12%) rotate(10deg);
+.route {
+  fill: none;
+  stroke: #cdd5e0;
+  stroke-width: 3.2;
+  stroke-linejoin: round;
 }
-.hero-art i:nth-child(3) {
-  transform: translate(0, 24%) rotate(10deg);
+.terminal {
+  fill: #f0f2f6;
+  stroke: #0068db;
+  stroke-width: 1.6;
 }
-.hero-art i:nth-child(4) {
-  transform: translate(0, 36%) rotate(10deg);
+.station {
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 1.2px;
+  fill: #606c7d;
 }
 .hero h1 {
   font-size: clamp(50px, 5.6vw, 84px);
@@ -477,11 +483,15 @@ a:focus-visible {
     max-height: 880px;
     padding: 100px 16px 93px;
   }
-  .hero-art {
-    top: 95px;
-    left: calc(50% - 85px);
-    width: 170px;
-    height: 210px;
+  .hero-route {
+    top: 90px;
+    left: 16px;
+    right: 16px;
+    height: calc(100% - 470px);
+    min-height: 120px;
+  }
+  .station {
+    display: none;
   }
   .hero h1 {
     font-size: clamp(36px, 9vw, 53px);

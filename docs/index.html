@@ -37,7 +37,36 @@
     <main id="top">
       <section class="hero">
         <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="hero-route" aria-hidden="true">
+          <svg viewBox="0 0 1000 291" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="tram-body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#59baff" />
+                <stop offset="0.5" stop-color="#0077ff" />
+                <stop offset="1" stop-color="#004bc7" />
+              </linearGradient>
+              <filter id="tram-shadow" x="-50%" y="-80%" width="200%" height="260%">
+                <feDropShadow dx="1" dy="2.5" stdDeviation="1.6" flood-color="#064096" flood-opacity="0.3" />
+              </filter>
+            </defs>
+            <path id="route" class="route" d="M30.8 255.7 L49.9 236.9 L52.5 235.7 L55.5 235.4 L58.7 236.2 L120.2 261.1 L139.3 268.5 L147.1 270.1 L154.0 270.6 L162.6 270.3 L220.6 263.3 L238.3 261.1 L244.2 259.6 L248.0 258.0 L252.2 255.4 L258.9 249.7 L261.9 245.9 L264.1 241.9 L283.8 194.7 L308.5 134.2 L310.5 129.5 L311.8 127.5 L315.9 124.4 L317.8 123.8 L320.1 123.6 L339.5 128.6 L394.0 143.4 L438.5 154.5 L481.3 165.1 L493.7 167.6 L506.1 168.8 L526.6 169.9 L533.3 169.6 L539.2 168.6 L619.4 148.4 L629.1 146.6 L638.9 145.8 L741.2 141.6 L819.1 138.0 L843.4 136.5 L877.2 132.8 L885.7 131.5 L892.5 129.9 L902.3 126.2 L910.7 121.6 L918.4 115.5 L923.5 109.9 L932.4 97.4 L967.4 47.4 L968.3 45.2 L968.5 39.9 L969.8 36.9 L972.4 34.0 L978.0 29.8 L979.6 27.4 L980.0 25.9 L979.7 23.8 L978.7 22.1 L977.2 20.7 L975.7 20.1 L971.8 20.0 L970.2 20.3 L968.7 21.1 L967.3 22.8 L966.7 24.8 L967.6 43.2 L967.0 46.6 L923.3 109.0 L921.3 111.6 L916.7 116.2 L909.0 121.9 L901.5 125.8 L890.9 129.6 L885.3 130.9 L876.0 132.2 L842.2 135.9 L828.1 136.8 L725.8 141.6 L637.7 145.1 L623.6 146.8 L538.8 167.9 L531.7 169.0 L523.9 169.1 L504.3 168.0 L490.7 166.4 L423.6 150.1 L394.6 142.8 L324.6 123.9 L320.3 122.9 L316.4 123.2 L312.7 125.4 L310.3 128.4 L277.6 207.7 L262.8 243.0 L259.2 248.3 L253.7 253.4 L247.3 257.5 L240.2 260.0 L205.4 264.4 L161.5 269.7 L155.6 269.9 L149.2 269.6 L142.6 268.6 L136.5 266.8 L106.1 254.6 L58.6 235.4 L56.0 234.7 L53.6 234.7 L51.6 235.0 L50.0 235.9 L40.2 245.2 L24.0 251.0 L22.1 252.1 L20.5 254.2 L20.0 256.4 L20.6 258.3 L22.2 259.9 L24.1 260.5 L26.1 260.0 L30.2 256.3 Z" />
+            <circle class="terminal" cx="20" cy="256.4" r="3.2" />
+            <circle class="terminal" cx="980" cy="25.7" r="3.2" />
+            <text class="station" x="20" y="280">ТАЛЛИНСКАЯ</text>
+            <text class="station" x="980" y="11" text-anchor="end">ЩУКИНСКАЯ</text>
+            <g class="tram" filter="url(#tram-shadow)">
+              <g transform="scale(1.5)">
+                <rect x="-17" y="-5" width="34" height="10" rx="4.5" fill="url(#tram-body)" />
+                <rect x="-13" y="-2.6" width="26" height="5.2" rx="2.6" fill="#fff" opacity="0.28" />
+                <path d="M-5.5 -5v10M5.5 -5v10" stroke="#fff" stroke-opacity="0.55" stroke-width="0.8" />
+                <path d="M-2 0h4" stroke="#fff" stroke-width="1.2" stroke-linecap="round" />
+              </g>
+              <animateMotion dur="36s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#route" />
+              </animateMotion>
+            </g>
+          </svg>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow"><span class="blue-dot"></span>РЕЗЕРВНАЯ ОДОМЕТРИЯ ТРАМВАЯ</p>
           <h1>
