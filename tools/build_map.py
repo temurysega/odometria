@@ -14,6 +14,8 @@ GNSS читается только здесь, при подготовке ка�
 3. Осевая уточняется медианой поперечных отклонений и высот всех поездок.
 4. Два направления сшиваются у восточного кольца в один контур.
 5. Места остановок кластеризуются вдоль контура и становятся ориентирами.
+6. Тупики конечных (рейс начат или закончен в стороне от контура)
+   сохраняются отдельными ломаными со стыком на контуре.
 """
 import argparse
 import datetime
@@ -276,6 +278,115 @@ def west_loop(east, west, raw):
     return best[0], resample(seg)
 
 
+def remove_backtracks(points):
+    """Убирает возвраты назад на стыках кусков контура.
+
+    Зигзаг в пару метров не виден в плане, но добавляет лишнюю дугу, и
+    счисление по колёсам после него отстаёт от карты на эту длину.
+    """
+    pts = list(points)
+    changed = True
+    while changed:
+        changed = False
+        out = [pts[0]]
+        for i in range(1, len(pts) - 1):
+            if np.dot(pts[i][:2] - out[-1][:2], pts[i + 1][:2] - pts[i][:2]) < 0:
+                changed = True
+                continue
+            out.append(pts[i])
+        out.append(pts[-1])
+        pts = out
+    return np.array(pts)
+
+
+def smooth_track(seg):
+    keep = np.r_[True, np.linalg.norm(np.diff(seg[:, :2], axis=0), axis=1) > 0.05]
+    seg = seg[keep]
+    seg = np.stack([median_filter(seg[:, i], size=9, mode='nearest') for i in range(3)], 1)
+    return np.stack([gaussian_filter1d(seg[:, 0], 3, mode='nearest'), gaussian_filter1d(seg[:, 1], 3, mode='nearest'),
+                     gaussian_filter1d(seg[:, 2], 10, mode='nearest')], 1)
+
+
+def junction_arc(circuit, point, heading, radius=5.0):
+    """Дуга стыка на контуре: ближайший участок с тем же направлением.
+
+    У западного кольца выход и вход в кольцо идут почти вплотную, поэтому
+    одной близости мало: встречный путь отсекается по курсу.
+    """
+    heading = heading / np.linalg.norm(heading)
+    arc = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(circuit[:, :2], axis=0), axis=1))]
+    a, b = circuit[:-1, :2], circuit[1:, :2]
+    ab = b - a
+    l2 = np.maximum((ab ** 2).sum(1), 1e-9)
+    u = np.clip(((point[:2] - a) * ab).sum(1) / l2, 0, 1)
+    dist = np.linalg.norm(point[:2] - (a + u[:, None] * ab), axis=1)
+    aligned = (ab @ heading) / np.sqrt(l2) > 0.7
+    dist[~aligned | (dist > radius)] = np.inf
+    i = int(np.argmin(dist))
+    if not np.isfinite(dist[i]):
+        raise ValueError('тупик не стыкуется с контуром')
+    return float(arc[i] + u[i] * np.sqrt(l2[i])), float(dist[i])
+
+
+def terminal_spurs(circuit, raw, min_offset=8.0, attach=0.3, min_trips=2, tip_gap=6.0):
+    """Тупики у конечных: рейсы, начатые или законченные в стороне от контура.
+
+    На западной конечной вагон в конце рейса заезжает в тупик рядом с
+    кольцом, а в начале рейса выезжает из соседнего тупика. Ломаная тупика
+    строится по RTK фиксам таких поездок в направлении движения, стык с
+    контуром задаётся дуговой координатой точки схода (diverge) или
+    примыкания (merge).
+    """
+    found = []
+    for name, _, trip in raw:
+        pts = trip['E']
+        s, _, dist = project(circuit, pts)
+        # на контуре только там, где вагон едет по пути в его направлении:
+        # к тупику ведёт съезд, по которому идут навстречу соседнему пути
+        head = np.gradient(pts[:, :2], axis=0)
+        norm = np.linalg.norm(head, axis=1)
+        tang = tangents(circuit)[np.clip(np.round(s).astype(int), 0, len(circuit) - 1)]
+        aligned = (head * tang).sum(1) > 0.7 * np.maximum(norm, 1e-9)
+        on = np.where((dist < attach) & aligned & (norm > 0.02))[0]
+        if not len(on):
+            continue
+        if dist[-1] > min_offset:
+            seg = pts[on[-1]:]
+            # до самой дальней от стыка точки: стоянку в тупике не тянем
+            far = int(np.argmax(np.linalg.norm(seg[:, :2] - seg[0, :2], axis=1)))
+            found.append(('diverge', name, seg[:far + 1]))
+        if dist[0] > min_offset:
+            seg = pts[:on[0] + 1]
+            far = int(np.argmax(np.linalg.norm(seg[:, :2] - seg[-1, :2], axis=1)))
+            found.append(('merge', name, seg[far:]))
+    spurs = []
+    for kind in ('diverge', 'merge'):
+        groups = []
+        for item in (f for f in found if f[0] == kind and len(f[2]) >= 20):
+            tip = item[2][-1 if kind == 'diverge' else 0, :2]
+            for g in groups:
+                if np.hypot(*(g['tip'] - tip)) < tip_gap:
+                    g['items'].append(item)
+                    break
+            else:
+                groups.append({'tip': tip, 'items': [item]})
+        for g in groups:
+            names = {it[1] for it in g['items']}
+            if len(names) < min_trips:
+                continue
+            seed = max(g['items'], key=lambda it: np.linalg.norm(it[2][-1, :2] - it[2][0, :2]))
+            line = resample(smooth_track(seed[2]))
+            line = refine(line, [{'E': it[2]} for it in g['items']], max_lateral=1.5)
+            end = line[0] if kind == 'diverge' else line[-1]
+            heading = line[1, :2] - line[0, :2] if kind == 'diverge' else line[-1, :2] - line[-2, :2]
+            junction, gap = junction_arc(circuit, end, heading)
+            spurs.append({'kind': kind, 'junction_s': round(junction, 2),
+                          'junction_gap_m': round(gap, 3), 'trips': sorted(names),
+                          'points': [[round(float(x), 3) for x in p] for p in line]})
+            print(f'тупик {kind}: {len(line)} м по {len(names)} поездкам, стык s={junction:.1f}, зазор {gap:.2f} м')
+    return spurs
+
+
 def stop_events(data, trip, circuit):
     t, v, _ = wheel_distance(data)
     s, _, dist = project(circuit, trip['E'])
@@ -404,6 +515,7 @@ def main():
             circuit = resample(np.vstack([circuit, loop[j + 1:k]]))
             closed = True
             print(f'западное кольцо по {loop_source}: {k - j} м, контур замкнут')
+    circuit = resample(remove_backtracks(circuit))
     stops = []
     covered = []
     for _, data, trip in raw:
@@ -417,6 +529,7 @@ def main():
         return int(((covered[:, 0] <= s) & (covered[:, 1] >= s)).sum())
 
     marks = cluster_stops(stops, passes)
+    spurs = terminal_spurs(circuit, raw) if closed else []
     print(f'контур {len(circuit)} м, остановок {len(stops)}, ориентиров {len(marks)}')
     check = {'spliced': spliced, 'agreement': official_check(circuit, args.official)} if args.official else None
     doc = {
@@ -424,11 +537,13 @@ def main():
         'built': datetime.date.today().isoformat(),
         'frame': {'type': 'MGRS', 'utm_zone': MGRS_ZONE, 'grid_origin': list(MGRS_ORIGIN)},
         'official_map_check': check,
+        'base_link_below_antenna_m': round(float(np.mean([x['lift_m'] for x in spliced])), 3) if spliced else None,
         'step_m': 1.0,
         'east_junction_s': float(len(lines['E'])),
         'closed': closed,
         'points': [[round(float(x), 3) for x in p] for p in circuit],
         'stops': marks,
+        'spurs': spurs,
         'excluded_bags': sorted(exclude),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

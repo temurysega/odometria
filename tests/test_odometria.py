@@ -9,18 +9,24 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src' / 'odometria'
 from odometria.core import CoreConfig, OdometryCore  # noqa: E402
 from odometria.geodesy import LocalFrame, MgrsFrame, to_ecef, utm_forward  # noqa: E402
 from odometria.observer import VelocityObserver  # noqa: E402
-from odometria.track import Localizer, ParticleTrack, TrackMap  # noqa: E402
+from odometria.track import Localizer, ParticleTrack, Spur, TrackMap  # noqa: E402
 from odometria.traction import TractionModel  # noqa: E402
 
 MODEL = TractionModel.load()
 ORIGIN = (55.81, 37.46, 150.0)
 FRAME = MgrsFrame()
 DLON = 1.0 / (111320.0 * math.cos(math.radians(ORIGIN[0])))
+DLAT = 1.0 / 111320.0
 
 
 def east_of_origin(metres):
     """Точка на параллели ORIGIN в metres к востоку."""
     return ORIGIN[0], ORIGIN[1] + metres * DLON, ORIGIN[2]
+
+
+def local_point(east, north):
+    """Точка east метров к востоку и north к северу от ORIGIN."""
+    return ORIGIN[0] + north * DLAT, ORIGIN[1] + east * DLON, ORIGIN[2]
 
 
 def straight_map(length=3000, stops=()):
@@ -204,11 +210,65 @@ class CoreTests(unittest.TestCase):
         self.assertTrue(all(abs(s * 50 - round(s * 50)) < 1e-6 for s in stamps))
         self.assertGreater(len(outs) / 30.0, 45.0)
 
-    def test_gnss_ignored_after_init(self):
-        core = OdometryCore(CoreConfig(), track_map=straight_map(1000))
+    def test_gnss_ignored_after_init_without_correction(self):
+        core = OdometryCore(CoreConfig(gnss_correction=False), track_map=straight_map(1000))
         self.run_core(core, seconds=5.0)
         self.assertFalse(core.gnss_needed)
         self.assertFalse(core.on_fix('master', 2000.0, 0.0, 0.0, 0.0, 2))
+
+    def drive_truth(self, core, where, seconds, speed=5.0, wheel=5.0, t0=1000.0, bursts=()):
+        """Езда с истинным путём speed*t; where(d) даёт lat, lon, alt точки пути d."""
+        outs = []
+        t = t0
+        core.on_wheel('front', t0 - 0.1, wheel * 3.6)
+        while t < t0 + seconds:
+            d = speed * (t - t0)
+            if t < t0 + 3.0 or any(a <= t - t0 < b for a, b in bursts):
+                core.on_fix('master', t, *where(d), 2)
+                core.on_fix('rover', t, *where(d + 12.436), 2)
+            outs += core.on_command(t + 0.05, 5)
+            outs += core.on_wheel('front', t, wheel * 3.6)
+            outs += core.on_wheel('rear', t + 0.03, wheel * 3.6)
+            t += 0.1
+        return outs
+
+    def test_gnss_burst_removes_along_error(self):
+        # колёса занижают путь на 3 %, облако частиц уверено в неверном месте;
+        # сдвиг больше 3 м принимается, когда вторая пачка его подтверждает
+        truth = []
+        for bursts in ((), ((60.0, 61.5), (75.0, 76.5))):
+            core = OdometryCore(CoreConfig(), track_map=straight_map(1000))
+            outs = self.drive_truth(core, lambda d: east_of_origin(d), 78.0, speed=5.15, bursts=bursts)
+            expected = FRAME.forward(*east_of_origin(5.15 * (outs[-1].stamp - 1000.0) + 9.873))
+            truth.append(abs(outs[-1].position[0] - expected[0]))
+        self.assertGreater(truth[0], 5.0)
+        self.assertLess(truth[1], 1.5)
+
+    def test_single_burst_does_not_jump_far(self):
+        # одна пачка со сдвигом 9 м может быть сбоем приёмника: без подтверждения не прыгаем
+        core = OdometryCore(CoreConfig(), track_map=straight_map(1000))
+        self.drive_truth(core, lambda d: east_of_origin(d), 64.0, speed=5.15, bursts=((60.0, 61.5),))
+        self.assertEqual(core.localizer.gnss_relocations, 0)
+
+    def test_burst_on_spur_switches_branch(self):
+        track = straight_map(1000)
+        junction = FRAME.forward(*east_of_origin(500.0))
+        s_junction = min(track.candidates(junction[0], junction[1], 2.0))[1]
+        heading = math.radians(30.0)
+
+        def where(d):
+            if d <= 500.0:
+                return east_of_origin(d)
+            u = d - 500.0
+            return local_point(500.0 + u * math.cos(heading), u * math.sin(heading))
+        spur = [FRAME.forward(*where(500.0 + u)) for u in range(0, 121)]
+        track.spurs = [Spur(track, 'diverge', s_junction, spur)]
+        core = OdometryCore(CoreConfig(), track_map=track)
+        outs = self.drive_truth(core, where, 112.0, bursts=((107.0, 108.0),))
+        self.assertIs(core.localizer.branch, track.spurs[0])
+        expected = FRAME.forward(*where(5.0 * (outs[-1].stamp - 1000.0) + 9.873))
+        x, y, _ = outs[-1].position
+        self.assertLess(math.hypot(x - expected[0], y - expected[1]), 1.5)
 
     def test_position_follows_track(self):
         core = OdometryCore(CoreConfig(), track_map=straight_map(1000))

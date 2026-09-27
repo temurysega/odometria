@@ -1,8 +1,10 @@
 """Узел ROS 2 Humble: резервная одометрия трамвая по модели.
 
 Вход:  /vehicle/front_bogie_velocity, /vehicle/rear_bogie_velocity,
-       /vehicle/driver_position_cmd; GNSS fix только в окне начальной
-       выставки, после неё подписки на GNSS уничтожаются.
+       /vehicle/driver_position_cmd; GNSS fix в окне начальной выставки
+       и далее редкими пачками для коррекции вдоль пути и выбора тупика
+       конечной (gnss_correction, разрешено организаторами); при
+       gnss_correction false подписки на GNSS после выставки уничтожаются.
 Положение: плоские координаты MGRS и высота для base_link (tf антенн в
 параметрах master_x, rover_x, antenna_z).
 Выход: /result/velocity (tram_vehicle_msgs/VelocitySensor),
@@ -33,12 +35,12 @@ from .track import TrackMap
 from .traction import TractionModel
 
 CORE_PARAMS = {
-    'output_rate': 50.0, 'use_map': True, 'use_landmarks': True, 'particles': 1500,
+    'output_rate': 50.0, 'velocity_delay': 0.10, 'position_lead': 0.05, 'use_map': True, 'use_landmarks': True, 'particles': 1500,
     'init_window': 1.0, 'scale_prior': 1.0, 'scale_sigma': 0.008,
     'master_x': -9.873, 'rover_x': 2.563, 'antenna_z': 3.0, 'output_point': 'base_link',
     'mgrs_zone': 37, 'mgrs_origin_east': 300000.0, 'mgrs_origin_north': 6100000.0,
     'gnss_wait': 5.0, 'max_map_offset': 15.0, 'stop_speed': 0.03,
-    'stop_confirm': 1.0, 'command_timeout': 0.5,
+    'stop_confirm': 1.0, 'command_timeout': 0.5, 'gnss_correction': True, 'gnss_delay': 0.10,
 }
 OBSERVER_PARAMS = {
     'wheel_scale': 1.0 / 3.6, 'sigma_wheel': 0.03, 'sigma_model': 0.35, 'sigma_bias': 0.02,
@@ -91,6 +93,7 @@ class OdometryNode(Node):
         self.create_subscription(DriverControllerCommand, '/vehicle/driver_position_cmd',
                                  self.on_command, qos)
         self.gnss_subs = []
+        self.init_reported = False
         self.qos = qos
         self.velocity_pub = self.create_publisher(VelocitySensor, '/result/velocity', 50)
         self.position_pub = self.create_publisher(Odometry, '/result/position', 50)
@@ -104,7 +107,7 @@ class OdometryNode(Node):
             f'выход {core_cfg.output_rate:.0f} Гц в кадре {self.frame_id}')
 
     def _sync_gnss(self):
-        """GNSS нужен только до начальной выставки."""
+        """GNSS нужен до начальной выставки, а с коррекцией и после неё."""
         if self.core.gnss_needed and not self.gnss_subs:
             self.gnss_subs = [
                 self.create_subscription(NavSatFix, '/sensing/gnss/master/fix',
@@ -115,10 +118,13 @@ class OdometryNode(Node):
             for sub in self.gnss_subs:
                 self.destroy_subscription(sub)
             self.gnss_subs = []
-            loc = self.core.localizer
+        loc = self.core.localizer
+        if loc.ready and not self.init_reported:
+            self.init_reported = True
+            after = 'GNSS далее только для коррекции по пачкам' if self.gnss_subs else 'GNSS отключён'
             self.get_logger().info(
                 f'начальная выставка завершена: антенна {loc.source}, '
-                f'привязка к карте {"есть" if loc.start_s is not None else "нет"}; GNSS отключён')
+                f'привязка к карте {"есть" if loc.start_s is not None else "нет"}; {after}')
 
     def on_fix(self, source, msg):
         if self.core.gnss_needed:
@@ -181,7 +187,7 @@ class OdometryNode(Node):
         cov[21] = cov[28] = 0.01
         cov[35] = 0.003 if b < 1.0 else 1.0
         msg.pose.covariance = cov
-        msg.twist.twist.linear.x = float(out.velocity)
+        msg.twist.twist.linear.x = float(out.velocity_now)
         msg.twist.twist.angular.z = float(out.yaw_rate)
         tw = [0.0] * 36
         tw[0] = out.var_velocity

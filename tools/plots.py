@@ -1,4 +1,4 @@
-"""Графики для README: python tools/plots.py DATA --cache CACHE"""
+"""Графики для README: python tools/plots.py DATA --cache CACHE [--check-bag BAG]"""
 import argparse
 import datetime
 import json
@@ -67,7 +67,10 @@ def plot_map():
     ax.set_aspect('equal')
     ax.set_xlabel('x MGRS (восток), м')
     ax.set_ylabel('y MGRS (север), м')
-    ax.set_title(f'Карта пути в MGRS: контур {tm.length / 1000:.2f} км, {len(tm.stops)} ориентиров')
+    for k, spur in enumerate(tm.spurs):
+        q = np.asarray(spur.line.points)
+        ax.plot(q[:, 0], q[:, 1], color=AQUA, lw=1.6, label='тупики конечной' if k == 0 else None)
+    ax.set_title(f'Карта пути в MGRS: контур {tm.length / 1000:.2f} км, {len(tm.stops)} ориентиров, {len(tm.spurs)} тупика')
     ax.legend(loc='upper left', fontsize=9)
     s_all = np.arange(len(p))
     boxes = (((s_all > j - 150) & (s_all < j + 260), 'Восточное кольцо'),
@@ -78,6 +81,9 @@ def plot_map():
         sub = fig.add_axes([0.71, 0.55 - 0.47 * k, 0.27, 0.38])
         sub.plot(p[:j, 0], p[:j, 1], color=BLUE, lw=1.6)
         sub.plot(p[j:, 0], p[j:, 1], color=ORANGE, lw=1.6)
+        for spur in tm.spurs:
+            q = np.asarray(spur.line.points)
+            sub.plot(q[:, 0], q[:, 1], color=AQUA, lw=1.6)
         sub.set_xlim(x0, x1)
         sub.set_ylim(y0, y1)
         sub.set_aspect('equal', adjustable='datalim')
@@ -204,6 +210,61 @@ def plot_bags(report_full, report_nolm):
     save(fig, 'per_bag_cdf.png')
 
 
+def plot_judge(bag):
+    """Проверочный bag организаторов: ошибка по времени и западная конечная."""
+    import judge_check
+    data = judge_check.bagdata.read_bag(bag)
+    ref = data['reference']
+    runs = {}
+    for flag in (False, True):
+        core = OdometryCore(CoreConfig(gnss_correction=flag), track_map=TrackMap.load(), model=TractionModel.load())
+        rows = judge_check.run(data, core)
+        pairs = judge_check.synchronize(
+            [(r[0], 0, r[1], (r[1],) + tuple(r[2:5])) for r in ref]
+            + [(rec, 1, o.stamp, tuple(o.position)) for rec, o in rows if o.position_valid])
+        runs[flag] = (np.array([(a[0], np.linalg.norm(np.subtract(b, a[1:]))) for a, b in pairs]),
+                      np.array([(o.stamp,) + tuple(o.position) for _, o in rows if o.position_valid]))
+    t0 = ref[0][1]
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.6), gridspec_kw={'width_ratios': [1.5, 1]})
+    ax = axes[0]
+    for flag, color, label in ((False, ORANGE, 'GNSS только для выставки'), (True, BLUE, 'итог: и пачки GNSS по ходу')):
+        err = runs[flag][0]
+        rmse = np.sqrt(np.mean(err[:, 1] ** 2))
+        ax.plot(err[:, 0] - t0, np.maximum(err[:, 1], 0.03), color=color, lw=1.2, label=f'{label}, RMSE {rmse:.2f} м')
+    fixes = np.concatenate([np.asarray(data[k])[:, 1] for k in ('master_fix', 'rover_fix') if k in data])
+    ax.plot(fixes - t0, np.full(len(fixes), 0.022), '|', color=INK2, ms=7, label='фиксы GNSS в bag')
+    ax.set_yscale('log')
+    ax.set_ylim(0.015, 100.0)
+    ax.set_xlabel('время записи, с')
+    ax.set_ylabel('ошибка положения 3D, м')
+    ax.set_title('Проверочный bag 30618_88aea4d9, метрика судьи')
+    ax.legend(loc='upper left', fontsize=9)
+    ax = axes[1]
+    tm = TrackMap.load()
+    r = np.asarray(ref)
+    box = r[:, 1] - t0 > 1215
+    x0, x1 = r[box, 2].min() - 25, r[box, 2].max() + 25
+    y0, y1 = r[box, 3].min() - 25, r[box, 3].max() + 25
+    c = np.asarray(tm.points)
+    ax.plot(c[:, 0], c[:, 1], color=GRID, lw=5, solid_capstyle='round', label='контур карты')
+    for k, spur in enumerate(tm.spurs):
+        q = np.asarray(spur.line.points)
+        ax.plot(q[:, 0], q[:, 1], color=AQUA, lw=5, alpha=0.45, label='тупики из обучающих рейсов' if k == 0 else None)
+    ax.plot(r[box, 2], r[box, 3], color=INK, lw=1.2, label='эталон судьи')
+    for flag, color, label in ((False, ORANGE, 'выход без пачек'), (True, BLUE, 'выход итог')):
+        out = runs[flag][1]
+        sel = out[:, 0] - t0 > 1215
+        ax.plot(out[sel, 1], out[sel, 2], color=color, lw=1.2, ls=(0, (4, 2)), label=label)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.set_aspect('equal', adjustable='datalim')
+    ax.set_title('Последние 95 с: съезд в тупик')
+    ax.set_xlabel('x MGRS, м')
+    ax.legend(loc='lower right', fontsize=8.5)
+    fig.tight_layout()
+    save(fig, 'judge_check.png')
+
+
 def plot_model():
     doc = json.loads((ROOT / 'src/odometria/odometria/data/traction_model.json').read_text(encoding='utf-8'))
     table = np.asarray(doc['table'])
@@ -233,7 +294,18 @@ def main():
     parser.add_argument('--cache', type=Path)
     parser.add_argument('--report', type=Path, default=ROOT / 'reports/replay_dayout.json')
     parser.add_argument('--report-nolm', type=Path, default=ROOT / 'reports/replay_dayout_nolandmarks.json')
+    parser.add_argument('--check-bag', type=Path, help='проверочный bag организаторов с эталоном судьи')
+    parser.add_argument('--only', nargs='*', help='только эти графики: map, model, scale, slip, along, bags, judge')
     args = parser.parse_args()
+    if args.only:
+        for name in args.only:
+            if name == 'map':
+                plot_map()
+            elif name == 'judge':
+                plot_judge(args.check_bag)
+            elif name == 'model':
+                plot_model()
+        return
     plot_map()
     plot_model()
     plot_scale(args.data, args.cache)
@@ -241,6 +313,8 @@ def main():
     plot_along(args.data, args.cache)
     if args.report.exists() and args.report_nolm.exists():
         plot_bags(args.report, args.report_nolm)
+    if args.check_bag:
+        plot_judge(args.check_bag)
 
 
 if __name__ == '__main__':

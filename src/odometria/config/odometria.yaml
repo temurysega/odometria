@@ -4,6 +4,8 @@ odometria:
   ros__parameters:
     # выход
     output_rate: 50.0          # Гц, метки на сетке 1/output_rate в шкале входных header.stamp
+    velocity_delay: 0.1        # с, скорость эталона судьи запаздывает на столько относительно колёс
+    position_lead: 0.05        # с, положение эталона опережает шкалу заголовков колёс
     frame_id: map              # плоские координаты MGRS, z высота (REP 103)
     child_frame_id: base_link
     diagnostics_rate: 5.0
@@ -21,6 +23,8 @@ odometria:
     mgrs_origin_east: 300000.0     # угол квадрата сетки MGRS, как в картах организаторов
     mgrs_origin_north: 6100000.0
     gnss_wait: 5.0             # с без GNSS, после которых включается относительная одометрия
+    gnss_correction: true      # редкие пачки GNSS после выставки: коррекция вдоль пути и выбор тупика
+    gnss_delay: 0.1            # с, фикс соответствует пути колёс на это время позже своей метки
     max_map_offset: 15.0       # м, допуск привязки стартовой точки
     scale_prior: 1.0           # априорный масштаб колёс
     scale_sigma: 0.008         # его СКО (износ бандажей до 1,5 %)

@@ -1,8 +1,12 @@
 """Офлайн проигрывание bag через ядро узла и сравнение с GNSS эталоном.
 
 Сообщения подаются в порядке времени записи, как при ros2 bag play.
-GNSS фиксы передаются ядру все, но оно принимает только окно начальной
-выставки; скорость GNSS в ядро не попадает вовсе.
+GNSS в ядро подаётся как в проверочном bag организаторов (--gnss):
+init   только первые 32 с записи;
+bursts первые 32 с и пачки по 1,5 с, master и rover по очереди раз в
+       120 с (в проверочном bag пачки идут через 100...150 с);
+all    все фиксы (эталон тогда совпадает со входом, только для отладки).
+Скорость GNSS в ядро не попадает вовсе.
 
 Эталон:
   скорость: модуль горизонтальной скорости /sensing/gnss/master/vel
@@ -36,7 +40,23 @@ from odometria.traction import TractionModel  # noqa: E402
 TOL = 0.05
 
 
-def stream(data):
+GNSS_START = 32.0
+BURST_PERIOD = 120.0
+BURST_LENGTH = 1.5
+
+
+def gnss_kept(src, age, mode):
+    """Попадает ли фикс с возрастом записи age в ядро при режиме mode."""
+    if mode == 'all' or age < GNSS_START:
+        return True
+    if mode != 'bursts':
+        return False
+    # master в начале периода, rover в середине, первая пачка на 200 с
+    phase = (age - 200.0 - (0.0 if src == 'master' else BURST_PERIOD / 2)) % BURST_PERIOD
+    return age >= 200.0 and phase < BURST_LENGTH
+
+
+def stream(data, gnss='all'):
     events = []
     for side in ('front', 'rear'):
         if side in data:
@@ -45,19 +65,22 @@ def stream(data):
     if 'cmd' in data:
         for rec, stamp, value in data['cmd'][:, :3]:
             events.append((rec, 1, 'cmd', stamp, int(value)))
+    start = min((data[k][0, 0] for k in ('cmd', 'front', 'rear', 'master_fix', 'rover_fix')
+                 if k in data and len(data[k])), default=0.0)
     for src in ('master', 'rover'):
         key = f'{src}_fix'
         if key in data:
             for row in data[key]:
-                events.append((row[0], 2, src, row[1], (row[2], row[3], row[4], int(row[5]))))
+                if gnss_kept(src, row[0] - start, gnss):
+                    events.append((row[0], 2, src, row[1], (row[2], row[3], row[4], int(row[5]))))
     events.sort(key=lambda e: (e[0], e[1]))
     return events
 
 
-def run_core(data, core):
+def run_core(data, core, gnss='init'):
     outputs = []
     timing = []
-    for _, kind, name, stamp, value in stream(data):
+    for _, kind, name, stamp, value in stream(data, gnss):
         begin = time.perf_counter()
         if kind == 0:
             res = core.on_wheel(name, stamp, value)
@@ -238,13 +261,13 @@ def metrics(outputs, ref, scheme='out2ref'):
 
 
 def evaluate(args):
-    folder, cache, map_path, overrides = args
+    folder, cache, map_path, overrides, gnss = args
     data = load(folder, cache)
     track = TrackMap.load(map_path) if map_path else None
     cfg = CoreConfig(**overrides.get('core', {}))
     ocfg = ObserverConfig(**overrides.get('observer', {}))
     core = OdometryCore(cfg, ocfg, track_map=track, model=TractionModel.load())
-    outputs, timing = run_core(data, core)
+    outputs, timing = run_core(data, core, gnss)
     ref = reference(data)
     duration = data['cmd'][-1, 0] - data['cmd'][0, 0] if 'cmd' in data else 0.0
     res = {'bag': folder.name, 'duration_s': float(duration), 'outputs': len(outputs),
@@ -301,6 +324,8 @@ def main():
     parser.add_argument('--no-map', action='store_true')
     parser.add_argument('--set', action='append', default=[],
                         help='переопределение параметра, например core.use_landmarks=False')
+    parser.add_argument('--gnss', choices=('init', 'bursts', 'all'), default='init',
+                        help='какие фиксы GNSS подавать в ядро')
     parser.add_argument('--workers', type=int, default=8)
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
@@ -322,12 +347,12 @@ def main():
             map_path = str(args.fold_maps[0] if fold_of(folder.name, args.cache, args.data) == 'A' else args.fold_maps[1])
         else:
             map_path = str(args.map)
-        jobs.append((folder, args.cache, map_path, overrides))
+        jobs.append((folder, args.cache, map_path, overrides, args.gnss))
     with ProcessPoolExecutor(args.workers) as ex:
         rows = list(ex.map(evaluate, jobs))
     report = {'summary_out2ref': summarize(rows, 'out2ref'),
               'summary_ref2out': summarize(rows, 'ref2out'), 'bags': rows,
-              'overrides': overrides,
+              'overrides': overrides, 'gnss': args.gnss,
               'map': 'day' if args.day_maps else 'fold' if args.fold_maps else ('none' if args.no_map else 'full')}
     print(json.dumps({k: report[k] for k in ('summary_out2ref', 'summary_ref2out')}, ensure_ascii=False, indent=1))
     if args.output:

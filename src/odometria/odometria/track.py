@@ -43,6 +43,9 @@ class TrackMap:
                               'count': int(x.get('count', 1)), 'share': float(x.get('share', 1.0))}
                              for x in stops), key=lambda x: x['s'])
         self.east_junction = east_junction
+        # на сколько base_link ниже антенн по высотам карты организаторов
+        self.base_height = None
+        self.spurs = []
         self._smooth_z = self._robust_profile([p[2] for p in self.points])
         self._grid = {}
         for i, (x, y, _) in enumerate(self.points):
@@ -51,8 +54,11 @@ class TrackMap:
     @classmethod
     def load(cls, path=None):
         doc = json.loads(Path(path or DATA / 'track_map.json').read_text(encoding='utf-8'))
-        return cls(doc['frame'], doc['points'], doc.get('stops', ()),
-                   doc.get('east_junction_s'), doc.get('closed', False))
+        track = cls(doc['frame'], doc['points'], doc.get('stops', ()),
+                    doc.get('east_junction_s'), doc.get('closed', False))
+        track.base_height = doc.get('base_link_below_antenna_m')
+        track.spurs = [Spur(track, x['kind'], x['junction_s'], x['points']) for x in doc.get('spurs', ())]
+        return track
 
     def wrap(self, s):
         return s % self.length if self.closed else s
@@ -138,6 +144,33 @@ class TrackMap:
                             n = math.sqrt(l2)
                             out.append((d, self.s[j] + w * (self.s[j + 1] - self.s[j]), ex / n, ey / n))
         return out
+
+
+class Spur:
+    """Тупик у конечной: своя ломаная и стык с контуром.
+
+    diverge: вагон съезжает с контура в тупик (конец рейса), merge: выезжает
+    из тупика на контур (начало рейса). Вдольпутевая координата фильтра
+    остаётся дугой контура: s = start + u, где u дуга тупика, а start дуга
+    его начала, так что на стыке координата непрерывна.
+    """
+
+    def __init__(self, track, kind, junction, points):
+        if kind not in ('diverge', 'merge'):
+            raise ValueError('тип тупика diverge или merge')
+        self.kind = kind
+        self.track = track
+        self.line = TrackMap(track.frame, points)
+        self.length = self.line.length
+        self.start = track.wrap(float(junction) if kind == 'diverge' else float(junction) - self.length)
+
+    def arc(self, s, margin=50.0):
+        """Дуга тупика для координаты s или None, если s не на тупике."""
+        u = self.track.delta(s, self.start)
+        if self.kind == 'diverge':
+            # за концом тупика вагон стоит у упора
+            return min(u, self.length) if 0.0 <= u <= self.length + margin else None
+        return max(u, 0.0) if -margin <= u <= self.length else None
 
 
 class AlongTrackFilter:
@@ -265,6 +298,24 @@ class ParticleTrack:
         self.updates += 1
         return self.s - before
 
+    def relocate(self, offset, sigma):
+        """Облако заново вокруг надёжного наблюдения, далёкого от всех частиц.
+
+        Прочие гипотезы облака сдвигом не переносятся: они строились по той
+        же ошибке, которую исправляет наблюдение.
+        """
+        gauss = self.rng.gauss
+        center = self.s + offset
+        self.base = [center + gauss(0.0, sigma) for _ in self.base]
+        n = len(self.base)
+        self.weight = [1.0 / n] * n
+        self.travel = 0.0
+        self.extra = 0.0
+        before = self.s
+        self._estimate()
+        self.updates += 1
+        return self.s - before
+
     def _resample(self):
         n = len(self.base)
         step = 1.0 / n
@@ -339,6 +390,29 @@ class Localizer:
         self.landmark_tail_weight = 0.2
         self.landmark_tail_sigma = 3.0
         self.particles = particles
+        self.burst = []
+        self.burst_start = None
+        self.gnss_corrections = 0
+        self.gnss_relocations = 0
+        # тупик, в котором стоит вагон по последним фиксам, иначе контур
+        self.branch = None
+        self.last_gnss = None
+        # ошибки фиксов коррелированы во времени: на стоянке пачка не несёт
+        # новой информации, а повторные поправки вырождают облако частиц
+        self.gnss_min_travel = 50.0
+        # пачка применяется через полсекунды: смена ветки нужна сразу
+        self.burst_window = 0.6
+        # фиксы дальше от всех путей карты не используются; соседний путь
+        # объезда в 4...6 м ещё даёт верное место вдоль пути
+        self.gnss_lateral = 8.0
+        # перепривязка по одной пачке не больше чем на столько метров,
+        # больший сдвиг должна подтвердить следующая пачка
+        self.relocate_free = 3.0
+        self.gnss_pending = None
+        # вдоль пути против эталона на проверочном bag: статус 2 около 0,6 м, прочие около 3 м
+        self.gnss_sigma_rtk = 0.6
+        self.gnss_sigma_other = 3.0
+        self.last_gnss_distance = None
         self.relock_share = 0.3
         self.relock_distance = 2000.0
         self.relock_agreement = 3.0
@@ -404,15 +478,18 @@ class Localizer:
         offset = self.antenna_baseline if source == 'rover' else 0.0
         estimates = []
         best = None
+        nearest = None
         for t, lat, lon, alt, d, _ in fixes:
             x, y, z = self.frame.forward(lat, lon, alt)
             choice = self._match(x, y, heading)
             if choice is None:
                 continue
-            dist, s_fix = choice
+            dist, s_fix, spur = choice
             estimates.append(s_fix - offset - d)
             if best is None:
                 best = (dist, (x, y, z))
+            if nearest is None or dist < nearest[0]:
+                nearest = (dist, spur)
         if not estimates:
             self.filter = AlongTrackFilter(distance, k=self.scale_prior, sigma_k=self.scale_sigma)
             self.start_s = None
@@ -420,6 +497,8 @@ class Localizer:
             return True
         estimates.sort()
         base = estimates[len(estimates) // 2]
+        # старт в тупике конечной: выход по его ломаной до стыка с контуром
+        self.branch = nearest[1]
         self.map_error = best[0]
         self.start_s = base + distance
         # точность старта по статусу фикса: 2 RTK, 1 SBAS, 0 автономное решение
@@ -436,6 +515,7 @@ class Localizer:
             self.filter = AlongTrackFilter(self.start_s, sigma_s=sigma_start,
                                            k=self.scale_prior, sigma_k=self.scale_sigma)
         self.last_landmark_distance = distance
+        self.last_gnss_distance = distance
         # смещение первого фикса от карты плавно убирается на первых метрах
         on_map = self.map.point(base + fixes[0][4] + offset)
         self.origin_offset = tuple(a - b for a, b in zip(first, on_map))
@@ -461,15 +541,24 @@ class Localizer:
                 return e / norm, n / norm
         return None
 
+    def _options(self, x, y, radius):
+        """Проекции точки на контур и тупики: удаление, s, курс пути, тупик."""
+        out = [o + (None,) for o in self.map.candidates(x, y, radius)]
+        for spur in self.map.spurs:
+            for d, u, tx, ty in spur.line.candidates(x, y, radius):
+                if -1.0 <= u <= spur.length + 1.0:
+                    out.append((d, self.map.wrap(spur.start + u), tx, ty, spur))
+        return out
+
     def _match(self, x, y, heading):
-        options = self.map.candidates(x, y, self.max_map_offset)
+        options = self._options(x, y, self.max_map_offset)
         if heading is not None:
             # курс по двум антеннам различает встречные пути; даже если свой
             # путь чуть дальше допуска, ближний встречный не берём: такая
             # ошибка старта держится всю поездку и даёт сотни метров
             aligned = [o for o in options if o[2] * heading[0] + o[3] * heading[1] > 0.5]
             if not aligned:
-                expanded = self.map.candidates(x, y, 4.0 * self.max_map_offset)
+                expanded = self._options(x, y, 4.0 * self.max_map_offset)
                 aligned = [o for o in expanded if o[2] * heading[0] + o[3] * heading[1] > 0.5]
             options = aligned
         elif not options:
@@ -477,19 +566,117 @@ class Localizer:
         if not options:
             # курс и карта не согласуются: абсолютную привязку не делаем
             return None
-        dist, s, _, _ = min(options, key=lambda o: o[0])
-        return dist, s
+        dist, s, _, _, spur = min(options, key=lambda o: o[0])
+        return dist, s, spur
 
-    def _rover_arc(self, s, master):
-        """Дуговая координата rover: хорда до master равна базе антенн."""
-        ahead = s + self.antenna_baseline
-        for _ in range(2):
-            rover = self.map.point(ahead)
-            chord = math.hypot(rover[0] - master[0], rover[1] - master[1])
-            if chord < 1.0:
-                break
-            ahead += self.antenna_baseline - chord
-        return ahead
+    def correction_fix(self, source, t, lat, lon, alt, status, distance):
+        """Фикс GNSS после выставки: копится в пачку для коррекции.
+
+        Организаторы разрешили использовать GNSS для коррекции; в проверочных
+        данных он приходит редкими пачками по несколько секунд.
+        """
+        if not self.ready or self.filter is None or self.map is None or self.start_s is None:
+            return False
+        if status is not None and status < 0:
+            return False
+        if not all(math.isfinite(v) for v in (lat, lon, alt)):
+            return False
+        x, y, _ = self.frame.forward(lat, lon, alt)
+        offset = self.antenna_baseline if source == 'rover' else 0.0
+        predicted = self.filter.s + offset
+        tx, ty = self._tangent(predicted)
+        options = [o for o in self._options(x, y, 20.0)
+                   if abs(self.map.delta(o[1], predicted)) < 80.0 and o[2] * tx + o[3] * ty > 0.7]
+        best = min(options, key=lambda o: o[0]) if options else None
+        main = min((o[0] for o in options if o[4] is None), default=math.inf)
+        side = min(options, key=lambda o: o[0] if o[4] is not None else math.inf, default=None)
+        vote = None
+        if side is not None and side[4] is not None and side[0] + 0.5 < main:
+            vote = side[4]
+        elif main + 0.5 < (side[0] if side is not None and side[4] is not None else math.inf):
+            vote = 'main'
+        if not self.burst:
+            self.burst_start = t
+        self.burst.append({'t': t, 'status': int(status), 'lateral': best[0] if best else None,
+                           'along': (best[1] - offset - distance) if best else None, 'vote': vote})
+        return True
+
+    def _tangent(self, s):
+        u = self.branch.arc(s) if self.branch is not None else None
+        if u is not None:
+            return self.branch.line.tangent(min(u, self.branch.length - 0.5))
+        return self.map.tangent(s)
+
+    def flush_corrections(self, t, distance, force=False):
+        """Применяет накопленную пачку фиксов: ветка и коррекция вдоль пути."""
+        if not self.burst:
+            return None
+        last = self.burst[-1]['t']
+        if not force and t - last < 0.5 and t - self.burst_start < self.burst_window:
+            return None
+        burst, self.burst = self.burst, []
+        on_map = [b for b in burst if b['lateral'] is not None and b['lateral'] < self.gnss_lateral]
+        if len(on_map) * 2 >= len(burst):
+            # ветка по большинству фиксов, однозначно ближе к одному из путей
+            votes = [b['vote'] for b in on_map if b['vote'] is not None]
+            spur_votes = [v for v in votes if v != 'main']
+            if len(spur_votes) * 2 > len(votes) and spur_votes:
+                self.branch = max(set(spur_votes), key=spur_votes.count)
+            elif votes and len(spur_votes) * 2 < len(votes):
+                self.branch = None
+            along = sorted(b['along'] for b in on_map)
+            middle = along[len(along) // 2]
+            observed = middle + distance
+            n = len(along)
+            # сбойный приёмник чередует две точки в десятках метров: пачка
+            # согласована, только если почти все фиксы у медианы
+            agree = sum(1 for a in along if abs(a - middle) < 1.5)
+            grades = sorted(b['status'] for b in on_map)
+            sigma = self.gnss_sigma_rtk if grades[len(grades) // 2] == 2 else self.gnss_sigma_other
+            if (self.last_gnss_distance is not None
+                    and abs(distance - self.last_gnss_distance) < self.gnss_min_travel):
+                return None
+            self.last_gnss_distance = distance
+            return self._apply_gnss(observed, sigma, n >= 3 and agree >= 0.8 * n, distance)
+        # пачка в стороне от всех путей карты: путь вне карты или сбой приёмника
+        return None
+
+    def _apply_gnss(self, observed, sigma, consistent=False, distance=None):
+        f = self.filter
+        wide = max(3.0 * sigma, 5.0)
+        innovation = self.map.delta(observed, f.s)
+        if (isinstance(f, ParticleTrack) and consistent and sigma <= self.gnss_sigma_rtk
+                and abs(innovation) > 3.0 * math.sqrt(f.var_s + sigma * sigma)):
+            # облако уверенно ушло (стык карты, долгое проскальзывание):
+            # частиц рядом с согласованной точной пачкой нет, взвешивать нечего.
+            # Большой скачок нужно подтвердить следующей пачкой с тем же сдвигом
+            if abs(innovation) > self.relocate_free:
+                previous = self.gnss_pending
+                self.gnss_pending = (distance, innovation)
+                if (previous is None or distance is None or abs(distance - previous[0]) > 1000.0
+                        or abs(innovation - previous[1]) > 3.0):
+                    return None
+            self.gnss_pending = None
+            shift = f.relocate(innovation, sigma)
+            self.gnss_corrections += 1
+            self.gnss_relocations += 1
+            self.last_gnss = (observed, shift)
+            return shift
+        if isinstance(f, ParticleTrack):
+            delta = self.map.delta
+            norm_n = 0.8 / (math.sqrt(2.0 * math.pi) * sigma)
+            norm_w = 0.2 / (math.sqrt(2.0 * math.pi) * wide)
+
+            def likelihood(x):
+                d = delta(x, observed)
+                return 1e-4 + norm_n * math.exp(-0.5 * d * d / sigma ** 2) + norm_w * math.exp(-0.5 * d * d / wide ** 2)
+
+            shift = f.observe(likelihood)
+        else:
+            shift = f.correct(observed, sigma)
+        self.gnss_corrections += 1
+        self.last_gnss = (observed, shift)
+        return shift
 
     def advance(self, ds, extra_variance=0.0):
         if self.filter is not None:
@@ -501,6 +688,9 @@ class Localizer:
         """Привязка к ориентиру при подтверждённой остановке."""
         if (not self.use_landmarks or self.filter is None or self.start_s is None
                 or not self.map.stops):
+            return None
+        if self.branch is not None and self.branch.arc(self.filter.s) is not None:
+            # платформы контура к тупику отношения не имеют
             return None
         if self.last_landmark_distance is not None and abs(distance - self.last_landmark_distance) < 15.0:
             return None
@@ -610,6 +800,17 @@ class Localizer:
         f = self.output_fraction
         heading = self._heading() or self.heading
         yaw = math.atan2(heading[1], heading[0])
+        if self.map is not None:
+            # эталон лежит на линии карты: уже в окне выставки ставим точку на неё
+            last = (m or r)[-1]
+            x, y, _ = self.frame.forward(*last[1:4])
+            choice = self._match(x, y, self._heading())
+            if choice is not None and choice[0] < 5.0:
+                self.branch = choice[2]
+                back = self.antenna_baseline if not m else 0.0
+                s_master = choice[1] - back + travelled_since(last[4])
+                p, yaw_map = self._map_output(s_master)
+                return p, yaw_map, 1.0, 0.25
         if m and r and abs(m[-1][0] - r[-1][0]) < 0.05:
             a = self.frame.forward(*m[-1][1:4])
             b = self.frame.forward(*r[-1][1:4])
@@ -624,6 +825,30 @@ class Localizer:
             moved = travelled_since(last[4])
         p = (p[0] + moved * heading[0], p[1] + moved * heading[1], p[2] - self.antenna_z)
         return p, yaw, 1.0, 1.0
+
+    def _map_output(self, s_master):
+        """Выходная точка на линии карты по дуговой координате master.
+
+        Эталон судьи (localization kinematic_state) лежит ровно на линии
+        карты организаторов с её высотой, поэтому base_link ставится на
+        дугу на плечо tf впереди master, а не на хорду антенн.
+        """
+        lever = self.output_fraction * self.antenna_baseline
+        sb = s_master + lever
+        u = self.branch.arc(sb) if self.branch is not None else None
+        drop = 0.0
+        if self.output_point == 'base_link':
+            drop = self.map.base_height if self.map.base_height is not None else self.antenna_z
+        if u is not None:
+            line = self.branch.line
+            p = line.point(u)
+            a = line.point(u - 1.0)
+            b = line.point(u + 1.0)
+            return (p[0], p[1], p[2] - drop), math.atan2(b[1] - a[1], b[0] - a[0])
+        p = self.map.point(sb)
+        a = self.map.point(sb - 1.0)
+        b = self.map.point(sb + 1.0)
+        return (p[0], p[1], p[2] - drop), math.atan2(b[1] - a[1], b[0] - a[0])
 
     def position(self, ds_ahead=0.0):
         """Выходная точка в MGRS, курс, дисперсии вдоль и поперёк пути."""
@@ -643,15 +868,15 @@ class Localizer:
             var = self.filter.p[0][0] if self.filter is not None else 1e4
             return p, yaw, var, (0.05 * abs(d)) ** 2 + 25.0
         s = self.filter.s + ds_ahead
-        master = self.map.point(s)
-        rover = self.map.point(self._rover_arc(s, master))
-        f = self.output_fraction
-        p = tuple(m + f * (r - m) for m, r in zip(master, rover))
-        p = (p[0], p[1], p[2] - self.antenna_z)
-        w = max(0.0, 1.0 - abs(s - self.start_s) / self.blend_length) if self.blend_length > 0 else 0.0
+        p, yaw = self._map_output(s)
+        # эталон привязан к линии карты: смещение первого фикса от карты
+        # переносится на выход только при старте с пути, которого нет в
+        # карте, и только в плане (высота фикса GNSS шумит на метры)
+        w = 0.0
+        if self.blend_length > 0 and (self.map_error or 0.0) > 3.0:
+            w = max(0.0, 1.0 - abs(s - self.start_s) / self.blend_length)
         if w > 0.0:
-            p = tuple(a + w * o for a, o in zip(p, self.origin_offset))
-        yaw = math.atan2(rover[1] - master[1], rover[0] - master[0])
+            p = (p[0] + w * self.origin_offset[0], p[1] + w * self.origin_offset[1], p[2])
         # далёкая стартовая привязка не означает точного знания поперечной координаты
         map_sigma = self.map_error or 0.0
         return p, yaw, self.filter.p[0][0], 0.05 ** 2 + (w * 2.0) ** 2 + (w * map_sigma) ** 2
@@ -659,9 +884,15 @@ class Localizer:
     def grade(self):
         if self.filter is None or self.start_s is None:
             return 0.0
+        u = self.branch.arc(self.filter.s) if self.branch is not None else None
+        if u is not None:
+            return self.branch.line.grade(u)
         return self.map.grade(self.filter.s)
 
     def curvature(self):
         if self.filter is None or self.start_s is None:
             return 0.0
+        u = self.branch.arc(self.filter.s) if self.branch is not None else None
+        if u is not None:
+            return self.branch.line.curvature(u)
         return self.map.curvature(self.filter.s)

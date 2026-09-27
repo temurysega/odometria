@@ -1,0 +1,20 @@
+{
+ "description": "Проверочный узел организаторов hackathon_solution_checker из check-code и наш узел в ros:humble, bag 30618_88aea4d9 проигран целиком со скоростью x1 (tools/judge_ros.sh); итог узла организаторов при остановке",
+ "velocity": {
+  "rmse": 0.024405,
+  "max": 0.298014,
+  "n": 61200
+ },
+ "position": {
+  "x_rmse": 0.78691,
+  "x_max": 9.440011,
+  "y_rmse": 0.568358,
+  "y_max": 7.124058,
+  "z_rmse": 0.042166,
+  "z_max": 0.470268,
+  "distance_rmse": 0.971616,
+  "distance_max": 11.826608,
+  "n": 60979
+ },
+ "offline_emulation": "reports/judge_check.json"
+}
